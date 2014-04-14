@@ -2,8 +2,8 @@ package gameWar;
 
 public class Plateau {
 
-	static final int HAUTEUR = 10;
-	static final int LARGEUR = 5;
+	final int HAUTEUR = 10;
+	final int LARGEUR = 5;
 	boolean fini = false;
 	Cellule[][] grille;
 	
@@ -13,7 +13,8 @@ public class Plateau {
 			for (int j=0; j<grille[0].length; j++) {
 				grille[i][j]=new Case();
 			}
-		}
+		} grille [1][3].placerObstacle();
+		grille [2][4].placerObstacle();
 		
 	}
 	
@@ -59,36 +60,39 @@ public class Plateau {
 	}
 			
 	public boolean parcourtValide(boolean[][] p, int x, int y) {
+
 		if (p[this.HAUTEUR-1][this.LARGEUR-1])
 			return true;
-		
 		// DROITE
-		else if (y!=this.LARGEUR-1 && !this.grille[x][y+1].estObstacle()) {
+		else if (y!=this.LARGEUR-1 && !this.grille[x][y+1].estObstacle() && !p[x][y+1]) {
+			System.out.print("droite");
 			p[x][y+1]=true;
-			if (parcourtValide(p, x, y+1))
-					return true;
+			return parcourtValide(p, x, y+1);
 		}
-		
 		// BAS
-		else if (x!=0 && !this.grille[x-1][y].estObstacle()) {
-			p[x-1][y]=true;
-			if (parcourtValide(p, x-1, y))
-				return true;
-		}
-		
-		// GAUCHE
-		else if (y!=0 && !this.grille[x][y-1].estObstacle()) {
-			p[x][y-1]=true;
-			if (parcourtValide(p, x, y-1))
-				return true;
-		}
-		
-		// HAUT
-		else if (x!=this.HAUTEUR-1 && !this.grille[x+1][y].estObstacle()) {
+		else if (x!=this.HAUTEUR-1 && !this.grille[x+1][y].estObstacle() && !p[x+1][y]) {
+			System.out.print("bas");
 			p[x+1][y]=true;
-			if (parcourtValide(p, x+1, y))
-				return true;
-		}		
+			return parcourtValide(p, x+1, y);
+		}
+		// GAUCHE
+		else if (y!=0 && !this.grille[x][y-1].estObstacle() && !p[x][y-1]) {
+			System.out.print("gauche");
+			p[x][y-1]=true;
+			return parcourtValide(p, x, y-1);
+		} 
+		// HAUT
+		 else if (x!=this.HAUTEUR+1 && !this.grille[x+1][y].estObstacle() && !p[x+1][y]) {
+			System.out.print("haut");
+			p[x+1][y]=true;
+			return parcourtValide(p, x+1, y);
+		} 
 		return false;
+	}
+	
+	public String toString() {
+		String s = "";
+		
+		return s;
 	}
 }

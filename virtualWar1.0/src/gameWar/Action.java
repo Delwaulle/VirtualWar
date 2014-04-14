@@ -1,7 +1,6 @@
 package gameWar;
 
 public abstract class Action {
-	// COUCOU
 
 	public Action (Robot r, Coordonnee direction) {
 		

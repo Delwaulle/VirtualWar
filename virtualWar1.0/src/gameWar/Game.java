@@ -4,7 +4,9 @@ public class Game {
 
 	public static void main(String[] args) {
 		Plateau p = new Plateau();
-		if(!p.plateauValide())
+		if(p.plateauValide())
 			System.out.print("GG");
+		else
+			System.out.print("null");			
 	}
 }
