@@ -21,7 +21,7 @@ public class Plateau {
 		} 
 		
 	}
-	
+	// test
 	public int estMine (int x, int y) {
 		return grille[x][y].estMine();
 	}
