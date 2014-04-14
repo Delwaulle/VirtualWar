@@ -1,7 +1,6 @@
 package gameWar;
-
+// test 22h25 push&pull
 public class Plateau {
-
 	final int HAUTEUR = 10;
 	final int LARGEUR = 5;
 	boolean fini = false;
