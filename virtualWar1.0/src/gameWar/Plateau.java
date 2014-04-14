@@ -91,7 +91,34 @@ public class Plateau {
 	}
 	
 	public String toString() {
-		String s = "";
+		String s = "+";
+		for (int i=0; i<this.LARGEUR; i++)
+			s=s+"---+";
+		s=s+"\n|";
+		for (int i=0; i<this.LARGEUR; i++)
+			for (int j=0; j<this.HAUTEUR; j++) {
+				if (this.grille[i][j].estBase()==1)
+					s=s+"B |";
+				else if (this.grille[i][j].estBase()==2)
+					s=s+"b |";
+				else if (this.grille[i][j].estMine()==1)
+					s=s+"X |";
+				else if (this.grille[i][j].estMine()==2)
+					s=s+"x |";
+				else if (this.grille[i][j].getContenu() instanceof Tireur)
+					if (this.grille[i][j].getContenu().getEquipe()==1)
+						s=s+"T |";
+					else
+						s=s+"t |";
+				else if (this.grille[i][j].getContenu() instanceof Piegeur)
+					if (this.grille[i][j].getContenu().getEquipe()==1)
+						s=s+"P |";
+					else
+						s=s+"p |";
+			} 
+			s = "+";
+			for (int i=0; i<this.LARGEUR; i++)
+				s=s+"---+";
 		
 		return s;
 	}

@@ -2,7 +2,7 @@ package gameWar;
 
 import java.util.List;
 
-public class Piegeur {
+public class Piegeur extends Robot {
 
 	private int coutAction;
 	private int coutDep;
