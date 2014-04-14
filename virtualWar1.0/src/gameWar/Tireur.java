@@ -7,30 +7,30 @@ public class Tireur extends Robot{
 	private int coutAction;
 	private int coutDep;
 	private int degatTir;
-	private String type;
+	private String type = "Tireur";
 
 	public boolean peutTirer() {
 		return false;
 	}
 	
 	public int getCoutAction() {
-		return 0;
+		return this.coutAction;
 	}
 
 	public int getCoutDep() {
-		return 0;
+		return this.coutDep;
 	}
 
 	public int getDegatMine() {
 		return 0;
 	}
 
-	public int getDegatTire() {
-		return 0;
+	public int getDegatTir() {
+		return this.degatTir;
 	}
 
 	public String getType() {
-		return null;
+		return this.type;
 	}
 
 	public List<Coordonnee> getDeplacement() {

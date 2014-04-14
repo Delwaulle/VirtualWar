@@ -40,15 +40,15 @@ public abstract class Robot {
 	}
 	
 	public int getEnergie() {
-		return 0;
+		return this.energie;
 	}
 	
 	public void setEnergie (int energie) {
-		
+		this.energie=energie;
 	}
 	
 	public int getEquipe() {
-		return 0;
+		return this.equipe;
 	}
 	
 	public void subitTir() {
@@ -63,7 +63,7 @@ public abstract class Robot {
 	abstract public int getCoutAction();
 	abstract public int getCoutDep();
 	abstract public int getDegatMine();
-	abstract public int getDegatTire();
+	abstract public int getDegatTir();
 	abstract public String getType();
 	abstract public List<Coordonnee> getDeplacement();
 

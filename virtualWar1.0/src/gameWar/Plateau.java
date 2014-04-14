@@ -11,10 +11,14 @@ public class Plateau {
 		grille=new Cellule[HAUTEUR][LARGEUR];
 		for (int i=0; i<grille.length; i++) {
 			for (int j=0; j<grille[0].length; j++) {
-				grille[i][j]=new Case();
+				if (i==0 && j==0)
+					grille[i][j]=new Base(1);
+				else if (i==this.HAUTEUR-1 && j==this.LARGEUR-1)
+					grille[i][j]=new Base(2);
+				else
+					grille[i][j]=new Case();
 			}
-		} grille [1][3].placerObstacle();
-		grille [2][4].placerObstacle();
+		} 
 		
 	}
 	
@@ -94,31 +98,36 @@ public class Plateau {
 		String s = "+";
 		for (int i=0; i<this.LARGEUR; i++)
 			s=s+"---+";
-		s=s+"\n|";
-		for (int i=0; i<this.LARGEUR; i++)
-			for (int j=0; j<this.HAUTEUR; j++) {
+		
+		for (int i=0; i<this.HAUTEUR; i++) {
+			s=s+"\n|";
+			for (int j=0; j<this.LARGEUR; j++) {
 				if (this.grille[i][j].estBase()==1)
-					s=s+"B |";
+					s=s+" B |";
 				else if (this.grille[i][j].estBase()==2)
-					s=s+"b |";
+					s=s+" b |";
 				else if (this.grille[i][j].estMine()==1)
-					s=s+"X |";
+					s=s+" X |";
 				else if (this.grille[i][j].estMine()==2)
-					s=s+"x |";
-				else if (this.grille[i][j].getContenu() instanceof Tireur)
+					s=s+" x |";
+				else if (this.grille[i][j].getContenu() instanceof Tireur) {
 					if (this.grille[i][j].getContenu().getEquipe()==1)
-						s=s+"T |";
+						s=s+" T |";
 					else
-						s=s+"t |";
-				else if (this.grille[i][j].getContenu() instanceof Piegeur)
+						s=s+" t |";
+				} else if (this.grille[i][j].getContenu() instanceof Piegeur) {
 					if (this.grille[i][j].getContenu().getEquipe()==1)
-						s=s+"P |";
+						s=s+" P |";
 					else
-						s=s+"p |";
+						s=s+" p |";
+				} else 
+					s=s+"   |";
+				
 			} 
-			s = "+";
-			for (int i=0; i<this.LARGEUR; i++)
+			s = s+"\n+";
+			for (int j=0; j<this.LARGEUR; j++)
 				s=s+"---+";
+		}
 		
 		return s;
 	}
