@@ -66,5 +66,6 @@ public abstract class Robot {
 	abstract public int getDegatTir();
 	abstract public String getType();
 	abstract public List<Coordonnee> getDeplacement();
+	abstract public String toString();
 
 }

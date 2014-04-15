@@ -1,23 +1,23 @@
 package gameWar;
 
 public abstract class Action {
+	
+	int i;
+	private Robot robot;
+	private Coordonnee coordonnee;
 
-	public Action (Robot r, Coordonnee direction) {
-		
+	public Action (Robot r, int i) {
+		this.i=i;
+		this.robot=r;
 	}
 	
 	public Robot getRobot() {
-		return new Tireur(null, 0, 0, 0);
+		return robot;
 	}
 	
 	public Coordonnee getDirection() {
-		return new Coordonnee(0,0);
-	}
-	
-	public Coordonnee getObjectif() {
-		return new Coordonnee(0,0);
+		return coordonnee;
 	}
 	
 	abstract void agit();
-
 }

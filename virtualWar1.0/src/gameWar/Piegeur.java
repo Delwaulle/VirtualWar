@@ -4,13 +4,14 @@ import java.util.List;
 
 public class Piegeur extends Robot {
 
-	private int coutAction;
-	private int coutDep;
-	private int degatMine;
+	private int coutAction=2;
+	private int coutDep=2;
+	private int degatMine=2;
 	private String type="Piegeur";
 
 	public Piegeur (Vue vue, int x, int y, int equipe) {
 		super(vue, x, y, equipe);
+		this.setEnergie(50);
 	}
 	
 	public boolean peutTirer() {
@@ -39,5 +40,17 @@ public class Piegeur extends Robot {
 
 	public List<Coordonnee> getDeplacement() {
 		return null;
+	}
+	
+	public String toString() {
+		return    "+------------------------+\n"
+				+ "|        PIEGEUR         |\n"
+				+ "+------------------------+\n"
+				+ "| Energie : "+this.getEnergie()+"           |\n"
+				+ "| Cout d'action : "+this.coutAction+"      |\n"
+				+ "| Cout de deplacement : "+this.coutDep+"|\n"
+				+ "| Degats : "+this.degatMine+"             |\n"
+				+ "|                        |\n"
+				+ "+------------------------+\n";
 	}
 }

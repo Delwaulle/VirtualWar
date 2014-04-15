@@ -4,13 +4,14 @@ import java.util.List;
 
 public class Tireur extends Robot{
 	
-	private int coutAction;
-	private int coutDep;
-	private int degatTir;
+	private int coutAction=2;
+	private int coutDep=1;
+	private int degatTir=3;
 	private String type = "Tireur";
 	
 	public Tireur (Vue vue, int x, int y, int equipe) {
 		super(vue, x, y, equipe);
+		this.setEnergie(40);
 	}
 
 	public boolean peutTirer() {
@@ -39,5 +40,17 @@ public class Tireur extends Robot{
 
 	public List<Coordonnee> getDeplacement() {
 		return null;
+	}
+	
+	public String toString() {
+		return    "+------------------------+\n"
+				+ "|        TIREUR          |\n"
+				+ "+------------------------+\n"
+				+ "| Energie : "+this.getEnergie()+"           |\n"
+				+ "| Cout d'action : "+this.coutAction+"      |\n"
+				+ "| Cout de deplacement : "+this.coutDep+"|\n"
+				+ "| Degats : "+this.degatTir+"             |\n"
+				+ "|                        |\n"
+				+ "+------------------------+\n";
 	}
 }

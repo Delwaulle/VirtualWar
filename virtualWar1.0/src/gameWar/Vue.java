@@ -14,20 +14,15 @@ public class Vue {
 		this.equipe=equipe;
 	}
 	
-	public int getHauteur() {
-		return this.plateau.HAUTEUR;
-	}
-	
-	public int getLargeur() {
-		return this.plateau.LARGEUR;
-	}
-	
 	public void poserRobot(Robot r) {
 		this.plateau.placerRobot(r);
 	}
 	
 	public boolean estOK(Coordonnee c) {
-		return c.getX() >= 0 && c.getX() < this.plateau.LARGEUR && c.getY() >=0 && c.getY() < this.plateau.HAUTEUR;
+		System.out.print(c.getX());
+		System.out.print("    "+c.getY()+"\n");
+		
+		return c.getX() >= 0 && c.getX() < Plateau.HAUTEUR && c.getY() >=0 && c.getY() < Plateau.LARGEUR;
 	}
 	
 	public boolean estBase(Coordonnee c) {
@@ -39,7 +34,12 @@ public class Vue {
 	}
 	
 	public boolean estLibre (Coordonnee c) {
-		return this.plateau.estRobot(c.getX(), c.getY()) == null;
+		return plateau.getRobot(c.getX(), c.getY())==null;
+		
+	}
+	
+	public void libere (Coordonnee c) {
+		this.plateau.setLibre(c.getX(), c.getY());
 	}
 
 }

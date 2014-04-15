@@ -3,7 +3,7 @@ package gameWar;
 public class Case extends Cellule {
 
 	void placerSur(Robot r) {
-		this.r=null;
+		this.r=r;
 	}
 
 	void videCase() {

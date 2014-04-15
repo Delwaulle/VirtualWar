@@ -5,7 +5,7 @@ public abstract class Cellule {
 	protected int mine=0;
 	protected int base=0;
 	private boolean obstacle=false;
-	Robot r = null;
+	Robot r;
 	Coordonnee coord;
 	
 	public Cellule() {

@@ -13,7 +13,7 @@ public class Plateau {
 			for (int j=0; j<grille[0].length; j++) {
 				if (i==0 && j==0)
 					grille[i][j]=new Base(1);
-				else if (i==this.HAUTEUR-1 && j==this.LARGEUR-1)
+				else if (i==HAUTEUR-1 && j==LARGEUR-1)
 					grille[i][j]=new Base(2);
 				else
 					grille[i][j]=new Case();
@@ -30,8 +30,18 @@ public class Plateau {
 		return grille[x][y].estBase();
 	}
 	
-	public Robot estRobot (int x, int y) {
+	public Robot getRobot (int x, int y) {
 		return grille[x][y].getContenu();
+	}
+	
+	public Robot getRobot (int equipe) {
+		for (int i=0; i<HAUTEUR; i++) {
+			for (int j=0; j<LARGEUR; j++) {
+				if (this.grille[i][j].getContenu()!=null && this.grille[i][j].getContenu().getEquipe() == equipe)
+					return this.grille[i][j].getContenu();
+			}
+		}
+		return null;
 	}
 	
 	public void placerMine (int x, int y, int equipe) {
@@ -43,6 +53,7 @@ public class Plateau {
 	}
 	
 	public void placerRobot(Robot r) {
+		
 		grille[r.getCoordonnee().getX()][r.getCoordonnee().getY()].placerSur(r);
 	}
 	
@@ -51,7 +62,7 @@ public class Plateau {
 	}
 	
 	public boolean plateauValide() {
-		boolean[][] p = new boolean[this.HAUTEUR][this.LARGEUR];
+		boolean[][] p = new boolean[HAUTEUR][LARGEUR];
 		for (int i=0; i<p.length; i++) {
 			for (int j=0; j<p[0].length; j++){
 				if (i==0 && j==0)
@@ -65,16 +76,16 @@ public class Plateau {
 			
 	public boolean parcourtValide(boolean[][] p, int x, int y) {
 
-		if (p[this.HAUTEUR-1][this.LARGEUR-1])
+		if (p[HAUTEUR-1][LARGEUR-1])
 			return true;
 		// DROITE
-		else if (y!=this.LARGEUR-1 && !this.grille[x][y+1].estObstacle() && !p[x][y+1]) {
+		else if (y!=LARGEUR-1 && !this.grille[x][y+1].estObstacle() && !p[x][y+1]) {
 			System.out.print("droite");
 			p[x][y+1]=true;
 			return parcourtValide(p, x, y+1);
 		}
 		// BAS
-		else if (x!=this.HAUTEUR-1 && !this.grille[x+1][y].estObstacle() && !p[x+1][y]) {
+		else if (x!=HAUTEUR-1 && !this.grille[x+1][y].estObstacle() && !p[x+1][y]) {
 			System.out.print("bas");
 			p[x+1][y]=true;
 			return parcourtValide(p, x+1, y);
@@ -86,7 +97,7 @@ public class Plateau {
 			return parcourtValide(p, x, y-1);
 		} 
 		// HAUT
-		 else if (x!=this.HAUTEUR+1 && !this.grille[x+1][y].estObstacle() && !p[x+1][y]) {
+		 else if (x!=HAUTEUR+1 && !this.grille[x+1][y].estObstacle() && !p[x+1][y]) {
 			System.out.print("haut");
 			p[x+1][y]=true;
 			return parcourtValide(p, x+1, y);
@@ -96,12 +107,12 @@ public class Plateau {
 	
 	public String toString() {
 		String s = "+";
-		for (int i=0; i<this.LARGEUR; i++)
+		for (int i=0; i<LARGEUR; i++)
 			s=s+"---+";
 		
-		for (int i=0; i<this.HAUTEUR; i++) {
+		for (int i=0; i<HAUTEUR; i++) {
 			s=s+"\n|";
-			for (int j=0; j<this.LARGEUR; j++) {
+			for (int j=0; j<LARGEUR; j++) {
 				if (this.grille[i][j].estMine()==1)
 					s=s+" X |";
 				else if (this.grille[i][j].estMine()==2)
@@ -122,10 +133,9 @@ public class Plateau {
 					s=s+" b |";
 				else 
 					s=s+"   |";
-				
 			} 
 			s = s+"\n+";
-			for (int j=0; j<this.LARGEUR; j++)
+			for (int j=0; j<LARGEUR; j++)
 				s=s+"---+";
 		}
 		s=s+"\n";		
