@@ -2,12 +2,11 @@ package gameWar;
 
 public abstract class Action {
 	
-	int i;
 	private Robot robot;
 	private Coordonnee coordonnee;
 
-	public Action (Robot r, int i) {
-		this.i=i;
+	public Action (Robot r, Coordonnee c) {
+		this.coordonnee=c;
 		this.robot=r;
 	}
 	

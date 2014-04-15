@@ -13,6 +13,7 @@ public class Game {
 			System.out.print(p.toString());
 			jouer(tour%2+1, p);
 			tour++;
+			testFini(p);
 		}
 	}
 	
@@ -23,16 +24,28 @@ public class Game {
 			deplacer(p.getRobot(equipe), p);
 		else if (rep.equals("attaquer"))
 			attaquer(p.getRobot(equipe), p);
+		if (p.getRobot(equipe).getEnergie()<=0)
+			p.setLibre(p.getRobot(equipe).getCoordonnee().getX(), p.getRobot(equipe).getCoordonnee().getY());
 	}
 	
 	private static void deplacer(Robot r, Plateau p) {
-		int direction = gameController.EntrerDirection.entrerDirection();
-		Action a = new Deplacement(r,direction);
-		a.agit();
+		Coordonnee direction = gameController.EntrerDirection.entrerDirection();
+		if (testSortiePlateau(r, direction))
+			System.out.println("Déplacement impossible, vous ne pouvez pas quitter le champ de bataille ! Choisissez une destination valide ou une autre action.");
+		else if (testCollision(r, direction))
+			System.out.println("");
+		else {
+			Action a = new Deplacement(r,direction);
+			a.agit();
+		}
 	}
 	
 	private static void attaquer(Robot r, Plateau p) {
-		int direction = gameController.EntrerDirection.entrerDirection();
+		Coordonnee direction = gameController.EntrerDirection.entrerDirection();
+		while (direction != Constante.HAUT && direction != Constante.BAS && direction != Constante.GAUCHE && direction != Constante.DROITE) {
+			System.out.println("Vous ne pouvez effectuer cette action en diagonale");
+			direction=gameController.EntrerDirection.entrerDirection();
+		}
 		if (r.getType().equals("Tireur")) {
 			Action a = new Tir(r,direction);
 			a.agit();
@@ -50,4 +63,37 @@ public class Game {
 		} else if (rep.equals("piegeur"))
 			p.placerRobot(new Piegeur(new Vue(equipe, p), 0, 0, equipe));
 	}
+
+	private static boolean testSortiePlateau(Robot r, Coordonnee direction) {
+		return (!r.getVue().estOK(r.getCoordonnee().ajouter(direction)));
+	}
+	
+	private static boolean testCollision(Robot r, Coordonnee direction) {
+		return (!r.getVue().estLibre(r.getCoordonnee().ajouter(direction)));
+	}
+	
+	private static void testFini(Plateau p) {
+		int equipe1 = 0;
+		int equipe2 = 0;
+		for (int i=0; i<p.grille.length; i++) {
+			for (int j=0; j<p.grille[0].length; j++) {
+				if (p.grille[i][j].getContenu()!= null && p.grille[i][j].getContenu().getEquipe()==1)
+					equipe1++;
+				else if (p.grille[i][j].getContenu()!= null && p.grille[i][j].getContenu().getEquipe()==2)
+					equipe2++;
+			}
+		} if (equipe1 == 0 && equipe2 == 0) {
+			p.fini=true;
+			System.out.println("Egalité !!");
+		} else if (equipe1 == 0) {
+			p.fini=true;
+			System.out.println("Joueur 2 à gagner !!");
+		} else if (equipe2 == 0) {
+			p.fini=true;
+			System.out.println("Joueur 1 à gagner !!");
+		}
+		
+	}
 }
+
+

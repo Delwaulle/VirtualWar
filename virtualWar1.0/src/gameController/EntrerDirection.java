@@ -1,20 +1,34 @@
 package gameController;
+import gameWar.Constante;
+import gameWar.Coordonnee;
+
 import java.util.Scanner;
 
 public class EntrerDirection {
 
-	public static int entrerDirection() {
+	public static Coordonnee entrerDirection() {
 		System.out.println("Entrez une direction");
 		Scanner sc = new Scanner(System.in);
-		String rep=sc.nextLine();
-		if (rep.equals("haut"))
-			return 0;
-		else if (rep.equals("bas"))
-			return 2;
-		else if (rep.equals("droite"))
-			return 1;
-		else
-			return 3;
-		
+		while (true) {
+			String rep=sc.nextLine();
+			if (rep.equals("haut"))
+				return Constante.HAUT;
+			if (rep.equals("bas"))
+				return Constante.BAS;
+			if (rep.equals("droite"))
+				return Constante.DROITE;
+			if (rep.equals("gauche"))
+				return Constante.GAUCHE;
+			if (rep.equals("haut gauche"))
+				return Constante.HAUT.ajouter(Constante.GAUCHE);
+			if (rep.equals("haut droite"))
+				return Constante.HAUT.ajouter(Constante.DROITE);
+			if (rep.equals("bas droite"))
+				return Constante.BAS.ajouter(Constante.DROITE);
+			if (rep.equals("bas gauche"))
+				return Constante.BAS.ajouter(Constante.GAUCHE);
+			else
+				System.out.println("Entrée non valide !");
+		}
 	}
 }
