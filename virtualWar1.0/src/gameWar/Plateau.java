@@ -1,5 +1,5 @@
 package gameWar;
-
+// coucou
 public class Plateau {
 
 	final int HAUTEUR = 10;
