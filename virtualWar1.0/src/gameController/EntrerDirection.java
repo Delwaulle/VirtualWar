@@ -4,6 +4,7 @@ import java.util.Scanner;
 public class EntrerDirection {
 
 	public static int entrerDirection() {
+		System.out.println("Entrez une direction");
 		Scanner sc = new Scanner(System.in);
 		String rep=sc.nextLine();
 		if (rep.equals("haut"))

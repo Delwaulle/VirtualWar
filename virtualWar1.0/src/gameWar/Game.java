@@ -21,7 +21,7 @@ public class Game {
 		String rep=gameController.EntrerAction.entrerAction();
 		if (rep.equals("deplacer")) {
 			deplacer(p.getRobot(equipe), p);
-		}
+		} 
 	}
 	
 	private static void deplacer(Robot r, Plateau p) {
