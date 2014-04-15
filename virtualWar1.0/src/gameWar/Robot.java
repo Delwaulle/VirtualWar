@@ -9,13 +9,13 @@ public abstract class Robot {
 	private Coordonnee coord;
 	private Vue vue;
 	
-	public Robot() {
-		
-	}
 	
 	public Robot (Vue vue, int x, int y, int equipe) {
 		this.vue=vue;
-		this.coord= new Coordonnee(x, y);
+		if (equipe == 1)
+			this.coord= new Coordonnee(0, 0);
+		else
+			this.coord= new Coordonnee(Plateau.HAUTEUR-1, Plateau.LARGEUR-1);
 		this.equipe=equipe;
 	}
 	

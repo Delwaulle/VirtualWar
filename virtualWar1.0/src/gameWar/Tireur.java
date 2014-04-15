@@ -8,6 +8,10 @@ public class Tireur extends Robot{
 	private int coutDep;
 	private int degatTir;
 	private String type = "Tireur";
+	
+	public Tireur (Vue vue, int x, int y, int equipe) {
+		super(vue, x, y, equipe);
+	}
 
 	public boolean peutTirer() {
 		return false;

@@ -7,7 +7,7 @@ public abstract class Action {
 	}
 	
 	public Robot getRobot() {
-		return new Tireur();
+		return new Tireur(null, 0, 0, 0);
 	}
 	
 	public Coordonnee getDirection() {

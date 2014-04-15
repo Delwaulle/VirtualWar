@@ -9,6 +9,10 @@ public class Piegeur extends Robot {
 	private int degatMine;
 	private String type="Piegeur";
 
+	public Piegeur (Vue vue, int x, int y, int equipe) {
+		super(vue, x, y, equipe);
+	}
+	
 	public boolean peutTirer() {
 		return false;
 	}
