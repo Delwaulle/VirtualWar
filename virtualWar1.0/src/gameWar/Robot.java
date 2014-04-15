@@ -51,12 +51,8 @@ public abstract class Robot {
 		return this.equipe;
 	}
 	
-	public void subitTir() {
-		
-	}
-	
-	public void subitMine() {
-		
+	public void subitDegats(int degats) {
+		this.energie=this.energie-degats;
 	}
 	
 	abstract public boolean peutTirer();
