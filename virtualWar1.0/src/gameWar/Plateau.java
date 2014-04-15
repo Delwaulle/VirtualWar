@@ -48,6 +48,10 @@ public class Plateau {
 		grille[x][y].placerMine(equipe);
 	}
 	
+	public void retirerMine(int x, int y) {
+		grille[x][y].placerMine(0);
+	}
+	
 	public void placerBase (int x, int y, int equipe) {
 		grille[x][y].placerBase(equipe);
 	}
