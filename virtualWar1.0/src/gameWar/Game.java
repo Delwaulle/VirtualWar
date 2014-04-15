@@ -30,11 +30,17 @@ public class Game {
 	
 	private static void deplacer(Robot r, Plateau p) {
 		Coordonnee direction = gameController.EntrerDirection.entrerDirection();
-		if (testSortiePlateau(r, direction))
+		if (testSortiePlateau(r, direction)) {
 			System.out.println("Déplacement impossible, vous ne pouvez pas quitter le champ de bataille ! Choisissez une destination valide ou une autre action.");
-		else if (testCollision(r, direction))
-			System.out.println("");
-		else {
+			jouer(r.getEquipe(), p);
+		} else if (testCollision(r, direction)) {
+			System.out.println("Déplacement impossible, le terrain est déjà occupé, le risque de collision est important, choisissez une autre destination ou une autre action.");
+			jouer(r.getEquipe(), p);
+		} else if (p.estBase(r.getCoordonnee().getX()+direction.getX(), r.getCoordonnee().getY()+direction.getY())!=0 
+				&&p.estBase(r.getCoordonnee().getX()+direction.getX(), r.getCoordonnee().getY()+direction.getY()) != r.getEquipe()) {
+				System.out.println("Alerte ! Vous essayez de pénétrer une base ennemie ! Vous avez l’ordre de battre en retraite, choisissez une destination différente.");
+				jouer(r.getEquipe(), p);
+		} else {
 			Action a = new Deplacement(r,direction);
 			a.agit();
 		}
@@ -47,8 +53,13 @@ public class Game {
 			direction=gameController.EntrerDirection.entrerDirection();
 		}
 		if (r.getType().equals("Tireur")) {
-			Action a = new Tir(r,direction);
-			a.agit();
+			if (r.getVue().estLibre(r.getCoordonnee().ajouter(direction))) {
+				System.out.print("Attention soldat, vous ne visez personne ! Ne décevez pas votre pays, ciblez un ennemi ou choisissez une autre action !");
+				jouer(r.getEquipe(), p);
+			} else {
+				Action a = new Tir(r,direction);
+				a.agit();
+			}
 		} else if (r.getType().equals("Piegeur")) {
 			Action a = new Mine(r,direction);
 			a.agit();
