@@ -8,6 +8,7 @@ public class EntrerDirection {
 
 	public static Coordonnee entrerDirection() {
 		System.out.println("Entrez une direction");
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		while (true) {
 			String rep=sc.nextLine();

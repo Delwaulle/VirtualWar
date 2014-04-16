@@ -4,6 +4,7 @@ package gameWar;
 public class Game {
 
 	public static void main(String[] args) {
+		afficherLogo();
 		Plateau p = new Plateau();
 		System.out.print(p.toString());		
 		creerRobots(p, 1);
@@ -104,6 +105,74 @@ public class Game {
 			System.out.println("Joueur 1 à gagner !!");
 		}
 		
+	}
+	
+	private static void afficherLogo() {
+		System.out.println("\n\n\n\n  _______________ ");
+		try{
+			Thread.sleep(100);
+		}
+		catch(Exception e){System.out.println(e.getMessage());}
+		System.out.println("/_______________/|");
+		try{
+			Thread.sleep(100);
+		}
+		catch(Exception e){System.out.println(e.getMessage());}
+		System.out.println("|   |_  \\     | ||");
+		try{
+			Thread.sleep(100);
+		}
+		catch(Exception e){System.out.println(e.getMessage());}
+		System.out.println("|     \\  \\    | ||");
+		try{
+			Thread.sleep(100);
+		}
+		catch(Exception e){System.out.println(e.getMessage());}
+		System.out.println("|      \\  \\   | ||");
+		try{
+			Thread.sleep(100);
+		}
+		catch(Exception e){System.out.println(e.getMessage());}
+		System.out.println("|       \\  \\  | ||");
+		try{
+			Thread.sleep(100);
+		}
+		catch(Exception e){System.out.println(e.getMessage());}
+		System.out.println("|        \\  \\ | ||");
+		try{
+			Thread.sleep(100);
+		}
+		catch(Exception e){System.out.println(e.getMessage());}
+		System.out.println("|         \\  \\| ||");
+		try{
+			Thread.sleep(100);
+		}
+		catch(Exception e){System.out.println(e.getMessage());}
+		System.out.println("|          \\    ||");
+		try{
+			Thread.sleep(100);
+		}
+		catch(Exception e){System.out.println(e.getMessage());}
+		System.out.println("|           \\   ||");
+		try{
+			Thread.sleep(100);
+		}
+		catch(Exception e){System.out.println(e.getMessage());}
+		System.out.println("|_______________||");
+		try{
+			Thread.sleep(100);
+		}
+		catch(Exception e){System.out.println(e.getMessage());}
+		System.out.println("|  B R O N Z E  ||");
+		try{
+			Thread.sleep(100);
+		}
+		catch(Exception e){System.out.println(e.getMessage());}
+		System.out.println("|_______________|/\n\n\n\n\n\n\n\n\n\n\n");
+		try{
+			Thread.sleep(100);
+		}
+		catch(Exception e){System.out.println(e.getMessage());}
 	}
 }
 

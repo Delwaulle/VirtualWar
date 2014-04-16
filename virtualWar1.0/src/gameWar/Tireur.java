@@ -11,7 +11,7 @@ public class Tireur extends Robot{
 	
 	public Tireur (Vue vue, int x, int y, int equipe) {
 		super(vue, x, y, equipe);
-		this.setEnergie(40);
+		this.setEnergie(10);
 	}
 
 	public boolean peutTirer() {
@@ -43,10 +43,15 @@ public class Tireur extends Robot{
 	}
 	
 	public String toString() {
+		String e = "";
+		if (this.getEnergie()<10)
+			e=" "+this.getEnergie();
+		else
+			e=""+this.getEnergie();
 		return    "+------------------------+\n"
 				+ "|        TIREUR          |\n"
 				+ "+------------------------+\n"
-				+ "| Energie : "+this.getEnergie()+"           |\n"
+				+ "| Energie : "+e+"           |\n"
 				+ "| Cout d'action : "+this.coutAction+"      |\n"
 				+ "| Cout de deplacement : "+this.coutDep+"|\n"
 				+ "| Degats : "+this.degatTir+"             |\n"

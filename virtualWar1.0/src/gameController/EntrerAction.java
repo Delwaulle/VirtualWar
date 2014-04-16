@@ -4,11 +4,14 @@ import java.util.Scanner;
 
 public class EntrerAction {
 	public static String entrerAction () {
-		System.out.println("Entrez une action (attaquer ou deplacer");
+		System.out.println("Entrez une action (attaquer ou deplacer)");
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
-		String rep="";
-		while (!rep.equals("attaquer") && !rep.equals("deplacer"))
+		String rep=sc.nextLine();;
+		while (!rep.equals("attaquer") && !rep.equals("deplacer")) {
+			System.out.println("Entree non valide, veuillez entrer un type d'action");
 			rep = sc.nextLine();
+		}
 		return rep;
 	}
 }
