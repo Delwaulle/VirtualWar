@@ -11,7 +11,7 @@ public class EntrerDirection {
 		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		while (true) {
-			String rep=sc.nextLine();
+			String rep=sc.nextLine().toLowerCase();
 			if (rep.equals("haut"))
 				return Constante.HAUT;
 			if (rep.equals("bas"))

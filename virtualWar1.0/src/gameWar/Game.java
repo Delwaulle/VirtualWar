@@ -6,12 +6,12 @@ public class Game {
 	public static void main(String[] args) {
 		afficherLogo();
 		Plateau p = new Plateau();
-		System.out.print(p.toString());		
+		System.out.print(p.toString(1));		
 		creerRobots(p, 1);
 		creerRobots(p, 2);
 		int tour=0;
 		while (!p.fini) {
-			System.out.print(p.toString());
+			System.out.print(p.toString(tour%2+1));
 			jouer(tour%2+1, p);
 			tour++;
 			testFini(p);

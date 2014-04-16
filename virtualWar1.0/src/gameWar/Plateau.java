@@ -109,7 +109,7 @@ public class Plateau {
 		return false;
 	}
 	
-	public String toString() {
+	public String toString(int equipe) {
 		String s = "+";
 		for (int i=0; i<LARGEUR; i++)
 			s=s+"---+";
@@ -117,10 +117,8 @@ public class Plateau {
 		for (int i=0; i<HAUTEUR; i++) {
 			s=s+"\n|";
 			for (int j=0; j<LARGEUR; j++) {
-				if (this.grille[i][j].estMine()==1)
+				if (this.grille[i][j].estMine()==equipe)
 					s=s+" X |";
-				else if (this.grille[i][j].estMine()==2)
-					s=s+" x |";
 				else if (this.grille[i][j].getContenu() instanceof Tireur) {
 					if (this.grille[i][j].getContenu().getEquipe()==1)
 						s=s+" T |";

@@ -43,10 +43,15 @@ public class Piegeur extends Robot {
 	}
 	
 	public String toString() {
+		String e = "";
+		if (this.getEnergie()<10)
+			e=" "+this.getEnergie();
+		else
+			e=""+this.getEnergie();
 		return    "+------------------------+\n"
 				+ "|        PIEGEUR         |\n"
 				+ "+------------------------+\n"
-				+ "| Energie : "+this.getEnergie()+"           |\n"
+				+ "| Energie : "+e+"           |\n"
 				+ "| Cout d'action : "+this.coutAction+"      |\n"
 				+ "| Cout de deplacement : "+this.coutDep+"|\n"
 				+ "| Degats : "+this.degatMine+"             |\n"
