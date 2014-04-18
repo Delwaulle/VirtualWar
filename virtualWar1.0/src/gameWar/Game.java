@@ -78,7 +78,7 @@ public class Game {
 		}
 		if (r.getType().equals("Tireur")) {
 			if (r.getVue().estLibre(r.getCoordonnee().ajouter(direction))) {
-				System.out.print("Attention soldat, vous ne visez personne ! Ne décevez pas votre pays, ciblez un ennemi ou choisissez une autre action !");
+				System.out.println("Attention soldat, vous ne visez personne ! Ne décevez pas votre pays, ciblez un ennemi ou choisissez une autre action !");
 				jouer(r.getEquipe(), p);
 			} else {
 				Action a = new Tir(r,direction);
