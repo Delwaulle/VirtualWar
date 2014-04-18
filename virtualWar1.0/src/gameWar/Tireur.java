@@ -11,7 +11,7 @@ public class Tireur extends Robot{
 	
 	public Tireur (Vue vue, int x, int y, int equipe) {
 		super(vue, x, y, equipe);
-		this.setEnergie(10);
+		this.setEnergie(40);
 	}
 
 	public boolean peutTirer() {

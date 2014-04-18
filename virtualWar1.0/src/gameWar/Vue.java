@@ -19,9 +19,6 @@ public class Vue {
 	}
 	
 	public boolean estOK(Coordonnee c) {
-		System.out.print(c.getX());
-		System.out.print("    "+c.getY()+"\n");
-		
 		return c.getX() >= 0 && c.getX() < Plateau.HAUTEUR && c.getY() >=0 && c.getY() < Plateau.LARGEUR;
 	}
 	

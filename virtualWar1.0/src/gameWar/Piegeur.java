@@ -11,7 +11,7 @@ public class Piegeur extends Robot {
 
 	public Piegeur (Vue vue, int x, int y, int equipe) {
 		super(vue, x, y, equipe);
-		this.setEnergie(10);
+		this.setEnergie(50);
 	}
 	
 	public boolean peutTirer() {

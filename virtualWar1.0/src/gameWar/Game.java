@@ -4,7 +4,7 @@ package gameWar;
 public class Game {
 
 	public static void main(String[] args) {
-		afficherLogo();
+		gameGraphic.AfficherLogo.afficherLogo();;
 		Plateau p = new Plateau();
 		System.out.print(p.toString(1));		
 		creerRobots(p, 1);
@@ -15,6 +15,10 @@ public class Game {
 			jouer(tour%2+1, p);
 			tour++;
 			testFini(p);
+			try{
+				Thread.sleep(2000);
+			}
+			catch(Exception e){System.out.println(e.getMessage());}
 		}
 	}
 	
@@ -68,7 +72,7 @@ public class Game {
 	}
 	
 	private static void creerRobots(Plateau p, int equipe) {
-		System.out.println("Joueur "+equipe+", voulez vous un tireur ou un piegeur ?");
+		System.out.println("Joueur "+equipe+", voulez-vous un tireur ou un piegeur ?");
 		String rep=gameController.EntrerRobot.entrerRobot();
 		if (rep.equals("tireur")) {
 			p.placerRobot(new Tireur(new Vue(equipe, p), 0, 0, equipe));
@@ -105,74 +109,6 @@ public class Game {
 			System.out.println("Joueur 1 à gagner !!");
 		}
 		
-	}
-	
-	private static void afficherLogo() {
-		System.out.println("\n\n\n\n  _______________ ");
-		try{
-			Thread.sleep(100);
-		}
-		catch(Exception e){System.out.println(e.getMessage());}
-		System.out.println("/_______________/|");
-		try{
-			Thread.sleep(100);
-		}
-		catch(Exception e){System.out.println(e.getMessage());}
-		System.out.println("|   |_  \\     | ||");
-		try{
-			Thread.sleep(100);
-		}
-		catch(Exception e){System.out.println(e.getMessage());}
-		System.out.println("|     \\  \\    | ||");
-		try{
-			Thread.sleep(100);
-		}
-		catch(Exception e){System.out.println(e.getMessage());}
-		System.out.println("|      \\  \\   | ||");
-		try{
-			Thread.sleep(100);
-		}
-		catch(Exception e){System.out.println(e.getMessage());}
-		System.out.println("|       \\  \\  | ||");
-		try{
-			Thread.sleep(100);
-		}
-		catch(Exception e){System.out.println(e.getMessage());}
-		System.out.println("|        \\  \\ | ||");
-		try{
-			Thread.sleep(100);
-		}
-		catch(Exception e){System.out.println(e.getMessage());}
-		System.out.println("|         \\  \\| ||");
-		try{
-			Thread.sleep(100);
-		}
-		catch(Exception e){System.out.println(e.getMessage());}
-		System.out.println("|          \\    ||");
-		try{
-			Thread.sleep(100);
-		}
-		catch(Exception e){System.out.println(e.getMessage());}
-		System.out.println("|           \\   ||");
-		try{
-			Thread.sleep(100);
-		}
-		catch(Exception e){System.out.println(e.getMessage());}
-		System.out.println("|_______________||");
-		try{
-			Thread.sleep(100);
-		}
-		catch(Exception e){System.out.println(e.getMessage());}
-		System.out.println("|  B R O N Z E  ||");
-		try{
-			Thread.sleep(100);
-		}
-		catch(Exception e){System.out.println(e.getMessage());}
-		System.out.println("|_______________|/\n\n\n\n\n\n\n\n\n\n\n");
-		try{
-			Thread.sleep(100);
-		}
-		catch(Exception e){System.out.println(e.getMessage());}
 	}
 }
 

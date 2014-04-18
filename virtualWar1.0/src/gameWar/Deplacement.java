@@ -14,6 +14,7 @@ public class Deplacement extends Action{
 			this.getRobot().setCoordonnee(newc);
 			this.getRobot().setEnergie(this.getRobot().getEnergie()-this.getRobot().getCoutDep());
 			if (p.estMine(newc.getX(), newc.getY())!=0) {
+				System.out.println("Vous avez touché une mine !!");
 				this.getRobot().subitDegats(2);
 				p.retirerMine(newc.getX(), newc.getY());
 			}	
