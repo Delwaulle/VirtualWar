@@ -1,12 +1,19 @@
 package gameWar;
 
+/**
+ * @author Robin
+ *
+ */
 public class Plateau {
 
 	static final int HAUTEUR = 10;
 	static final int LARGEUR = 5;
 	boolean fini = false;
 	Cellule[][] grille;
-	
+
+	/**
+	 * 
+	 */
 	public Plateau() {
 		grille=new Cellule[HAUTEUR][LARGEUR];
 		for (int i=0; i<grille.length; i++) {
@@ -18,22 +25,41 @@ public class Plateau {
 				else
 					grille[i][j]=new Case();
 			}
-		} 
-		
+		}
+
 	}
-	
+
+	/**
+	 * @param x
+	 * @param y
+	 * @return un entier qui symbolise l'équipe qui a posée la mine
+	 */
 	public int estMine (int x, int y) {
 		return grille[x][y].estMine();
 	}
-	
+
+	/**
+	 * @param x
+	 * @param y
+	 * @return un entier représentant l'équipe à laquelle appartient la base
+	 */
 	public int estBase (int x, int y) {
 		return grille[x][y].estBase();
 	}
-	
+
+	/**
+	 * @param x
+	 * @param y
+	 * @return le robot aux coordonnées x et y
+	 */
 	public Robot getRobot (int x, int y) {
 		return grille[x][y].getContenu();
 	}
-	
+
+	/**
+	 * @param equipe
+	 * @return le robot appartenant à son équipe
+	 */
 	public Robot getRobot (int equipe) {
 		for (int i=0; i<HAUTEUR; i++) {
 			for (int j=0; j<LARGEUR; j++) {
@@ -43,28 +69,52 @@ public class Plateau {
 		}
 		return null;
 	}
-	
+
+	/**
+	 * @param x
+	 * @param y
+	 * @param equipe
+	 */
 	public void placerMine (int x, int y, int equipe) {
 		grille[x][y].placerMine(equipe);
 	}
-	
+
+	/**
+	 * @param x
+	 * @param y
+	 */
 	public void retirerMine(int x, int y) {
 		grille[x][y].placerMine(0);
 	}
-	
+
+	/**
+	 * @param x
+	 * @param y
+	 * @param equipe
+	 */
 	public void placerBase (int x, int y, int equipe) {
 		grille[x][y].placerBase(equipe);
 	}
-	
+
+	/**
+	 * @param r
+	 */
 	public void placerRobot(Robot r) {
-		
+
 		grille[r.getCoordonnee().getX()][r.getCoordonnee().getY()].placerSur(r);
 	}
-	
+
+	/**
+	 * @param x
+	 * @param y
+	 */
 	public void setLibre(int x, int y) {
 		grille[x][y].videCase();
 	}
-	
+
+	/**
+	 * @return si le plateau est valide
+	 */
 	public boolean plateauValide() {
 		boolean[][] p = new boolean[HAUTEUR][LARGEUR];
 		for (int i=0; i<p.length; i++) {
@@ -77,7 +127,12 @@ public class Plateau {
 		}
 		return parcourtValide(p, 0, 0);
 	}
-			
+
+	/**
+	 * @param p
+	 * @param x
+	 * @param y
+	 * @return récursivement si le parcourt d'un base à une autre est valide	 */
 	public boolean parcourtValide(boolean[][] p, int x, int y) {
 
 		if (p[HAUTEUR-1][LARGEUR-1])
@@ -99,21 +154,25 @@ public class Plateau {
 			System.out.print("gauche");
 			p[x][y-1]=true;
 			return parcourtValide(p, x, y-1);
-		} 
+		}
 		// HAUT
-		 else if (x!=HAUTEUR+1 && !this.grille[x+1][y].estObstacle() && !p[x+1][y]) {
+		else if (x!=HAUTEUR+1 && !this.grille[x+1][y].estObstacle() && !p[x+1][y]) {
 			System.out.print("haut");
 			p[x+1][y]=true;
 			return parcourtValide(p, x+1, y);
-		} 
+		}
 		return false;
 	}
-	
+
+	/**
+	 * @param equipe
+	 * @return le plateau
+	 */
 	public String toString(int equipe) {
 		String s = "+";
 		for (int i=0; i<LARGEUR; i++)
 			s=s+"---+";
-		
+
 		for (int i=0; i<HAUTEUR; i++) {
 			s=s+"\n|";
 			for (int j=0; j<LARGEUR; j++) {
@@ -133,14 +192,14 @@ public class Plateau {
 					s=s+" B |";
 				else if (this.grille[i][j].estBase()==2)
 					s=s+" b |";
-				else 
+				else
 					s=s+"   |";
-			} 
+			}
 			s = s+"\n+";
 			for (int j=0; j<LARGEUR; j++)
 				s=s+"---+";
 		}
-		s=s+"\n";		
+		s=s+"\n";
 		return s;
 	}
 }

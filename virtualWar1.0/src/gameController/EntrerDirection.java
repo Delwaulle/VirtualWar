@@ -4,8 +4,15 @@ import gameWar.Coordonnee;
 
 import java.util.Scanner;
 
+/**
+ * @author Loic
+ *
+ */
 public class EntrerDirection {
 
+	/**
+	 * @return la saisie de l'utilisateur concernant les choix de déplacement
+	 */
 	public static Coordonnee entrerDirection() {
 		System.out.println("Entrez une direction");
 		@SuppressWarnings("resource")

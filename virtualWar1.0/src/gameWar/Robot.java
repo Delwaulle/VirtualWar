@@ -2,6 +2,10 @@ package gameWar;
 
 import java.util.List;
 
+/**
+ * @author Robin
+ *
+ */
 public abstract class Robot {
 
 	private int energie;
@@ -10,6 +14,12 @@ public abstract class Robot {
 	private Vue vue;
 	
 	
+	/**
+	 * @param vue
+	 * @param x
+	 * @param y
+	 * @param equipe
+	 */
 	public Robot (Vue vue, int x, int y, int equipe) {
 		this.vue=vue;
 		if (equipe == 1)
@@ -19,38 +29,65 @@ public abstract class Robot {
 		this.equipe=equipe;
 	}
 	
+	/**
+	 * @return true si un robot est dans une base
+	 */
 	public boolean estSurBase() {
 		return vue.estBase(this.coord);
 	}
 	
+	/**
+	 * @param coord
+	 */
 	public void setCoordonnee (Coordonnee coord) {
 		this.coord=coord;
 	}
 	
+	/**
+	 * @return les coordonnées d'un robot
+	 */
 	public Coordonnee getCoordonnee() {
 		return this.coord;
 	}
 	
+	/**
+	 * @return la vue du robot
+	 */
 	public Vue getVue () {
 		return this.vue;
 	}
 	
+	/**
+	 * @param vue
+	 */
 	public void setVue (Vue vue) {
 		this.vue=vue;
 	}
 	
+	/**
+	 * @return l'énergie du robot
+	 */
 	public int getEnergie() {
 		return this.energie;
 	}
 	
+	/**
+	 * @param energie
+	 */
 	public void setEnergie (int energie) {
 		this.energie=energie;
 	}
 	
+	/**
+	 * @return l'équipe à laquelle le robot appartient
+	 */
 	public int getEquipe() {
 		return this.equipe;
 	}
 	
+	/**
+	 * @param degats
+	 */
 	public void subitDegats(int degats) {
 		this.energie=this.energie-degats;
 	}

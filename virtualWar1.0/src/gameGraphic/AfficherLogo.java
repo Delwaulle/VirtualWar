@@ -2,8 +2,15 @@ package gameGraphic;
 
 import java.util.Scanner;
 
+/**
+ * @author Loic
+ *
+ */
+
 public class AfficherLogo {
 
+	/**
+	 * Affichage du logo de notre équipe en art ASCII	 */
 	public static void afficherLogo() {
 		@SuppressWarnings("resource")
 		Scanner sc = new Scanner (System.in);
