@@ -1,4 +1,11 @@
 package gameWar;
+import gameGraphic.AffichageBronzeV;
+import gameGraphic.AfficherLogo;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+
+
 
 
 /**
@@ -11,7 +18,16 @@ public class Game {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		gameGraphic.AfficherLogo.afficherLogo();;
+
+		JFrame fr = new JFrame("Virtual War");
+		fr.setIconImage(new ImageIcon("images/icon.png").getImage());
+		fr.getContentPane().add(new AffichageBronzeV(0));
+		fr.setBounds(200,80,800,600);
+		fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		fr.setResizable(false);
+		fr.setVisible(true);
+
+		AfficherLogo.afficherLogo();
 		Plateau p = new Plateau();
 		System.out.print(p.toString(1));
 		creerRobots(p, 1);
