@@ -26,7 +26,7 @@ public class AffichageBronzeV extends JPanel implements ActionListener {
 		this.alpha=alpha;
 		this.setBackground(Color.BLACK);
 		this.setLayout(new BorderLayout());
-		ImageIcon iBronzev = new ImageIcon("images/logo2.0.png");
+		ImageIcon iBronzev = new ImageIcon("rsc/images/logo2.0.png");
 		Bronzev=iBronzev.getImage();
 		timer= new Timer(30, this);
 		timer.start();

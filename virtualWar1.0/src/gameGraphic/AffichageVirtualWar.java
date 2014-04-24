@@ -28,7 +28,7 @@ public class AffichageVirtualWar extends JPanel implements ActionListener{
 		this.alpha=alpha;
 		this.setBackground(Color.BLACK);
 		this.setLayout(new BorderLayout());
-		ImageIcon iVirtualwar = new ImageIcon("images/imageV3.png");
+		ImageIcon iVirtualwar = new ImageIcon("rsc/images/imageV3.png");
 		Virtualwar=iVirtualwar.getImage();
 		timer= new Timer(25, this);
 		timer.start();

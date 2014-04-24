@@ -20,7 +20,7 @@ public class Game {
 	public static void main(String[] args) {
 
 		JFrame fr = new JFrame("Virtual War");
-		fr.setIconImage(new ImageIcon("images/icon.png").getImage());
+		fr.setIconImage(new ImageIcon("rsc/images/icon.png").getImage());
 		fr.getContentPane().add(new AffichageBronzeV(0));
 		fr.setBounds(200,80,800,600);
 		fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

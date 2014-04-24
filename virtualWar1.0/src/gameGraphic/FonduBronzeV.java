@@ -29,7 +29,7 @@ public class FonduBronzeV extends JPanel implements ActionListener{
 		this.setBackground(Color.BLACK);
 		this.alpha=alpha;
 		this.setLayout(new BorderLayout());
-		ImageIcon iBronzev = new ImageIcon("images/logo2.0.png");
+		ImageIcon iBronzev = new ImageIcon("rsc/images/logo2.0.png");
 		Bronzev=iBronzev.getImage();
 		timer= new Timer(15, this);
 		timer.start();

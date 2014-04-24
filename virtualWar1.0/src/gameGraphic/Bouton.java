@@ -25,7 +25,8 @@ public class Bouton extends JButton implements MouseListener{
 	private Image img;
 	private final String nom;
 	Font f;
-
+	private boolean bool;
+	private ClicMenu son;
 	public Bouton(String str){
 		super(str);
 		this.nom=str;
@@ -34,7 +35,7 @@ public class Bouton extends JButton implements MouseListener{
 		f= new Font(Font.DIALOG, Font.BOLD, 20);
 		this.setFont(f);
 		try {
-			img = ImageIO.read(new File("images/bouton1.png"));
+			img = ImageIO.read(new File("rsc/images/bouton1.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -50,25 +51,34 @@ public class Bouton extends JButton implements MouseListener{
 				0, this.getHeight() + this.getWidth(), Color.WHITE);
 		g2d.setPaint(gradientPaint);
 
-		FontMetrics fm = g2d.getFontMetrics();
-		//Hauteur de la police d'écriture
-		int height = fm.getHeight();
-		int width = fm.stringWidth(this.nom);
-
-		//On calcule alors la position du texte, et le tour est joué
-		g2d.drawString(this.nom, this.getWidth() / 2 - (width / 2), (this.getHeight() / 2) + (height / 4));
+		//texte
+		if(!bool) {
+			FontMetrics fm = g2d.getFontMetrics();
+			int height = fm.getHeight();
+			int width = fm.stringWidth(this.nom);
+			g2d.drawString(this.nom, this.getWidth() / 2 - (width / 2), (this.getHeight() / 2) + (height / 4));
+		}
+		bool=false;
 	}
 
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
-		// TODO Auto-generated method stub
+		bool=true;
+		son=new ClicMenu();
+		son.setDaemon(true);
+		son.start();
+		try {
+			img = ImageIO.read(new File("rsc/images/b7.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
 		try {
-			img = ImageIO.read(new File("images/bouton2.png"));
+			img = ImageIO.read(new File("rsc/images/bouton2.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -78,7 +88,7 @@ public class Bouton extends JButton implements MouseListener{
 	@Override
 	public void mouseExited(MouseEvent arg0) {
 		try {
-			img = ImageIO.read(new File("images/bouton1.png"));
+			img = ImageIO.read(new File("rsc/images/bouton1.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

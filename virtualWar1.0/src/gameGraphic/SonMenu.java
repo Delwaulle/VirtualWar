@@ -18,7 +18,7 @@ public class SonMenu extends Thread{
 	private boolean dodo;
 	@Override
 	public void run(){
-		File fichier = new File("son/SP0000.WAV");
+		File fichier = new File("rsc/son/sonMenu.WAV");
 		while (!dodo) {
 			try {
 				@SuppressWarnings("unused")
