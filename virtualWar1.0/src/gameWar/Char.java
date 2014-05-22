@@ -1,19 +1,19 @@
 package gameWar;
 
 
-public class Tireur extends Robot{
+public class Char extends Robot{
 	
-	private int coutAction=2;
-	private int coutDep=1;
-	private int degatTir=3;
-	private String type = "Tireur";
-	private int deplacement = 1;
-	private boolean diagonal=true;
-	private int portee = 1;
+	private int coutAction=1;
+	private int coutDep=10;
+	private int degatTir=6;
+	private String type = "Char";
+	private int deplacement = 2;
+	private boolean diagonal = false;
+	private int portee = 10;
 	
-	public Tireur (Vue vue, int equipe, int num, String typeJoueur) {
+	public Char (Vue vue, int equipe, int num, String typeJoueur) {
 		super(vue, equipe, num, typeJoueur);
-		this.setEnergie(40);
+		this.setEnergie(60);
 	}
 
 	public boolean peutTirer() {
@@ -39,6 +39,10 @@ public class Tireur extends Robot{
 	public String getType() {
 		return this.type;
 	}
+	
+	public int getPortee() {
+		return this.portee;
+	}
 
 	public int getDeplacement() {
 		return this.deplacement;
@@ -46,10 +50,6 @@ public class Tireur extends Robot{
 	
 	public boolean getDiagonal() {
 		return this.diagonal;
-	}
-	
-	public int getPortee() {
-		return this.portee;
 	}
 	
 	public String toString() {
@@ -64,7 +64,7 @@ public class Tireur extends Robot{
 		else
 			c=""+this.getCoutDep();
 		return    "+-------------------------+\n"
-				+ "|        TIREUR           |\n"
+				+ "|         CHAR            |\n"
 				+ "+-------------------------+\n"
 				+ "| Equipe num : "+this.getEquipe()+"          |\n"
 				+ "| Robot num : "+this.getNum()+"           |\n"
@@ -77,5 +77,4 @@ public class Tireur extends Robot{
 				+ "|                         |\n"
 				+ "+-------------------------+\n";
 	}
-	
 }

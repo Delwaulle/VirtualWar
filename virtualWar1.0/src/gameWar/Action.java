@@ -5,32 +5,37 @@ package gameWar;
  *
  */
 public abstract class Action {
-
-	private final Robot robot;
-	private final Coordonnee coordonnee;
+	
+	private Robot robot;
+	private Coordonnee coordonnee;
 
 	/**
-	 * @param r
-	 * @param c
+	 * @param robot
+	 * @param coordonnee
 	 */
+	public Action (Robot r) {
+		this.robot=r;
+	}
+	
 	public Action (Robot r, Coordonnee c) {
 		this.coordonnee=c;
 		this.robot=r;
 	}
-
+	
 	/**
 	 * @return robot
 	 */
 	public Robot getRobot() {
 		return robot;
 	}
-
+	
 	/**
 	 * @return la direction
 	 */
 	public Coordonnee getDirection() {
 		return coordonnee;
 	}
-
+	
 	abstract void agit();
+	abstract void iaAgit(Coordonnee direction);
 }

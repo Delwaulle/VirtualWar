@@ -1,30 +1,49 @@
 package gameWar;
 
-/**
- * @author Loic
- *
- */
 public class Mine extends Action{
-
-	/**
-	 * @param r
-	 * @param c
-	 */
-	public Mine(Robot r, Coordonnee c) {
-		super(r, c);
+	
+	public Mine(Robot r) {
+		super(r);
 	}
-
-	/**
-	 * 
-	 */
-	@Override
+	
 	public void agit () {
-		Plateau p = this.getRobot().getVue().plateau;
-		Coordonnee newc = this.getRobot().getCoordonnee().ajouter(this.getDirection());
-		if(this.getRobot().getVue().estOK(newc) && this.getRobot().getVue().estLibre(newc)) {
-			p.placerMine(newc.getX(), newc.getY(), this.getRobot().getEquipe());
-			this.getRobot().setEnergie(this.getRobot().getEnergie()-this.getRobot().getCoutAction());
-		}
+		Coordonnee direction = gameController.EntrerDirection.entrerDirection(false);
+		if (!this.getRobot().getVue().estOK(this.getRobot().getCoordonnee().ajouter(direction)) ) {
+			System.out.println("Impossible, sortie plateau !!");
+			Joueur.jouer(this.getRobot().getVue().plateau, this.getRobot().getEquipe());
+		} else if (this.getRobot().getVue().estObstacle(this.getRobot().getCoordonnee().ajouter(direction))) {
+			System.out.println("Impossible, obstacle !!");
+			Joueur.jouer(this.getRobot().getVue().plateau, this.getRobot().getEquipe());
+		} else if (this.getRobot().getVue().estMine(this.getRobot().getCoordonnee().ajouter(direction))) {
+			System.out.println("Impossible, Mine !!");
+			Joueur.jouer(this.getRobot().getVue().plateau, this.getRobot().getEquipe());
+		}else if (! this.getRobot().getVue().estLibre(this.getRobot().getCoordonnee().ajouter(direction))) {
+			System.out.println("Impossible, Robot !!");
+			Joueur.jouer(this.getRobot().getVue().plateau, this.getRobot().getEquipe());
+		} else {
+			Plateau p = this.getRobot().getVue().plateau;
+			Coordonnee newc = this.getRobot().getCoordonnee().ajouter(direction); 
+			if(this.getRobot().getVue().estOK(newc) && this.getRobot().getVue().estLibre(newc)) {
+				p.placerMine(newc.getX(), newc.getY(), this.getRobot().getEquipe());			
+				this.getRobot().setEnergie(this.getRobot().getEnergie()-this.getRobot().getCoutAction());
+			}
+		}		
+	}
+	
+	public void iaAgit (Coordonnee direction) {
+		if (this.getRobot().getVue().estOK(this.getRobot().getCoordonnee().ajouter(direction)) 
+		   && this.getRobot().getVue().estObstacle(this.getRobot().getCoordonnee().ajouter(direction))
+		   && this.getRobot().getVue().estMine(this.getRobot().getCoordonnee().ajouter(direction))
+		   && !this.getRobot().getVue().estLibre(this.getRobot().getCoordonnee().ajouter(direction)))
+			IARandom.jouer(this.getRobot().getVue().plateau, this.getRobot().getEquipe());
+		else {
+			Plateau p = this.getRobot().getVue().plateau;
+			Coordonnee newc = this.getRobot().getCoordonnee().ajouter(direction); 
+			if(this.getRobot().getVue().estOK(newc) && this.getRobot().getVue().estLibre(newc)) {
+				p.placerMine(newc.getX(), newc.getY(), this.getRobot().getEquipe());			
+				this.getRobot().setEnergie(this.getRobot().getEnergie()-this.getRobot().getCoutAction());
+			}
+		}		
 	}
 }
 

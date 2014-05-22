@@ -2,14 +2,7 @@ package gameController;
 
 import java.util.Scanner;
 
-/**
- * @author Loic
- *
- */
 public class EntrerAction {
-	/**
-	 * @return la saisie de l'utilisateur
-	 */
 	public static String entrerAction () {
 		System.out.println("Entrez une action (attaquer ou deplacer)");
 		@SuppressWarnings("resource")

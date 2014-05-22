@@ -6,9 +6,9 @@ package gameWar;
  */
 public class Coordonnee {
 
-	private final int x;
-	private final int y;
-
+	private int x;
+	private int y;
+	
 	/**
 	 * @param x
 	 * @param y
@@ -17,21 +17,21 @@ public class Coordonnee {
 		this.x=x;
 		this.y=y;
 	}
-
+	
 	/**
 	 * @return int x
 	 */
 	public int getX() {
 		return this.x;
 	}
-
+	
 	/**
 	 * @return int y
 	 */
 	public int getY() {
 		return this.y;
 	}
-
+	
 	/**
 	 * @param coord
 	 * @return coord
@@ -39,11 +39,10 @@ public class Coordonnee {
 	public Coordonnee ajouter (Coordonnee coord) {
 		return new Coordonnee(this.x+coord.getX(), this.y+coord.getY());
 	}
-
-	/**
-	 * @return une chaine vide
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
 	 */
-	@Override
 	public String toString() {
 		return "";
 	}
