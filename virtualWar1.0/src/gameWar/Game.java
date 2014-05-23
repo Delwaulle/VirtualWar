@@ -1,9 +1,21 @@
 package gameWar;
 
+import gameGraphic.AffichageBronzeV;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+
 
 public class Game {
 
 	public static void main(String[] args) {
+		JFrame fr = new JFrame("Virtual War");
+		fr.setIconImage(new ImageIcon("rsc/images/icon.png").getImage());
+		fr.getContentPane().add(new AffichageBronzeV(0));
+		fr.setBounds(200,80,800,600);
+		fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		fr.setResizable(false);
+		fr.setVisible(true);
 		gameGraphic.AfficherLogo.afficherLogo();
 		String partie = gameController.EntrerIA.entrerIA();
 		if (partie.equals("jcj"))
@@ -11,12 +23,12 @@ public class Game {
 		else if (partie.equals("jcia"))
 			partieJcIARandom();
 		else if (partie.equals("iacia"));
-			partieIAcIA();
+		partieIAcIA();
 	}
-	
+
 	public static void partieJcJ () {
 		Plateau p = new Plateau();
-		System.out.print(p.toString(1, 0));		
+		System.out.print(p.toString(1, 0));
 		Joueur.creerRobots(p, 1);
 		Joueur.creerRobots(p, 2);
 		while (!p.fini) {
@@ -30,10 +42,10 @@ public class Game {
 			catch(Exception e){System.out.println(e.getMessage());}
 		}
 	}
-	
+
 	public static void partieJcIARandom() {
 		Plateau p = new Plateau();
-		System.out.print(p.toString(1, 0));		
+		System.out.print(p.toString(1, 0));
 		Joueur.creerRobots(p, 1);
 		IARandom.creerRobots(p, 2);
 		while (!p.fini) {
@@ -46,31 +58,31 @@ public class Game {
 			}
 			catch(Exception e){System.out.println(e.getMessage());}
 		}
-	}	
-	
+	}
+
 	public static void partieIAcIA() {
 		Plateau p = new Plateau();
-		System.out.print(p.toString(1, 0));		
+		System.out.print(p.toString(1, 0));
 		IARandom.creerRobots(p, 1);
 		IARandom.creerRobots(p, 2);
 		while (!p.fini) {
 			IARandom.jouer(p, 1);
 			testFini(p);
-			System.out.print(p.toString(0, 0));		
+			System.out.print(p.toString(0, 0));
 			try{
 				Thread.sleep(2000);
 			}
 			catch(Exception e){System.out.println(e.getMessage());}
 			IARandom.jouer(p, 2);
 			testFini(p);
-			System.out.print(p.toString(0, 0));		
+			System.out.print(p.toString(0, 0));
 			try{
 				Thread.sleep(2000);
 			}
 			catch(Exception e){System.out.println(e.getMessage());}
 		}
 	}
-	
+
 	private static void testFini(Plateau p) {
 		int equipe1 = 0;
 		int equipe2 = 0;
@@ -91,7 +103,7 @@ public class Game {
 			p.fini=true;
 			System.out.println("Joueur 1 à gagner !!");
 		}
-		
+
 	}
 }
 

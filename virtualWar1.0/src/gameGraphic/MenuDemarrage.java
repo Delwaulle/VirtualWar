@@ -1,14 +1,20 @@
 package gameGraphic;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Graphics;
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class MenuDemarrage extends JPanel{
+public class MenuDemarrage extends JPanel {
 
 	/**
 	 * 
@@ -19,34 +25,40 @@ public class MenuDemarrage extends JPanel{
 	JButton bouton3;
 	JPanel p;
 	JPanel p2;
-	JPanel p3;
 	SonMenu son;
-	CheckBoxSon cbs;
+	JLabel jl;
+	Image img;
 
 	public MenuDemarrage()  {
+		try {
+			img=ImageIO.read(new File("rsc/images/bg1.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		jl=new JLabel(new ImageIcon("rsc/images/son5.png"));
 		son=new SonMenu();
+		jl.addMouseListener(new MListener(jl,son));
 		son.setDaemon(true);
 		son.start();
 		bouton1 =  new Bouton("Lancez une partie");
 		bouton2 =  new Bouton("Sauvegardes");
 		bouton3 = new Bouton("Paramètres");
-		cbs=new CheckBoxSon("Désactiver le son",son);
-		p3=new JPanel();
-		p3.setBackground(Color.BLACK);
-		p3.setLayout(new FlowLayout(0,335,0));
-		p3.add(cbs);
 		p=new JPanel();
-		p2=new JPanel();
-		p2.setBackground(Color.BLACK);
-		p.setBackground(Color.BLACK);
-		p2.setLayout(new FlowLayout(150,252,150));
-		this.setLayout(new BorderLayout());
-		p.setLayout(new GridLayout(3,1,0,60));
+		this.setBackground(Color.BLACK);
+		this.setLayout(new FlowLayout(0,250,130));
+		p.setOpaque(false);
+		//p.setBackground(Color.BLACK);
+		p.setLayout(new GridLayout(4,1,50,50));
 		p.add(bouton1);
 		p.add(bouton2);
 		p.add(bouton3);
-		p2.add(p);
-		this.add(BorderLayout.CENTER,p2);
-		this.add(BorderLayout.SOUTH,p3);
+		p.add(jl);
+		this.add(p);
+	}
+
+	@Override
+	public void paintComponent(Graphics g) {
+		g.drawImage(img,0,0,this);
 	}
 }
