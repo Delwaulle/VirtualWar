@@ -53,18 +53,18 @@ public class BoardDisplayer extends JPanel {
 			for (int j = 0; j < (board.hauteur); ++j) {
 				s = "rsc/image/tiles/floor.png";
 				if (board.estBase(i, j) == 1) {
-					s = "rsc/image/RUSSIAN/Base.png";
+					s = "rsc/image/team1/Base.png";
 				} else if (board.estBase(i, j) == 2) {
-					s = "rsc/image/USA/Base.png";
+					s = "rsc/image/team2/Base.png";
 				} else if (board.getGrille()[i][j].estObstacle()) {
 					s = "rsc/image/tiles/wall.png";
 				} else if (board.getGrille()[i][j].estMine() == team) {
 					s = "rsc/image/tiles/Mine.png";
 				} else if (board.getContenu(i, j) != null) {
 					if (board.getContenu(i, j).getEquipe() == 1) {
-						s = "rsc/image/RUSSIAN/" + ".png";
+						s = "rsc/image/team1/TankFrHaut.png";
 					} else {
-						s = "rsc/image/USA/" + ".png";
+						s = "rsc/image/team2/TankRuHaut.png";
 					}
 				}
 				g.drawImage(getImage(s), (i * this.getSize().width)
