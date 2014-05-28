@@ -1,6 +1,5 @@
 package gameGraphic;
 
-import gameWar.Coordonnee;
 import gameWar.Plateau;
 
 import java.awt.Color;
@@ -46,11 +45,10 @@ public class BoardDisplayer extends JPanel {
 	@Override
 	public void paintComponent(Graphics g) {
 		this.getSize();
-		Coordonnee c;
 		String s = new String();
 		g.setColor(Color.WHITE);
-		for (int i = 0; i < (board.largeur); ++i) {
-			for (int j = 0; j < (board.hauteur); ++j) {
+		for (int i = 0; i < (Plateau.largeur); ++i) {
+			for (int j = 0; j < (Plateau.hauteur); ++j) {
 				s = "rsc/image/tiles/floor.png";
 				if (board.estBase(i, j) == 1) {
 					s = "rsc/image/team1/Base.png";
@@ -68,13 +66,15 @@ public class BoardDisplayer extends JPanel {
 					}
 				}
 				g.drawImage(getImage(s), (i * this.getSize().width)
-						/ board.largeur, (j * this.getSize().height)
-						/ board.hauteur, this.getSize().width / board.largeur, this.getSize().height
-						/ board.hauteur, null);
+						/ Plateau.largeur, (j * this.getSize().height)
+						/ Plateau.hauteur, this.getSize().width
+						/ Plateau.largeur, this.getSize().height
+						/ Plateau.hauteur, null);
 				g.setColor(Color.WHITE);
-				g.drawRect((i * this.getSize().width) / board.largeur, (j * this.getSize().height)
-						/ board.hauteur, this.getSize().width / board.largeur, this.getSize().height
-						/ board.hauteur);
+				g.drawRect((i * this.getSize().width) / Plateau.largeur, (j * this.getSize().height)
+						/ Plateau.hauteur, this.getSize().width
+						/ Plateau.largeur, this.getSize().height
+						/ Plateau.hauteur);
 			}
 		}
 	}
