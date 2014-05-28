@@ -15,7 +15,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 public class SonMenu extends Thread{
 	AudioInputStream audioInputStream = null;
 	SourceDataLine line;
-	static int cpt;
+	int cpt;
 	public boolean isDodo() {
 		return dodo;
 	}

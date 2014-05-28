@@ -9,7 +9,7 @@ public class EntrerAction {
 		Scanner sc = new Scanner(System.in);
 		String rep=sc.nextLine().toLowerCase();
 		while (!rep.equals("attaquer") && !rep.equals("deplacer")) {
-			System.out.println("Entree non valide, veuillez entrer un type d'action");
+			System.out.println("Saisie incorrecte, veuillez recommencez.");
 			rep = sc.nextLine().toLowerCase();
 		}
 		return rep;

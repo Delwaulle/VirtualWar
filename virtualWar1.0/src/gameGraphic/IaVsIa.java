@@ -12,6 +12,10 @@ import javax.swing.JPanel;
 
 public class IaVsIa extends JPanel{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	CardLayout cl;
 	JPanel pan;
 	Image img;

@@ -13,7 +13,7 @@ public class EntrerInt {
 		try {
 			i = Integer.parseInt(rep);
 		} catch (Exception e) {
-			System.out.println("Veuillez entrer un chiffre.");
+			System.out.println("Saisie incorrecte, veuillez recommencez.");
 		}
 		return i;
 	}

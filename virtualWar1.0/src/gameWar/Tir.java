@@ -1,24 +1,26 @@
 package gameWar;
 
 public class Tir extends Action{
-	
+
 	public Tir(Robot r) {
 		super(r);
 	}
-	
+
+	@Override
 	public void agit () {
 		Coordonnee direction = gameController.EntrerDirection.entrerDirection(false);
 		if (testTirOK(direction))
 			tirer(direction);
 	}
-	
+
+	@Override
 	public void iaAgit (Coordonnee direction) {
 		if (testTirOK(direction))
 			tirer(direction);
 	}
-	
+
 	public boolean testTirOK(Coordonnee direction) {
-		Coordonnee newc = this.getRobot().getCoordonnee(); 
+		Coordonnee newc = this.getRobot().getCoordonnee();
 		for (int i=0; i<this.getRobot().getPortee(); i++) {
 			newc=newc.ajouter(direction);
 			if (testSortiePlateau(this.getRobot(), newc)) {
@@ -26,7 +28,7 @@ public class Tir extends Action{
 					IARandom.jouer(this.getRobot().getVue().plateau, this.getRobot().getEquipe());
 					return false;
 				} else {
-					System.out.println("Tir impossible, vous ne pouvez pas tirer hors du champ de bataille ! Choisissez une direction valide ou une autre action.");
+					System.out.println("Ajustez votre tir soldat, l’ennemi est en face ! ");
 					Joueur.jouer(this.getRobot().getVue().plateau, this.getRobot().getEquipe());
 					return false;
 				}
@@ -35,7 +37,7 @@ public class Tir extends Action{
 					IARandom.jouer(this.getRobot().getVue().plateau, this.getRobot().getEquipe());
 					return false;
 				} else {
-					System.out.println("Tir impossible, Obstacle !!");
+					System.out.println("Les obstacles arrêtent vos balles, choisissez une autre cible ou déplacez vous ! ");
 					Joueur.jouer(this.getRobot().getVue().plateau, this.getRobot().getEquipe());
 					return false;
 				}
@@ -54,11 +56,11 @@ public class Tir extends Action{
 						IARandom.jouer(this.getRobot().getVue().plateau, this.getRobot().getEquipe());
 						return false;
 					} else {
-						System.out.println("Alerte ! Vous essayez de Tirer sur un alier ! Choisissez une action différente.");
+						System.out.println("Attention soldat, ne trahissez pas votre pays, visez l’ennemi !");
 						Joueur.jouer(this.getRobot().getVue().plateau, this.getRobot().getEquipe());
 						return false;
-					} 
-			  return true;
+					}
+				return true;
 			}
 		}
 		if (this.getRobot().getTypeJoueur().equals("IARandom")) {
@@ -70,10 +72,10 @@ public class Tir extends Action{
 			return false;
 		}
 	}
-	
+
 	private void tirer(Coordonnee direction) {
 		Plateau p = this.getRobot().getVue().plateau;
-		Coordonnee newc = this.getRobot().getCoordonnee(); 
+		Coordonnee newc = this.getRobot().getCoordonnee();
 		for (int i=0; i<this.getRobot().getPortee(); i++) {
 			newc=newc.ajouter(direction);
 			if(this.getRobot().getVue().estOK(newc) && testCollision(this.getRobot(), newc)) {
@@ -87,11 +89,11 @@ public class Tir extends Action{
 			}
 		}
 	}
-	
+
 	private boolean testSortiePlateau(Robot r, Coordonnee newc) {
 		return (!r.getVue().estOK(newc));
 	}
-	
+
 	private boolean testCollision(Robot r, Coordonnee newc) {
 		return (!r.getVue().estLibre(newc));
 	}
@@ -99,11 +101,11 @@ public class Tir extends Action{
 	private boolean testObstacle(Robot r, Coordonnee newc) {
 		return (r.getVue().estObstacle(newc));
 	}
-	
+
 	private boolean testBase(Robot r, Coordonnee newc) {
 		return (this.getRobot().getVue().plateau.estBase(newc.getX(), newc.getY())!=0 );
 	}
-	
+
 	private boolean testTirAmi(Robot r, Coordonnee newc) {
 		return this.getRobot().getEquipe()==this.getRobot().getVue().plateau.getContenu(newc.getX(), newc.getY()).getEquipe();
 	}

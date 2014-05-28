@@ -88,10 +88,10 @@ public class Game {
 			System.out.println("Egalité !!");
 		} else if (equipe1 == 0) {
 			p.fini=true;
-			System.out.println("Joueur 2 à gagner !!");
+			System.out.println("Joueur 2 a gagné !!");
 		} else if (equipe2 == 0) {
 			p.fini=true;
-			System.out.println("Joueur 1 à gagner !!");
+			System.out.println("Joueur 1 a gagné !!");
 		}
 
 	}

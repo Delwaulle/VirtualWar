@@ -11,6 +11,10 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class Sauvegardes extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	CardLayout cl;
 	JPanel pan;
 	Image img;

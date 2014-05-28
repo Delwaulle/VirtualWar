@@ -11,7 +11,7 @@ public class EntrerIA {
 		Scanner sc = new Scanner(System.in);
 		rep=sc.nextLine().toLowerCase();
 		while (!rep.equals("jcj") && !rep.equals("jcia") && !rep.equals("iacia")) {
-			System.out.println("Entree non valide, veuillez entrer un type d'adversaire");
+			System.out.println("Saisie incorrecte, veuillez recommencez.");
 			rep = sc.nextLine().toLowerCase();
 		}
 		return rep;

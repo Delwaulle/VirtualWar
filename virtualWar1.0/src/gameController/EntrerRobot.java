@@ -10,7 +10,7 @@ public class EntrerRobot {
 		Scanner sc = new Scanner(System.in);
 		rep=sc.nextLine().toLowerCase();
 		while (!rep.equals("tireur") && !rep.equals("piegeur") && !rep.equals("char")) {
-			System.out.println("Entree non valide, veuillez entrer un type de robot");
+			System.out.println("Saisie incorrecte, veuillez recommencez.");
 			rep = sc.nextLine().toLowerCase();
 		}
 		return rep;

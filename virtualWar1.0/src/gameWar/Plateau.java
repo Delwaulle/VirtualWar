@@ -47,7 +47,7 @@ public class Plateau {
 		int obstacles = 0;
 		int x, y;
 		Random rm = new Random();
-		while (obstacles != (Plateau.hauteur*Plateau.largeur)*this.tauxObstacles) {
+		while (obstacles != (Plateau.hauteur*Plateau.largeur)*Plateau.tauxObstacles) {
 			x=rm.nextInt(Plateau.hauteur);
 			y=rm.nextInt(Plateau.largeur);
 			if (!this.grille[x][y].estObstacle() && this.grille[x][y].estBase()==0) {

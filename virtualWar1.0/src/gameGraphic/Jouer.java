@@ -13,6 +13,10 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class Jouer extends JPanel{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	JButton retour;
 	private final JButton joueurVsJoueur;
 	private final JButton jVsIa;

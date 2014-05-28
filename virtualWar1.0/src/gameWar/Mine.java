@@ -10,16 +10,16 @@ public class Mine extends Action{
 	public void agit () {
 		Coordonnee direction = gameController.EntrerDirection.entrerDirection(false);
 		if (!this.getRobot().getVue().estOK(this.getRobot().getCoordonnee().ajouter(direction)) ) {
-			System.out.println("Impossible, sortie plateau !!");
+			System.out.println("Attention vous essayez de poser une mine en dehors du plateau, veuillez choisir une autre case ou une autre action. ");
 			Joueur.jouer(this.getRobot().getVue().plateau, this.getRobot().getEquipe());
 		} else if (this.getRobot().getVue().estObstacle(this.getRobot().getCoordonnee().ajouter(direction))) {
-			System.out.println("Impossible, obstacle !!");
+			System.out.println("Attention soldat, vous ne pouvez poser de mines sur un obstacle, veuillez choisir une autre case ou une autre action. ");
 			Joueur.jouer(this.getRobot().getVue().plateau, this.getRobot().getEquipe());
 		} else if (this.getRobot().getVue().estMine(this.getRobot().getCoordonnee().ajouter(direction))) {
 			System.out.println("Attention vous essayez de poser une mine sur une case déjà minée, veuillez choisir une autre case ou une autre action.");
 			Joueur.jouer(this.getRobot().getVue().plateau, this.getRobot().getEquipe());
 		}else if (! this.getRobot().getVue().estLibre(this.getRobot().getCoordonnee().ajouter(direction))) {
-			System.out.println("Impossible, Robot !!");
+			System.out.println(" Attention, les mines ne peuvent être posée qu’au sol ! Vous ne pouvez pas assommer un robot avec, veuillez choisir une autre case ou une autre action.");
 			Joueur.jouer(this.getRobot().getVue().plateau, this.getRobot().getEquipe());
 		} else {
 			Plateau p = this.getRobot().getVue().plateau;

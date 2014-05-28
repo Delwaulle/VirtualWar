@@ -7,7 +7,7 @@ public class Joueur {
 		int num=0;
 		System.out.println(p.toString(equipe, 0));
 		while (!ok) {
-			System.out.println("Quelle Robot voulez vous jouer ??");
+			System.out.println("Quel Robot voulez vous jouer ??");
 			num = 0;
 			while (num <=0 || num > 5) {
 				if (num > 5) {
@@ -17,7 +17,7 @@ public class Joueur {
 			}
 			if (p.getRobot(equipe, num)==null)
 				System.out.println("Ce Robot est détruit, choisissez en un autre.");
-			else 
+			else
 				ok=true;
 		}
 		System.out.print(p.toString(equipe, num));
@@ -38,10 +38,10 @@ public class Joueur {
 		if (p.getRobot(equipe, num).getEnergie()<=0)
 			p.retirerRobot(p.getRobot(equipe, num).getCoordonnee().getX(), p.getRobot(equipe, num).getCoordonnee().getY(), p.getRobot(equipe, num));
 	}
-	
+
 	public static void creerRobots(Plateau p, int equipe) {
 		for (int i=1; i<=5; i++){
-			System.out.println("Joueur "+equipe+", création du robot numero "+i+" voulez-vous un tireur ou un piegeur ?");
+			System.out.println("Joueur "+equipe+", création du robot numero "+i+" voulez-vous un tireur, un piegeur ou un char ?");
 			String rep=gameController.EntrerRobot.entrerRobot();
 			if (rep.equals("tireur"))
 				p.placerRobot(new Tireur(new Vue(equipe, p), equipe, i, "Joueur"));

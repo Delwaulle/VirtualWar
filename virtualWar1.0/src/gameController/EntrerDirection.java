@@ -12,7 +12,7 @@ public class EntrerDirection {
 		Scanner sc = new Scanner(System.in);
 		while (true) {
 			String rep=sc.nextLine().toLowerCase();
-			
+
 			if (rep.equals("haut"))
 				return Constante.HAUT;
 			if (rep.equals("bas"))
@@ -30,7 +30,7 @@ public class EntrerDirection {
 			if (rep.equals("bas gauche") && diagonal)
 				return Constante.BAS.ajouter(Constante.GAUCHE);
 			else
-				System.out.println("Entrée non valide !");
+				System.out.println("Saisie incorrecte, veuillez recommencez.");
 		}
 	}
 }
