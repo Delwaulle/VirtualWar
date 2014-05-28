@@ -12,8 +12,8 @@ public class ListListener implements MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		gameController.EntrerObstacles.obstacles=(double)(j.jl.getSelectedIndex()*0.1);
-		System.out.println(gameController.EntrerObstacles.obstacles);
+		gameController.EntrerObstacles.obstacles=j.jl.getSelectedIndex()*0.1;
+		//System.out.println(gameController.EntrerObstacles.obstacles);
 	}
 
 	@Override
