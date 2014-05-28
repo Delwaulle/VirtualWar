@@ -13,6 +13,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+/**
+ * 
+ * @author Loic
+ */
 public class AffichageBronzeV extends JPanel implements ActionListener {
 	/**
 	 * 
