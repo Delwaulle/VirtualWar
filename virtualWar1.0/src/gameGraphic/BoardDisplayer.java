@@ -26,13 +26,14 @@ public class BoardDisplayer extends JPanel {
 	 */
 	private static final long	serialVersionUID	= 1L;
 	private Plateau				board;
-	private int					team;
+	private int					team				= -1;
+
 	/**
 	 * 
 	 * @param board
 	 */
 
-	public BoardDisplayer(CardLayout cl, JPanel pan,Plateau b) {
+	public BoardDisplayer(CardLayout cl, JPanel pan, Plateau b) {
 		board = b;
 	}
 
