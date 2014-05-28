@@ -15,61 +15,64 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
 
-public class ChoixRobot extends JPanel{
+
+public class ChoixRobot extends JPanel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	CardLayout cl;
-	JPanel pan;
-	Image img;
-	JButton retour;
-	JButton valider;
-	JPanel p;
-	int nbRobots;
-	int choix;
-	int choix2;
-	int choix3;
-	JSpinner spinner1;
-	JSpinner spinner2;
-	JSpinner spinner3;
+	private static final long	serialVersionUID	= 1L;
+	CardLayout					cl;
+	JPanel						pan;
+	Image						img;
+	JButton						retour;
+	JButton						valider;
+	JPanel						p;
+	int							nbRobots;
+	int							choix;
+	int							choix2;
+	int							choix3;
+	JSpinner					spinner1;
+	JSpinner					spinner2;
+	JSpinner					spinner3;
+
 	@SuppressWarnings("unused")
 	public ChoixRobot(CardLayout cl, JPanel pan) {
-		this.cl=cl;
-		this.pan=pan;
-		this.setLayout(new FlowLayout(0,250,30));
-		p=new JPanel();
-		nbRobots=5;
-		p.setLayout(new GridLayout(5,1,50,50));
+		this.cl = cl;
+		this.pan = pan;
+		setLayout(new FlowLayout(0, 250, 30));
+		p = new JPanel();
+		nbRobots = 5;
+		p.setLayout(new GridLayout(5, 1, 50, 50));
 		p.setOpaque(false);
-		SpinnerModel model1 =new SpinnerNumberModel(0,0,5,1);
+		SpinnerModel model1 = new SpinnerNumberModel(0, 0, 5, 1);
 		spinner1 = new JSpinner(model1);
 		spinner1.addChangeListener(new SpinnerListener(this));
-		SpinnerModel model2 =new SpinnerNumberModel(0,0,5,1);
+		SpinnerModel model2 = new SpinnerNumberModel(0, 0, 5, 1);
 		spinner2 = new JSpinner(model2);
 		spinner2.addChangeListener(new SpinnerListener(this));
-		SpinnerModel model3 =new SpinnerNumberModel(0,0,5,1);
+		SpinnerModel model3 = new SpinnerNumberModel(0, 0, 5, 1);
 		spinner3 = new JSpinner(model3);
 		spinner3.addChangeListener(new SpinnerListener(this));
 		try {
-			img=ImageIO.read(new File("rsc/images/bg1.png"));
+			img = ImageIO.read(new File("rsc/images/bg1.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		valider=new Bouton("Valider",pan,cl,"cardGame");
+		valider = new Bouton("Valider", pan, cl, "jeu");
 		valider.setEnabled(false);
-		retour=new Bouton("Retour",pan,cl,"jvj");
+		retour = new Bouton("Retour", pan, cl, "jvj");
 		p.add(spinner1);
 		p.add(spinner2);
 		p.add(spinner3);
 		p.add(valider);
 		p.add(retour);
 		this.add(p);
-		gameController.EntrerIA.rep="iacia";
+		gameController.EntrerIA.rep = "iacia";
 	}
+
 	@Override
 	public void paintComponent(Graphics g) {
-		g.drawImage(img,0,0,this);
+		g.drawImage(img, 0, 0, this);
 	}
 }
