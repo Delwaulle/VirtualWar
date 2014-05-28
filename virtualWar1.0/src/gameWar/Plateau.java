@@ -19,7 +19,6 @@ public class Plateau {
 		this.grille = grille;
 	}
 
-	@SuppressWarnings("static-access")
 	public Plateau() {
 		grille = new Cellule[hauteur][largeur];
 		tauxObstacles = gameController.EntrerObstacles.obstacles;
@@ -30,6 +29,7 @@ public class Plateau {
 			placerObstacles();
 		}
 	}
+
 
 	public int estMine(int x, int y) {
 		return grille[x][y].estMine();

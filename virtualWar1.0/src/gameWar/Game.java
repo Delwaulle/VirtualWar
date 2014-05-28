@@ -4,6 +4,7 @@ package gameWar;
 
 public class Game {
 
+	public static Plateau p;
 	public static void main(String[] args) {
 		new gameGraphic.Fenetre();
 		gameGraphic.AfficherLogo.afficherLogo();
@@ -17,7 +18,7 @@ public class Game {
 	}
 
 	public static void partieJcJ () {
-		Plateau p = new Plateau();
+		p= new Plateau();
 		System.out.print(p.toString(1, 0));
 		Joueur.creerRobots(p, 1);
 		Joueur.creerRobots(p, 2);

@@ -13,8 +13,23 @@ public class SpinnerListener implements ChangeListener {
 	@Override
 	public void stateChanged(ChangeEvent e) {
 		JSpinner source = (JSpinner)e.getSource();
-		p.choix=(int)source.getValue();
-		System.out.println(source.getValue());
+		if(p.nbRobots<= 5 && p.nbRobots>0)
+			p.valider.setEnabled(true);
+
+		else if ( source.equals(p.spinner1)) {
+			p.choix=(int)source.getValue();
+			p.nbRobots=p.nbRobots-p.choix;
+		}
+		else if ( source.equals(p.spinner2)) {
+			p.choix2=(int)source.getValue();
+			p.nbRobots=p.nbRobots-p.choix2;
+		}
+
+		else if ( source.equals(p.spinner3)) {
+			p.choix3=(int)source.getValue();
+			p.nbRobots=p.nbRobots-p.choix3;
+		}
+
 	}
 
 }

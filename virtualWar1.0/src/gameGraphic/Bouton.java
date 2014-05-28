@@ -80,7 +80,6 @@ public class Bouton extends JButton implements MouseListener{
 		} catch (IOException ioe) {
 			ioe.printStackTrace();
 		}
-
 		l.show(p,id);
 
 

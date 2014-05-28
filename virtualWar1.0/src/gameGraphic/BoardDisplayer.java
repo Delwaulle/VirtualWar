@@ -2,6 +2,7 @@ package gameGraphic;
 
 import gameWar.Plateau;
 
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -26,13 +27,12 @@ public class BoardDisplayer extends JPanel {
 	private static final long	serialVersionUID	= 1L;
 	private Plateau				board;
 	private int					team;
-
 	/**
 	 * 
 	 * @param board
 	 */
 
-	public BoardDisplayer(Plateau b) {
+	public BoardDisplayer(CardLayout cl, JPanel pan,Plateau b) {
 		board = b;
 	}
 
