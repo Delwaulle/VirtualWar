@@ -23,7 +23,6 @@ public class AffichageVirtualWar extends JPanel implements ActionListener{
 	Image Virtualwar;
 	float alpha;
 	Timer timer;
-
 	public AffichageVirtualWar(float alpha) {
 		this.alpha=alpha;
 		this.setBackground(Color.BLACK);

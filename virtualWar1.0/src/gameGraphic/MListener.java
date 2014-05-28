@@ -28,6 +28,7 @@ public class MListener implements MouseListener{
 		else if (bool) {
 			l.setIcon(new ImageIcon("rsc/images/son5.png"));
 			this.son=new SonMenu();
+			son.cpt=0;
 			this.son.start();
 			bool=false;
 		}

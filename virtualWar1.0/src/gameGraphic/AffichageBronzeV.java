@@ -21,7 +21,6 @@ public class AffichageBronzeV extends JPanel implements ActionListener {
 	Image Bronzev;
 	float alpha;
 	Timer timer;
-
 	public AffichageBronzeV(float alpha) {
 		this.alpha=alpha;
 		this.setBackground(Color.BLACK);

@@ -16,7 +16,7 @@ public abstract class Robot {
 		if (equipe == 1)
 			this.coord= new Coordonnee(0, 0);
 		else
-			this.coord= new Coordonnee(Plateau.HAUTEUR-1, Plateau.LARGEUR-1);
+			this.coord= new Coordonnee(Plateau.hauteur-1, Plateau.largeur-1);
 		this.equipe=equipe;
 		this.num=num;
 		this.typeJoueur=typeJoueur;

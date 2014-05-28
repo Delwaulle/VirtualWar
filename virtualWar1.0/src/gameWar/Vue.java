@@ -19,7 +19,7 @@ public class Vue {
 	}
 	
 	public boolean estOK(Coordonnee c) {
-		return c.getX() >= 0 && c.getX() < Plateau.HAUTEUR && c.getY() >=0 && c.getY() < Plateau.LARGEUR;
+		return c.getX() >= 0 && c.getX() < Plateau.hauteur && c.getY() >=0 && c.getY() < Plateau.largeur;
 	}
 	
 	public boolean estBase(Coordonnee c) {

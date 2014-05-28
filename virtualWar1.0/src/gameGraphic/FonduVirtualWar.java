@@ -48,7 +48,7 @@ public class FonduVirtualWar extends JPanel implements ActionListener{
 		if (alpha <= 0) {
 			alpha = 0;
 			timer.stop();
-			this.add(new MenuDemarrage());
+			//this.add(new MenuDemarrage());
 			this.revalidate();
 		}
 		repaint();

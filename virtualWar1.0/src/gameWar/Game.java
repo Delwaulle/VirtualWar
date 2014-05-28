@@ -1,21 +1,11 @@
 package gameWar;
 
-import gameGraphic.AffichageBronzeV;
-
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 
 
 public class Game {
 
 	public static void main(String[] args) {
-		JFrame fr = new JFrame("Virtual War");
-		fr.setIconImage(new ImageIcon("rsc/images/icon.png").getImage());
-		fr.getContentPane().add(new AffichageBronzeV(0));
-		fr.setBounds(200,80,800,600);
-		fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		fr.setResizable(false);
-		fr.setVisible(true);
+		new gameGraphic.Fenetre();
 		gameGraphic.AfficherLogo.afficherLogo();
 		String partie = gameController.EntrerIA.entrerIA();
 		if (partie.equals("jcj"))

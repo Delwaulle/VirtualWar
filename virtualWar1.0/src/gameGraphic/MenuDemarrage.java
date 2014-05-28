@@ -1,6 +1,6 @@
 package gameGraphic;
 
-import java.awt.Color;
+import java.awt.CardLayout;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.GridLayout;
@@ -20,16 +20,46 @@ public class MenuDemarrage extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	JButton bouton1;
-	JButton bouton2;
-	JButton bouton3;
+	private JButton bouton1;
+	private JButton bouton2;
+	private JButton bouton3;
+
+	public JButton getBouton1() {
+		return bouton1;
+	}
+
+	public void setBouton1(JButton bouton1) {
+		this.bouton1 = bouton1;
+	}
+
+	public JButton getBouton2() {
+		return bouton2;
+	}
+
+	public void setBouton2(JButton bouton2) {
+		this.bouton2 = bouton2;
+	}
+
+	public JButton getBouton3() {
+		return bouton3;
+	}
+
+	public void setBouton3(JButton bouton3) {
+		this.bouton3 = bouton3;
+	}
+
 	JPanel p;
 	JPanel p2;
 	SonMenu son;
 	JLabel jl;
 	Image img;
-
-	public MenuDemarrage()  {
+	Jouer j;
+	CardLayout cl;
+	JPanel pan;
+	public MenuDemarrage(CardLayout cl, JPanel pan)  {
+		super();
+		this.cl=cl;
+		this.pan=pan;
 		try {
 			img=ImageIO.read(new File("rsc/images/bg1.png"));
 		} catch (IOException e) {
@@ -41,24 +71,25 @@ public class MenuDemarrage extends JPanel {
 		jl.addMouseListener(new MListener(jl,son));
 		son.setDaemon(true);
 		son.start();
-		bouton1 =  new Bouton("Lancez une partie");
-		bouton2 =  new Bouton("Sauvegardes");
-		bouton3 = new Bouton("Paramètres");
+		bouton1 =  new Bouton("Lancez une partie",pan,cl,"jouer");
+		bouton2 =  new Bouton("Sauvegardes",pan,cl,"sauvegardes");
+		bouton3 = new Bouton("Paramètres",pan,cl,"parametres");
 		p=new JPanel();
-		this.setBackground(Color.BLACK);
-		this.setLayout(new FlowLayout(0,250,130));
+		p2=new JPanel();
+		p2.setLayout(new FlowLayout(0,250,130));
 		p.setOpaque(false);
-		//p.setBackground(Color.BLACK);
 		p.setLayout(new GridLayout(4,1,50,50));
 		p.add(bouton1);
 		p.add(bouton2);
 		p.add(bouton3);
 		p.add(jl);
-		this.add(p);
+		p2.setOpaque(false);
+		p2.add(p);
+		this.add(p2);
 	}
 
 	@Override
 	public void paintComponent(Graphics g) {
-		g.drawImage(img,0,0,this);
+		g.drawImage(img,0,0,p2);
 	}
 }

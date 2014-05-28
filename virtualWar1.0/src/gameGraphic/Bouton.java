@@ -1,5 +1,6 @@
 package gameGraphic;
 
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -16,6 +17,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
+import javax.swing.JPanel;
 
 public class Bouton extends JButton implements MouseListener{
 	/**
@@ -27,9 +29,15 @@ public class Bouton extends JButton implements MouseListener{
 	Font f;
 	private boolean bool;
 	private ClicMenu son;
-	public Bouton(String str){
+	JPanel p;
+	CardLayout l;
+	String id;
+	public Bouton(String str, JPanel p,CardLayout l,String id){
 		super(str);
+		this.id=id;
 		this.nom=str;
+		this.l=l;
+		this.p=p;
 		this.setPreferredSize(new Dimension(300,60));
 		this.setMinimumSize(new Dimension(300,60));
 		f= new Font(Font.DIALOG, Font.BOLD, 20);
@@ -62,16 +70,19 @@ public class Bouton extends JButton implements MouseListener{
 	}
 
 	@Override
-	public void mouseClicked(MouseEvent arg0) {
+	public void mouseClicked(MouseEvent e) {
 		bool=true;
 		son=new ClicMenu();
 		son.setDaemon(true);
 		son.start();
 		try {
 			img = ImageIO.read(new File("rsc/images/b7.png"));
-		} catch (IOException e) {
-			e.printStackTrace();
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
 		}
+
+		l.show(p,id);
+
 
 	}
 
