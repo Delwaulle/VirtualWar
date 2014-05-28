@@ -5,7 +5,6 @@ import java.awt.event.MouseListener;
 
 public class ListListener implements MouseListener {
 
-	@SuppressWarnings("unused")
 	private final JoueurVsJoueur j;
 	public ListListener(JoueurVsJoueur j){
 		this.j=j;
