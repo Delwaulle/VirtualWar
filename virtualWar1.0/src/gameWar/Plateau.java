@@ -11,8 +11,10 @@ public class Plateau {
 	Cellule[][] grille;
 
 
+	@SuppressWarnings("static-access")
 	public Plateau() {
 		grille=new Cellule[hauteur][largeur];
+		this.tauxObstacles=gameController.EntrerObstacles.obstacles;
 		this.initPlateau();
 		this.placerObstacles();
 		while (!this.plateauValide()) {

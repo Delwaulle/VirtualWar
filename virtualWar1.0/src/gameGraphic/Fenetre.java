@@ -31,6 +31,7 @@ public class Fenetre extends JFrame {
 		MenuDemarrage Menu = new MenuDemarrage(cl,content);
 		Jouer card1 = new Jouer(cl,content);
 		JoueurVsJoueur card1_1 = new JoueurVsJoueur(cl,content);
+		ChoixRobot card1_1_1 = new ChoixRobot(cl,content);
 		JoueurVsIa card1_2 = new JoueurVsIa(cl,content);
 		IaVsIa card1_3 = new IaVsIa(cl,content);
 		Sauvegardes card2 = new Sauvegardes(cl,content);
@@ -39,6 +40,7 @@ public class Fenetre extends JFrame {
 		content.add(Menu, "menu");
 		content.add(card1,"jouer");
 		content.add(card1_1,"jvj");
+		content.add(card1_1_1,"robots");
 		content.add(card1_2,"jvi");
 		content.add(card1_3,"ivi");
 		content.add(card2, "sauvegardes");

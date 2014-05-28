@@ -46,7 +46,7 @@ public class Tir extends Action{
 					IARandom.jouer(this.getRobot().getVue().plateau, this.getRobot().getEquipe());
 					return false;
 				} else {
-					System.out.println("Alerte ! Vous essayez de Tirer sur une base ! Choisissez une action différente.");
+					System.out.println("Vos armes ne sont pas assez puissantes pour toucher les bases ! ");
 					Joueur.jouer(this.getRobot().getVue().plateau, this.getRobot().getEquipe());
 					return false;
 				}
@@ -79,7 +79,7 @@ public class Tir extends Action{
 		for (int i=0; i<this.getRobot().getPortee(); i++) {
 			newc=newc.ajouter(direction);
 			if(this.getRobot().getVue().estOK(newc) && testCollision(this.getRobot(), newc)) {
-				System.out.println("Un robot à été touché !!");
+				System.out.println("Un robot a été touché !!");
 				p.getContenu(newc.getX(), newc.getY()).subitDegats(this.getRobot().getDegatTir());
 				this.getRobot().setEnergie(this.getRobot().getEnergie()-this.getRobot().getCoutAction());
 				if (p.getContenu(newc.getX(), newc.getY()).getEnergie()<=0) {
