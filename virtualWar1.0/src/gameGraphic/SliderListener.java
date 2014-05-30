@@ -15,11 +15,11 @@ public class SliderListener implements ChangeListener {
 		// TODO Auto-generated method stub
 		JSlider source = (JSlider)e.getSource();
 		if(source.equals(p.j1)){
-			gameWar.Plateau.hauteur = (int)source.getValue();
+			BoardDisplayer.board.hauteur = (int)source.getValue();
 		}
 		
 		else if (source.equals(p.j2)){
-			gameWar.Plateau.largeur = (int)source.getValue();
+			BoardDisplayer.board.largeur = (int)source.getValue();
 		}
 	}
 

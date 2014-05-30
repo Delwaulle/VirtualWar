@@ -5,37 +5,54 @@ package gameWar;
  *
  */
 public abstract class Action {
-	
-	private Robot robot;
+
+	private final Robot robot;
 	private Coordonnee coordonnee;
 
+
 	/**
-	 * @param robot
-	 * @param coordonnee
+	 * @param Robot
 	 */
 	public Action (Robot r) {
 		this.robot=r;
 	}
-	
+
+	/**
+	 * @param Robot
+	 * @param Coordonnee
+	 */
 	public Action (Robot r, Coordonnee c) {
 		this.coordonnee=c;
 		this.robot=r;
 	}
-	
+
 	/**
-	 * @return robot
+	 * @return Robot
+	 *
+	 *	Retourne le robot qui effectue l'action
 	 */
 	public Robot getRobot() {
 		return robot;
 	}
-	
+
 	/**
-	 * @return la direction
+	 * @return Coordonnee
+	 * 
+	 * 	Retourne la direction dans laquelle s'effectue l'action
 	 */
 	public Coordonnee getDirection() {
 		return coordonnee;
 	}
-	
+
+	/**
+	 * 	Effectue l'action pour un Joueur
+	 */
 	abstract void agit();
+
+	/**
+	 * @param direction
+	 * 
+	 * Effectue l'action pour une IA random
+	 */
 	abstract void iaAgit(Coordonnee direction);
 }

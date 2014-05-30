@@ -1,5 +1,7 @@
 package gameGraphic;
 
+import gameWar.Plateau;
+
 import java.awt.CardLayout;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
@@ -13,6 +15,8 @@ import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 public class JoueurVsJoueur extends JPanel {
 	/**
@@ -50,7 +54,14 @@ public class JoueurVsJoueur extends JPanel {
 		jp = new JScrollPane(jl);
 		jl.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 		jl.setSelectedIndex(0);
-		jl.addMouseListener(new ListListener(this));
+		jl.addListSelectionListener(new ListSelectionListener(){
+
+			@Override
+			public void valueChanged(ListSelectionEvent arg0) {
+				BoardDisplayer.board = new Plateau(jl.getSelectedIndex()*0.1);
+			}
+
+		});
 		p.setOpaque(false);
 		p.add(jp);
 		p.add(valider);

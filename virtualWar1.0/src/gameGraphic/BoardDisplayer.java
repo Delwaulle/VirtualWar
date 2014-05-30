@@ -25,7 +25,7 @@ public class BoardDisplayer extends JPanel {
 	 * 
 	 */
 	private static final long	serialVersionUID	= 1L;
-	private Plateau				board;
+	public  static Plateau				board;
 	private int					team				= -1;
 
 	/**
@@ -48,8 +48,8 @@ public class BoardDisplayer extends JPanel {
 		this.getSize();
 		String s = new String();
 		g.setColor(Color.WHITE);
-		for (int i = 0; i < (Plateau.largeur); ++i) {
-			for (int j = 0; j < (Plateau.hauteur); ++j) {
+		for (int j = 0; j < (Plateau.largeur); ++j) {
+			for (int i = 0; i < (Plateau.hauteur); ++i) {
 				s = "rsc/images/tiles/floor.png";
 				if (board.estBase(i, j) == 1) {
 					s = "rsc/images/team1/Base.png";

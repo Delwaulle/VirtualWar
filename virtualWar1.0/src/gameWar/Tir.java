@@ -51,7 +51,7 @@ public class Tir extends Action{
 					return false;
 				}
 			} else if (testCollision(this.getRobot(), newc)) {
-				if (testTirAmi(this.getRobot(), newc))
+				if (testTirAmi(this.getRobot(), newc)) {
 					if (this.getRobot().getTypeJoueur().equals("IARandom")) {
 						IARandom.jouer(this.getRobot().getVue().plateau, this.getRobot().getEquipe());
 						return false;
@@ -60,6 +60,7 @@ public class Tir extends Action{
 						Joueur.jouer(this.getRobot().getVue().plateau, this.getRobot().getEquipe());
 						return false;
 					}
+				}
 				return true;
 			}
 		}
@@ -76,9 +77,11 @@ public class Tir extends Action{
 	private void tirer(Coordonnee direction) {
 		Plateau p = this.getRobot().getVue().plateau;
 		Coordonnee newc = this.getRobot().getCoordonnee();
-		for (int i=0; i<this.getRobot().getPortee(); i++) {
+		boolean tir = false;
+		for (int i=0; i<this.getRobot().getPortee() && !tir; i++) {
 			newc=newc.ajouter(direction);
 			if(this.getRobot().getVue().estOK(newc) && testCollision(this.getRobot(), newc)) {
+				tir=true;
 				System.out.println("Un robot a été touché !!");
 				p.getContenu(newc.getX(), newc.getY()).subitDegats(this.getRobot().getDegatTir());
 				this.getRobot().setEnergie(this.getRobot().getEnergie()-this.getRobot().getCoutAction());

@@ -1,13 +1,22 @@
 package gameWar;
 
+/**
+ * @author Robin
+ *
+ */
 public class Joueur {
 
+	/**
+	 * @param plateau
+	 * @param equipe
+	 * 	Fait jouer le joueur en demandant quel robot jouer et quelle action effectuer
+	 */
 	public static void jouer (Plateau p, int equipe) {
 		boolean ok=false;
 		int num=0;
 		System.out.println(p.toString(equipe, 0));
 		while (!ok) {
-			System.out.println("Quel Robot voulez vous jouer ??");
+			System.out.println("Quel Robot voulez-vous jouer ??");
 			num = 0;
 			while (num <=0 || num > 5) {
 				if (num > 5) {
@@ -39,9 +48,14 @@ public class Joueur {
 			p.retirerRobot(p.getRobot(equipe, num).getCoordonnee().getX(), p.getRobot(equipe, num).getCoordonnee().getY(), p.getRobot(equipe, num));
 	}
 
+	/**
+	 * @param plateau
+	 * @param equipe
+	 * 	Créé les robots en demandant au joueur quels robots il veut
+	 */
 	public static void creerRobots(Plateau p, int equipe) {
 		for (int i=1; i<=5; i++){
-			System.out.println("Joueur "+equipe+", création du robot numero "+i+" voulez-vous un tireur, un piegeur ou un char ?");
+			System.out.println("Joueur "+equipe+", création du robot numero "+i+" voulez-vous un tireur, un piegeur ou un char?");
 			String rep=gameController.EntrerRobot.entrerRobot();
 			if (rep.equals("tireur"))
 				p.placerRobot(new Tireur(new Vue(equipe, p), equipe, i, "Joueur"));

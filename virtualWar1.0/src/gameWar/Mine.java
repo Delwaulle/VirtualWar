@@ -1,11 +1,21 @@
 package gameWar;
 
+/**
+ * @author Robin
+ *
+ */
 public class Mine extends Action{
 
+	/**
+	 * @param robot
+	 */
 	public Mine(Robot r) {
 		super(r);
 	}
 
+	/* (non-Javadoc)
+	 * @see gameWar.Action#agit()
+	 */
 	@Override
 	public void agit () {
 		Coordonnee direction = gameController.EntrerDirection.entrerDirection(false);
@@ -31,6 +41,9 @@ public class Mine extends Action{
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see gameWar.Action#iaAgit(gameWar.Coordonnee)
+	 */
 	@Override
 	public void iaAgit (Coordonnee direction) {
 		if (this.getRobot().getVue().estOK(this.getRobot().getCoordonnee().ajouter(direction))

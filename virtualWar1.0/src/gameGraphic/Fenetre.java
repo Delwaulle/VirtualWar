@@ -36,7 +36,7 @@ public class Fenetre extends JFrame {
 		Jouer card1 = new Jouer(cl, content);
 		JoueurVsJoueur card1_1 = new JoueurVsJoueur(cl, content);
 		ChoixRobot card1_1_1 = new ChoixRobot(cl, content);
-		BoardDisplayer cardGame = new BoardDisplayer(cl, content, gameWar.Game.p = new Plateau());
+		BoardDisplayer cardGame = new BoardDisplayer(cl, content, gameWar.Game.p = new Plateau(0));
 		JoueurVsIa card1_2 = new JoueurVsIa(cl, content);
 		IaVsIa card1_3 = new IaVsIa(cl, content);
 		Sauvegardes card2 = new Sauvegardes(cl, content);
