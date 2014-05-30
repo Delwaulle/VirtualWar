@@ -16,19 +16,12 @@ public class SonMenu extends Thread{
 	AudioInputStream audioInputStream = null;
 	SourceDataLine line;
 	int cpt;
-	public boolean isDodo() {
-		return dodo;
-	}
-	public void setDodo(boolean dodo) {
-		this.dodo = dodo;
-	}
-	private boolean dodo;
 	@Override
 	public void run(){
 		cpt++;
 		if(cpt==1) {
 			File fichier = new File("rsc/son/sonMenu.WAV");
-			while (!dodo) {
+			while (true) {
 				try {
 					@SuppressWarnings("unused")
 					AudioFileFormat format = AudioSystem.getAudioFileFormat(fichier);

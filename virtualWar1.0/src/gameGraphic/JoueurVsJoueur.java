@@ -3,7 +3,9 @@ package gameGraphic;
 import gameWar.Plateau;
 
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Image;
@@ -12,6 +14,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -33,13 +36,15 @@ public class JoueurVsJoueur extends JPanel {
 	JList jl;
 	JScrollPane jp;
 	String[] tab;
+	Font f;
+	JLabel obstacles;
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public JoueurVsJoueur(CardLayout cl, JPanel pan) {
 		this.cl=cl;
 		this.pan=pan;
-		this.setLayout(new FlowLayout(0,250,130));
+		this.setLayout(new FlowLayout(0,250,50));
 		p=new JPanel();
-		p.setLayout(new GridLayout(3,1,50,50));
+		p.setLayout(new GridLayout(4,1,20,50));
 		try {
 			img=ImageIO.read(new File("rsc/images/bg1.png"));
 		} catch (IOException e) {
@@ -62,7 +67,13 @@ public class JoueurVsJoueur extends JPanel {
 			}
 
 		});
+		f=new Font(Font.DIALOG, Font.BOLD, 14);
+		obstacles=new JLabel("Choisissez le pourcentage d'obstacles : ");
+		obstacles.setOpaque(false);
+		obstacles.setFont(f);
+		obstacles.setForeground(Color.WHITE);
 		p.setOpaque(false);
+		p.add(obstacles);
 		p.add(jp);
 		p.add(valider);
 		p.add(retour);
