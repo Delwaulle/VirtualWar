@@ -25,7 +25,7 @@ public class BoardDisplayer extends JPanel {
 	 * 
 	 */
 	private static final long	serialVersionUID	= 1L;
-	public  static Plateau				board;
+	public static Plateau		board;
 	private int					team				= -1;
 
 	/**
@@ -67,15 +67,15 @@ public class BoardDisplayer extends JPanel {
 					}
 				}
 				g.drawImage(getImage(s), (i * this.getSize().width)
-						/ Plateau.largeur, (j * this.getSize().height)
-						/ Plateau.hauteur, this.getSize().width
-						/ Plateau.largeur, this.getSize().height
-						/ Plateau.hauteur, null);
+						/ Plateau.hauteur, (j * this.getSize().height)
+						/ Plateau.largeur, this.getSize().width
+						/ Plateau.hauteur, this.getSize().height
+						/ Plateau.largeur, null);
 				g.setColor(Color.WHITE);
-				g.drawRect((i * this.getSize().width) / Plateau.largeur, (j * this.getSize().height)
-						/ Plateau.hauteur, this.getSize().width
-						/ Plateau.largeur, this.getSize().height
-						/ Plateau.hauteur);
+				g.drawRect((i * this.getSize().width) / Plateau.hauteur, (j * this.getSize().height)
+						/ Plateau.largeur, this.getSize().width
+						/ Plateau.hauteur, this.getSize().height
+						/ Plateau.largeur);
 			}
 		}
 	}
