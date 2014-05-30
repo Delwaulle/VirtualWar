@@ -28,8 +28,8 @@ public class Parametres extends JPanel{
 	Image img;
 	JButton retour;
 	JPanel p;
-	JSlider j1;
-	JSlider j2;
+	public JSlider j1;
+	public JSlider j2;
 	JCheckBox jc;
 	public Parametres(CardLayout cl, JPanel pan) {
 		this.cl=cl;

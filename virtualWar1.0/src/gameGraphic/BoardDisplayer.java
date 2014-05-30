@@ -37,6 +37,7 @@ public class BoardDisplayer extends JPanel {
 		board = b;
 	}
 
+	@SuppressWarnings("static-access")
 	public void displayGUI(Plateau board, int team) {
 		this.board = board;
 		this.team = team;

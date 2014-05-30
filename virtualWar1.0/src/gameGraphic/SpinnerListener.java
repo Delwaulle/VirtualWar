@@ -6,6 +6,9 @@ import javax.swing.event.ChangeListener;
 
 public class SpinnerListener implements ChangeListener {
 
+	static int cpt1;
+	static int cpt2;
+	static int cpt3;
 	ChoixRobot p;
 	public SpinnerListener(ChoixRobot p){
 		this.p=p;
@@ -13,23 +16,21 @@ public class SpinnerListener implements ChangeListener {
 	@Override
 	public void stateChanged(ChangeEvent e) {
 		JSpinner source = (JSpinner)e.getSource();
-		if(p.nbRobots<= 5 && p.nbRobots>0)
+		if(source.equals(p.spinner1)) {
+			cpt1=(int)source.getValue();
+		}
+
+		else if(source.equals(p.spinner2)) {
+			cpt2=(int)source.getValue();
+		}
+
+		else if (source.equals(p.spinner3)){
+			cpt3=(int)source.getValue();
+		}
+		System.out.println(cpt1+cpt2+cpt3);
+		if(cpt1+cpt2+cpt3==5){
 			p.valider.setEnabled(true);
-
-		else if ( source.equals(p.spinner1)) {
-			p.choix=(int)source.getValue();
-			p.nbRobots=p.nbRobots-p.choix;
 		}
-		else if ( source.equals(p.spinner2)) {
-			p.choix2=(int)source.getValue();
-			p.nbRobots=p.nbRobots-p.choix2;
-		}
-
-		else if ( source.equals(p.spinner3)) {
-			p.choix3=(int)source.getValue();
-			p.nbRobots=p.nbRobots-p.choix3;
-		}
-
 	}
 
 }

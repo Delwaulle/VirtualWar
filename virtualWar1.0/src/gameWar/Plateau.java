@@ -22,6 +22,7 @@ public class Plateau {
 	/**
 	 * 
 	 */
+	@SuppressWarnings("static-access")
 	public Plateau(double obstacles) {
 		this.tauxObstacles=obstacles;
 		grille=new Cellule[hauteur][largeur];
@@ -82,6 +83,7 @@ public class Plateau {
 	/**
 	 * Place les obstacles aleatoirement sur le plateau
 	 */
+	@SuppressWarnings("static-access")
 	private void placerObstacles () {
 		int obstacles = 0;
 		int x, y;

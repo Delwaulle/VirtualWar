@@ -46,8 +46,11 @@ public class Bouton extends JButton implements MouseListener{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		this.addMouseListener(this);
+		if(id!="jeu")
+			this.setEnabled(true);
+
 	}
+
 
 	@Override
 	public void paintComponent(Graphics g){
@@ -111,4 +114,15 @@ public class Bouton extends JButton implements MouseListener{
 
 	}
 
+	@Override
+	public void setEnabled(boolean enabled) {
+		super.setEnabled(enabled);
+		if (enabled) {
+			this.addMouseListener(this);
+		}
+		else {
+
+		}
+
+	}
 }

@@ -4,6 +4,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 public class Window extends JFrame{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public Window() {
 		super("Virtual War");
 		this.setIconImage(new ImageIcon("rsc/images/icon.png").getImage());

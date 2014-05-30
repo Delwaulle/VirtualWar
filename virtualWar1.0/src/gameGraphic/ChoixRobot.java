@@ -1,15 +1,18 @@
 package gameGraphic;
 
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.GridLayout;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerModel;
@@ -27,22 +30,22 @@ public class ChoixRobot extends JPanel {
 	JButton						retour;
 	JButton						valider;
 	JPanel						p;
-	int							nbRobots;
-	int							choix;
+	static int							choix;
 	int							choix2;
 	int							choix3;
 	JSpinner					spinner1;
 	JSpinner					spinner2;
 	JSpinner					spinner3;
+	Font f;
+	JLabel label;
+	JPanel panel;
 
-	@SuppressWarnings("unused")
 	public ChoixRobot(CardLayout cl, JPanel pan) {
 		this.cl = cl;
 		this.pan = pan;
-		setLayout(new FlowLayout(0, 250, 30));
+		this.setLayout(new FlowLayout(0, 250, 30));
 		p = new JPanel();
-		nbRobots = 5;
-		p.setLayout(new GridLayout(5, 1, 50, 50));
+		p.setLayout(new BoxLayout(p, BoxLayout.PAGE_AXIS));
 		p.setOpaque(false);
 		SpinnerModel model1 = new SpinnerNumberModel(0, 0, 5, 1);
 		spinner1 = new JSpinner(model1);
@@ -60,11 +63,22 @@ public class ChoixRobot extends JPanel {
 			e.printStackTrace();
 		}
 		valider = new Bouton("Valider", pan, cl, "jeu");
-		valider.setEnabled(false);
 		retour = new Bouton("Retour", pan, cl, "jvj");
-		p.add(spinner1);
-		p.add(spinner2);
-		p.add(spinner3);
+		panel = new JPanel();
+		panel.setLayout(new FlowLayout(0, 20, 30));
+		panel.add(spinner1);
+		panel.add(spinner2);
+		panel.add(spinner3);
+		panel.setOpaque(false);
+		label = new JLabel("Choisissez 5 robots :");
+		f=new Font(Font.DIALOG, Font.BOLD, 13);
+		label.setFont(f);
+		label.setForeground(Color.WHITE);
+		label.setOpaque(false);
+		JPanel pp = new JPanel();
+		pp.add(panel);
+		p.add(label);
+		p.add(pp);
 		p.add(valider);
 		p.add(retour);
 		this.add(p);

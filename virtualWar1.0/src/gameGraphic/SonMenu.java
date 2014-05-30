@@ -15,7 +15,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 public class SonMenu extends Thread{
 	AudioInputStream audioInputStream = null;
 	SourceDataLine line;
-	int cpt;
+	public int cpt;
 	@Override
 	public void run(){
 		cpt++;

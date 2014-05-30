@@ -49,6 +49,7 @@ public class FonduVirtualWar extends JPanel implements ActionListener {
 		if (alpha <= 0) {
 			alpha = 0;
 			timer.stop();
+			@SuppressWarnings("unused")
 			Fenetre fenetre = new Fenetre();
 			w.setVisible(false);
 		}
