@@ -6,7 +6,7 @@ public class Game {
 
 	public static Plateau p;
 	public static void main(String[] args) {
-		new gameGraphic.Fenetre();
+		new gameGraphic.Window();
 		gameGraphic.AfficherLogo.afficherLogo();
 		String partie = gameController.EntrerIA.entrerIA();
 		if (partie.equals("jcj"))

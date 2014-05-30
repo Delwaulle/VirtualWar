@@ -27,7 +27,6 @@ public class Bouton extends JButton implements MouseListener{
 	private Image img;
 	private final String nom;
 	Font f;
-	private boolean bool;
 	private ClicMenu son;
 	JPanel p;
 	CardLayout l;
@@ -58,20 +57,15 @@ public class Bouton extends JButton implements MouseListener{
 		Paint gradientPaint = new GradientPaint(0, this.getHeight(), Color.BLACK,
 				0, this.getHeight() + this.getWidth(), Color.WHITE);
 		g2d.setPaint(gradientPaint);
-
-		//texte
-		if(!bool) {
-			FontMetrics fm = g2d.getFontMetrics();
-			int height = fm.getHeight();
-			int width = fm.stringWidth(this.nom);
-			g2d.drawString(this.nom, this.getWidth() / 2 - (width / 2), (this.getHeight() / 2) + (height / 4));
-		}
-		bool=false;
+		FontMetrics fm = g2d.getFontMetrics();
+		int height = fm.getHeight();
+		int width = fm.stringWidth(this.nom);
+		g2d.drawString(this.nom, this.getWidth() / 2 - (width / 2), (this.getHeight() / 2) + (height / 4));
+		//bool=false;
 	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		bool=true;
 		son=new ClicMenu();
 		son.setDaemon(true);
 		son.start();

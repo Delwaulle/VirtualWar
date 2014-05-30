@@ -22,9 +22,11 @@ public class FonduVirtualWar extends JPanel implements ActionListener {
 	Image						Virtualwar;
 	float						alpha;
 	Timer						timer;
+	Window w;
 
-	public FonduVirtualWar(float alpha) {
+	public FonduVirtualWar(float alpha,Window w) {
 		this.alpha = alpha;
+		this.w=w;
 		setBackground(Color.BLACK);
 		setLayout(new BorderLayout());
 		ImageIcon iVirtualwar = new ImageIcon("rsc/images/imageV3.png");
@@ -47,8 +49,8 @@ public class FonduVirtualWar extends JPanel implements ActionListener {
 		if (alpha <= 0) {
 			alpha = 0;
 			timer.stop();
-			// this.add(new MenuDemarrage());
-			revalidate();
+			Fenetre fenetre = new Fenetre();
+			w.setVisible(false);
 		}
 		repaint();
 	}

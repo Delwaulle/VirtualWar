@@ -88,6 +88,8 @@ public class MenuDemarrage extends JPanel {
 		this.add(p2);
 	}
 
+
+
 	@Override
 	public void paintComponent(Graphics g) {
 		g.drawImage(img,0,0,p2);

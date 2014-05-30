@@ -25,8 +25,10 @@ public class AffichageBronzeV extends JPanel implements ActionListener {
 	Image Bronzev;
 	float alpha;
 	Timer timer;
-	public AffichageBronzeV(float alpha) {
+	Window w;
+	public AffichageBronzeV(float alpha,Window w) {
 		this.alpha=alpha;
+		this.w=w;
 		this.setBackground(Color.BLACK);
 		this.setLayout(new BorderLayout());
 		ImageIcon iBronzev = new ImageIcon("rsc/images/logo2.0.png");
@@ -50,7 +52,7 @@ public class AffichageBronzeV extends JPanel implements ActionListener {
 		if (alpha >= 1f) {
 			alpha = 0;
 			timer.stop();
-			this.add(new FonduBronzeV(1f));
+			this.add(new FonduBronzeV(1f,w));
 			this.revalidate();
 		}
 		repaint();

@@ -23,8 +23,10 @@ public class AffichageVirtualWar extends JPanel implements ActionListener{
 	Image Virtualwar;
 	float alpha;
 	Timer timer;
-	public AffichageVirtualWar(float alpha) {
+	Window w;
+	public AffichageVirtualWar(float alpha,Window w) {
 		this.alpha=alpha;
+		this.w=w;
 		this.setBackground(Color.BLACK);
 		this.setLayout(new BorderLayout());
 		ImageIcon iVirtualwar = new ImageIcon("rsc/images/imageV3.png");
@@ -48,7 +50,7 @@ public class AffichageVirtualWar extends JPanel implements ActionListener{
 		if (alpha >= 1f) {
 			alpha = 0;
 			timer.stop();
-			this.add(new FonduVirtualWar(1f));
+			this.add(new FonduVirtualWar(1f,w));
 			this.revalidate();
 		}
 		repaint();
