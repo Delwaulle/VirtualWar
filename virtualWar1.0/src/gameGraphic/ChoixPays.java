@@ -15,6 +15,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -33,13 +34,17 @@ public class ChoixPays extends JPanel implements ActionListener {
 	JLabel pays;
 	JLabel e1;
 	JLabel e2;
+	JLabel d1;
+	JLabel d2;
 	JButton valider;
-	static String france ="France";
-	static String angleterre ="Angleterre";
-	static String etatsUnis ="Etats-Unis";
-	static String allemagne ="Allemagne";
+	ImageIcon i1;
+	ImageIcon i2;
+	final static String france ="France";
+	final static String angleterre ="Angleterre";
+	final static String etatsUnis ="Etats-Unis";
+	final static String allemagne ="Allemagne";
 	static String choix1="France";
-	static String choix2="France";
+	static String choix2="Etats-Unis";
 	JRadioButton radioFrance;
 	JRadioButton radioAngleterre;
 	JRadioButton radioEtatsUnis;
@@ -53,6 +58,11 @@ public class ChoixPays extends JPanel implements ActionListener {
 		this.cl=cl;
 		this.pan=pan;
 
+		i1=new ImageIcon("rsc/images/flags/fr.png");
+		i2=new ImageIcon("rsc/images/flags/usa.png");
+		d1=new JLabel(i1);
+		d2=new JLabel(i2);
+
 		//Radio button
 		ButtonGroup bg1 = new ButtonGroup ();
 		radioFrance = new JRadioButton(france);
@@ -65,7 +75,6 @@ public class ChoixPays extends JPanel implements ActionListener {
 		radioPanel.add(radioAngleterre);
 		radioPanel.add(radioEtatsUnis);
 		radioPanel.add(radioAllemagne);
-		//radioPanel.setOpaque(false);
 		bg1.add(radioFrance);
 		bg1.add(radioAngleterre);
 		bg1.add(radioEtatsUnis);
@@ -88,27 +97,59 @@ public class ChoixPays extends JPanel implements ActionListener {
 		radioPanel2.add(radioAngleterre2);
 		radioPanel2.add(radioEtatsUnis2);
 		radioPanel2.add(radioAllemagne2);
-		//radioPanel2.setOpaque(false);
 		bg2.add(radioFrance2);
 		bg2.add(radioAngleterre2);
 		bg2.add(radioEtatsUnis2);
 		bg2.add(radioAllemagne2);
 
-		radioFrance2.addActionListener(this);
-		radioAngleterre2.addActionListener(this);
-		radioEtatsUnis2.addActionListener(this);
-		radioAllemagne2.addActionListener(this);
+		radioFrance2.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				choix2="France";
+				d2.setIcon(new ImageIcon("rsc/images/flags/fr.png"));
+			}
+
+		});
+		radioAngleterre2.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				choix2="Angleterre";
+				d2.setIcon(new ImageIcon("rsc/images/flags/uk.png"));
+
+			}
+
+		});
+		radioEtatsUnis2.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				choix2="Etats-unis";
+				d2.setIcon(new ImageIcon("rsc/images/flags/usa.png"));
+			}
+
+		});
+		radioAllemagne2.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				choix2="Allemagne";
+				d2.setIcon(new ImageIcon("rsc/images/flags/all.png"));
+			}
+
+		});
 
 		//JPanel
 		this.setLayout(new BorderLayout());
 
 		JPanel p = new JPanel();
-		p.setLayout(new GridLayout(4,1,5,5));
+		p.setLayout(new GridLayout(5,1,5,5));
 		p.setOpaque(false);
 
 		JPanel p2=new JPanel();
 		p2.setOpaque(false);
-		p2.setLayout(new FlowLayout(250,300,10));
+		p2.setLayout(new FlowLayout(250,320,10));
 
 
 		JPanel p3 = new JPanel();
@@ -122,6 +163,10 @@ public class ChoixPays extends JPanel implements ActionListener {
 		JPanel p5 = new JPanel();
 		p5.setOpaque(false);
 		p5.setLayout(new FlowLayout(20,200,15));
+
+		JPanel p6 = new JPanel();
+		p6.setOpaque(false);
+		p6.setLayout(new FlowLayout(0,185,0));
 
 		try {
 			img=ImageIO.read(new File("rsc/images/bg1.png"));
@@ -153,6 +198,8 @@ public class ChoixPays extends JPanel implements ActionListener {
 
 
 		//Position
+		p6.add(d1);
+		p6.add(d2);
 		p3.add(e1);
 		p3.add(e2);
 		p5.add(radioPanel);
@@ -160,6 +207,7 @@ public class ChoixPays extends JPanel implements ActionListener {
 		p2.add(pays);
 		p.add(p2);
 		p.add(p3);
+		p.add(p6);
 		p.add(p5);
 		p4.add(retour);
 		p4.add(valider);
@@ -175,29 +223,19 @@ public class ChoixPays extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if(radioFrance.isSelected()){
 			choix1="France";
+			d1.setIcon(new ImageIcon("rsc/images/flags/fr.png"));
 		}
 		else if(radioAngleterre.isSelected()){
 			choix1="Angleterre";
+			d1.setIcon(new ImageIcon("rsc/images/flags/uk.png"));
 		}
 		else if(radioEtatsUnis.isSelected()){
 			choix1="Etats-unis";
+			d1.setIcon(new ImageIcon("rsc/images/flags/usa.png"));
 		}
 		else if(radioAllemagne.isSelected()){
 			choix1="Allemagne";
+			d1.setIcon(new ImageIcon("rsc/images/flags/all.png"));
 		}
-
-		else if(radioFrance2.isSelected()){
-			choix2="France";
-		}
-		else if(radioAngleterre2.isSelected()){
-			choix2="Angleterre";
-		}
-		else if(radioEtatsUnis2.isSelected()){
-			choix2="Etats-unis";
-		}
-		else if(radioAllemagne2.isSelected()){
-			choix2="Allemagne";
-		}
-
 	}
 }
