@@ -45,6 +45,11 @@ public class ChoixRobot extends JPanel {
 	JLabel label;
 	JPanel panel;
 	static int team=1;
+	static JLabel l1;
+	static JLabel l2;
+	static JLabel l3;
+
+
 
 	public ChoixRobot(final CardLayout cl, final JPanel pan) {
 		this.cl = cl;
@@ -74,7 +79,6 @@ public class ChoixRobot extends JPanel {
 		valider.setEnabled(false);
 		f2= new Font(Font.DIALOG, Font.BOLD, 20);
 		valider.setFont(f2);
-		//valider.setIcon(new ImageIcon(("rsc/images/bouton1.png")));
 		valider.setPreferredSize(new Dimension(300,60));
 		valider.setMinimumSize(new Dimension(300,60));
 		valider.addActionListener(new ActionListener(){
@@ -93,6 +97,8 @@ public class ChoixRobot extends JPanel {
 		});
 		retour = new Bouton("Retour", pan, cl, "pays");
 
+
+
 		//JLabel
 		label = new JLabel("L'équipe "+ team +" choisit 5 robots :");
 		f=new Font(Font.DIALOG, Font.BOLD, 13);
@@ -100,26 +106,41 @@ public class ChoixRobot extends JPanel {
 		label.setForeground(Color.WHITE);
 		label.setOpaque(false);
 
+		l1 = new JLabel();
+		l2 = new JLabel();
+		l3 = new JLabel();
+
 		//JPanel
+		JPanel p5 = new JPanel();
+		p5.setLayout(new FlowLayout(0,110,10));
+		p5.setOpaque(false);
+		p5.add(l1);
+		p5.add(l2);
+		p5.add(l3);
 		JPanel p4 = new JPanel();
 		p4.setOpaque(false);
 		p4.setLayout(new FlowLayout(0,90,10));
 		p4.add(retour);
 		p4.add(valider);
 		p = new JPanel();
-		p.setLayout(new GridLayout(3,1,5,5));
+		p.setLayout(new GridLayout(4,1,5,5));
 		p.setOpaque(false);
 		JPanel pp = new JPanel();
 		pp.setOpaque(false);
-		pp.setLayout(new FlowLayout(5,90,10) );
+		pp.setLayout(new FlowLayout(50,170,10) );
 		pp.add(spinner1);
 		pp.add(spinner2);
 		pp.add(spinner3);
 		p.add(label);
+		p.add(p5);
 		p.add(pp);
 		p.add(p4);
 		this.add(BorderLayout.CENTER,p);
 		gameController.EntrerIA.rep = "jcj";
+	}
+
+	public ChoixRobot() {
+		// TODO Auto-generated constructor stub
 	}
 
 	@Override

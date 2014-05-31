@@ -15,6 +15,7 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -44,6 +45,9 @@ public class ChoixRobot2 extends JPanel {
 	JLabel label;
 	JPanel panel;
 	static int team=2;
+	ImageIcon i1;
+	ImageIcon i2;
+	ImageIcon i3;
 
 	public ChoixRobot2(final CardLayout cl, final JPanel pan) {
 		this.cl = cl;
@@ -98,6 +102,11 @@ public class ChoixRobot2 extends JPanel {
 		label.setFont(f);
 		label.setForeground(Color.WHITE);
 		label.setOpaque(false);
+
+		//Images Robots
+		i1=new ImageIcon("rsc/images/tanks/"+ChoixPays.choix2+".png");
+		i2=new ImageIcon("rsc/images/piegeur/"+ChoixPays.choix2+".png");
+		i3=new ImageIcon("rsc/images/tanks/"+ChoixPays.choix2+".png");
 
 		//JPanel
 		JPanel p4 = new JPanel();
