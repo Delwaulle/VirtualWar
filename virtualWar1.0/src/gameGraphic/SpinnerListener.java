@@ -27,9 +27,10 @@ public class SpinnerListener implements ChangeListener {
 		else if (source.equals(p.spinner3)){
 			cpt3=(int)source.getValue();
 		}
-		System.out.println(cpt1+cpt2+cpt3);
+		System.out.println(cpt3+cpt2+cpt1);
 		if(cpt1+cpt2+cpt3==5){
 			p.valider.setEnabled(true);
+			p.valider.revalidate();
 		}
 	}
 

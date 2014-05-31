@@ -51,7 +51,7 @@ public class JoueurVsJoueur extends JPanel {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		valider=new Bouton("Valider",pan,cl,"robots");
+		valider=new Bouton("Valider",pan,cl,"pays");
 		retour=new Bouton("Retour",pan,cl,"jouer");
 		tab = new String[]{"Aucun","10%","20%","30%","40%","50%","60%"};
 		jl=new JList(tab);

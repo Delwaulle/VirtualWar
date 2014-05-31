@@ -63,20 +63,18 @@ public class ChoixRobot extends JPanel {
 			e.printStackTrace();
 		}
 		valider = new Bouton("Valider", pan, cl, "jeu");
-		retour = new Bouton("Retour", pan, cl, "jvj");
-		panel = new JPanel();
-		panel.setLayout(new FlowLayout(0, 20, 30));
-		panel.add(spinner1);
-		panel.add(spinner2);
-		panel.add(spinner3);
-		panel.setOpaque(false);
+		retour = new Bouton("Retour", pan, cl, "pays");
+		p.setOpaque(false);
 		label = new JLabel("Choisissez 5 robots :");
 		f=new Font(Font.DIALOG, Font.BOLD, 13);
 		label.setFont(f);
 		label.setForeground(Color.WHITE);
 		label.setOpaque(false);
 		JPanel pp = new JPanel();
-		pp.add(panel);
+		pp.setLayout(new FlowLayout() );
+		pp.add(spinner1);
+		pp.add(spinner2);
+		pp.add(spinner3);
 		p.add(label);
 		p.add(pp);
 		p.add(valider);

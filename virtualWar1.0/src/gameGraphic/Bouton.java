@@ -31,6 +31,7 @@ public class Bouton extends JButton implements MouseListener{
 	JPanel p;
 	CardLayout l;
 	String id;
+	boolean bool;
 	public Bouton(String str, JPanel p,CardLayout l,String id){
 		super(str);
 		this.id=id;
@@ -41,13 +42,21 @@ public class Bouton extends JButton implements MouseListener{
 		this.setMinimumSize(new Dimension(300,60));
 		f= new Font(Font.DIALOG, Font.BOLD, 20);
 		this.setFont(f);
-		try {
-			img = ImageIO.read(new File("rsc/images/bouton1.png"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		if(id!="jeu")
+		if(id!="jeu"){
 			this.setEnabled(true);
+			try {
+				img = ImageIO.read(new File("rsc/images/bouton1.png"));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		else {
+			try {
+				img = ImageIO.read(new File("rsc/images/boutonDisabled.png"));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 
 	}
 
@@ -89,7 +98,6 @@ public class Bouton extends JButton implements MouseListener{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	@Override
@@ -121,7 +129,6 @@ public class Bouton extends JButton implements MouseListener{
 			this.addMouseListener(this);
 		}
 		else {
-
 		}
 
 	}
