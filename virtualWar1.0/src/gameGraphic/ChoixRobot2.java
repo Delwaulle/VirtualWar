@@ -22,8 +22,7 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
 
-
-public class ChoixRobot extends JPanel {
+public class ChoixRobot2 extends JPanel {
 	/**
 	 * 
 	 */
@@ -44,9 +43,9 @@ public class ChoixRobot extends JPanel {
 	Font f2;
 	JLabel label;
 	JPanel panel;
-	static int team=1;
+	static int team=2;
 
-	public ChoixRobot(final CardLayout cl, final JPanel pan) {
+	public ChoixRobot2(final CardLayout cl, final JPanel pan) {
 		this.cl = cl;
 		this.pan = pan;
 		this.setLayout(new BorderLayout());
@@ -70,7 +69,7 @@ public class ChoixRobot extends JPanel {
 
 		//JButton
 		//valider = new Bouton("Valider", pan, cl, "jeu");
-		valider=new JButton("valider");
+		valider=new JButton("Lancer la partie");
 		valider.setEnabled(false);
 		f2= new Font(Font.DIALOG, Font.BOLD, 20);
 		valider.setFont(f2);
@@ -84,11 +83,11 @@ public class ChoixRobot extends JPanel {
 				ClicMenu son=new ClicMenu();
 				son.setDaemon(true);
 				son.start();
-				cl.show(pan, "robots2");
+				cl.show(pan, "jeu");
 			}
 
 		});
-		retour = new Bouton("Retour", pan, cl, "pays");
+		retour = new Bouton("Retour", pan, cl, "robots");
 
 		//JLabel
 		label = new JLabel("L'équipe "+ team +" choisit 5 robots :");
@@ -123,4 +122,5 @@ public class ChoixRobot extends JPanel {
 	public void paintComponent(Graphics g) {
 		g.drawImage(img, 0, 0, this);
 	}
+
 }

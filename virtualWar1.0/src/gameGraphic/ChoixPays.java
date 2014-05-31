@@ -144,25 +144,25 @@ public class ChoixPays extends JPanel implements ActionListener {
 		this.setLayout(new BorderLayout());
 
 		JPanel p = new JPanel();
-		p.setLayout(new GridLayout(5,1,5,5));
+		p.setLayout(new GridLayout(5,1,0,0));
 		p.setOpaque(false);
 
 		JPanel p2=new JPanel();
 		p2.setOpaque(false);
-		p2.setLayout(new FlowLayout(250,320,10));
+		p2.setLayout(new FlowLayout(0,320,0));
 
 
 		JPanel p3 = new JPanel();
 		p3.setOpaque(false);
-		p3.setLayout(new FlowLayout(20,200,15));
+		p3.setLayout(new FlowLayout(0,200,0));
 
 		JPanel p4 = new JPanel();
 		p4.setOpaque(false);
-		p4.setLayout(new FlowLayout(0,70,0));
+		p4.setLayout(new FlowLayout(0,70,10));
 
 		JPanel p5 = new JPanel();
 		p5.setOpaque(false);
-		p5.setLayout(new FlowLayout(20,200,15));
+		p5.setLayout(new FlowLayout(0,200,0));
 
 		JPanel p6 = new JPanel();
 		p6.setOpaque(false);

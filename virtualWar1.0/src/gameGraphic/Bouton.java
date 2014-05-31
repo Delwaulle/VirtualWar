@@ -81,11 +81,6 @@ public class Bouton extends JButton implements MouseListener{
 		son=new ClicMenu();
 		son.setDaemon(true);
 		son.start();
-		try {
-			img = ImageIO.read(new File("rsc/images/b7.png"));
-		} catch (IOException ioe) {
-			ioe.printStackTrace();
-		}
 		l.show(p,id);
 
 

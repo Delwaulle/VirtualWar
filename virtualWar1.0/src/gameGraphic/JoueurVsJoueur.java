@@ -38,6 +38,7 @@ public class JoueurVsJoueur extends JPanel {
 	String[] tab;
 	Font f;
 	JLabel obstacles;
+	static double txObstacles;
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public JoueurVsJoueur(CardLayout cl, JPanel pan) {
 		this.cl=cl;
@@ -64,6 +65,7 @@ public class JoueurVsJoueur extends JPanel {
 			@Override
 			public void valueChanged(ListSelectionEvent arg0) {
 				BoardDisplayer.board = new Plateau(jl.getSelectedIndex()*0.1);
+				txObstacles=jl.getSelectedIndex()*0.1;
 			}
 
 		});
