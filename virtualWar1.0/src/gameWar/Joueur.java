@@ -53,16 +53,33 @@ public class Joueur {
 	 * @param equipe
 	 * 	Créé les robots en demandant au joueur quels robots il veut
 	 */
-	public static void creerRobots(Plateau p, int equipe) {
-		for (int i=1; i<=5; i++){
-			System.out.println("Joueur "+equipe+", création du robot numero "+i+" voulez-vous un tireur, un piegeur ou un char?");
-			String rep=gameController.EntrerRobot.entrerRobot();
-			if (rep.equals("tireur"))
-				p.placerRobot(new Tireur(new Vue(equipe, p), equipe, i, "Joueur"));
-			else if (rep.equals("piegeur"))
-				p.placerRobot(new Piegeur(new Vue(equipe, p), equipe, i, "Joueur"));
-			else if (rep.equals("char"))
-				p.placerRobot(new Char(new Vue(equipe, p), equipe, i, "Joueur"));
+	public static void creerRobots(Plateau p) {
+		int tireurs=gameController.EntrerRobot.tireurs;
+		int piegeurs=gameController.EntrerRobot.piegeurs;
+		int chars=gameController.EntrerRobot.chars;
+		int tireurs2=gameController.EntrerRobot.tireurs2;
+		int piegeurs2=gameController.EntrerRobot.piegeurs2;
+		int chars2=gameController.EntrerRobot.chars2;
+		for (int i = 1;i<=tireurs;i++) {
+			p.placerRobot(new Tireur(new Vue(1, p), 1, i, "Joueur"));
+		}
+		for (int i = 1;i<=piegeurs;i++) {
+			p.placerRobot(new Piegeur(new Vue(1, p), 1, i, "Joueur"));
+		}
+
+		for (int i = 1;i<=chars;i++) {
+			p.placerRobot(new Char(new Vue(1, p), 1, i, "Joueur"));
+		}
+
+
+		for (int i = 1;i<=tireurs2;i++) {
+			p.placerRobot(new Tireur(new Vue(2, p), 2, i, "Joueur"));
+		}
+		for (int i = 1;i<=piegeurs2;i++) {
+			p.placerRobot(new Piegeur(new Vue(2, p), 2, i, "Joueur"));
+		}
+		for (int i = 1;i<=chars2;i++) {
+			p.placerRobot(new Char(new Vue(2, p), 2, i, "Joueur"));
 		}
 	}
 }

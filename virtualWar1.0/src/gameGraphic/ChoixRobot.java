@@ -84,6 +84,9 @@ public class ChoixRobot extends JPanel {
 				ClicMenu son=new ClicMenu();
 				son.setDaemon(true);
 				son.start();
+				gameController.EntrerRobot.tireurs=SpinnerListener.cpt1;
+				gameController.EntrerRobot.piegeurs=SpinnerListener.cpt2;
+				gameController.EntrerRobot.chars=SpinnerListener.cpt3;
 				cl.show(pan, "robots2");
 			}
 

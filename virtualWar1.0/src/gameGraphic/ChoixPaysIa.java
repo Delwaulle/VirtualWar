@@ -21,7 +21,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
-public class ChoixPays extends JPanel implements ActionListener {
+public class ChoixPaysIa extends JPanel implements ActionListener {
 	/**
 	 * 
 	 */
@@ -33,12 +33,10 @@ public class ChoixPays extends JPanel implements ActionListener {
 	Font f;
 	JLabel pays;
 	JLabel e1;
-	JLabel e2;
 	JLabel d1;
 	JLabel d2;
 	JButton valider;
 	ImageIcon i1;
-	ImageIcon i2;
 	final static String france ="France";
 	final static String angleterre ="Angleterre";
 	final static String etatsUnis ="Etats-Unis";
@@ -54,14 +52,12 @@ public class ChoixPays extends JPanel implements ActionListener {
 	JRadioButton radioAngleterre2;
 	JRadioButton radioEtatsUnis2;
 	JRadioButton radioAllemagne2;
-	public ChoixPays(CardLayout cl, JPanel pan) {
+	public ChoixPaysIa(CardLayout cl, JPanel pan) {
 		this.cl=cl;
 		this.pan=pan;
 
 		i1=new ImageIcon("rsc/images/flags/France.png");
-		i2=new ImageIcon("rsc/images/flags/Etats-Unis.png");
 		d1=new JLabel(i1);
-		d2=new JLabel(i2);
 
 		//Radio button
 		ButtonGroup bg1 = new ButtonGroup ();
@@ -86,59 +82,7 @@ public class ChoixPays extends JPanel implements ActionListener {
 		radioAllemagne.addActionListener(this);
 
 
-		ButtonGroup bg2 = new ButtonGroup ();
-		radioFrance2 = new JRadioButton(france);
-		radioAngleterre2 = new JRadioButton(angleterre);
-		radioEtatsUnis2 = new JRadioButton(etatsUnis);
-		radioEtatsUnis2.setSelected(true);
-		radioAllemagne2 = new JRadioButton(allemagne);
-		JPanel radioPanel2 = new JPanel(new GridLayout(0, 1));
-		radioPanel2.add(radioFrance2);
-		radioPanel2.add(radioAngleterre2);
-		radioPanel2.add(radioEtatsUnis2);
-		radioPanel2.add(radioAllemagne2);
-		bg2.add(radioFrance2);
-		bg2.add(radioAngleterre2);
-		bg2.add(radioEtatsUnis2);
-		bg2.add(radioAllemagne2);
 
-		radioFrance2.addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				choix2="France";
-				d2.setIcon(new ImageIcon("rsc/images/flags/France.png"));
-			}
-
-		});
-		radioAngleterre2.addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				choix2="Angleterre";
-				d2.setIcon(new ImageIcon("rsc/images/flags/Angleterre.png"));
-
-			}
-
-		});
-		radioEtatsUnis2.addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				choix2="Etats-Unis";
-				d2.setIcon(new ImageIcon("rsc/images/flags/Etats-Unis.png"));
-			}
-
-		});
-		radioAllemagne2.addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				choix2="Allemagne";
-				d2.setIcon(new ImageIcon("rsc/images/flags/Allemagne.png"));
-			}
-
-		});
 
 		//JPanel
 		this.setLayout(new BorderLayout());
@@ -154,7 +98,7 @@ public class ChoixPays extends JPanel implements ActionListener {
 
 		JPanel p3 = new JPanel();
 		p3.setOpaque(false);
-		p3.setLayout(new FlowLayout(0,200,0));
+		p3.setLayout(new FlowLayout(0,370,0));
 
 		JPanel p4 = new JPanel();
 		p4.setOpaque(false);
@@ -162,11 +106,11 @@ public class ChoixPays extends JPanel implements ActionListener {
 
 		JPanel p5 = new JPanel();
 		p5.setOpaque(false);
-		p5.setLayout(new FlowLayout(0,200,0));
+		p5.setLayout(new FlowLayout(0,370,0));
 
 		JPanel p6 = new JPanel();
 		p6.setOpaque(false);
-		p6.setLayout(new FlowLayout(0,185,0));
+		p6.setLayout(new FlowLayout(0,360,0));
 
 		try {
 			img=ImageIO.read(new File("rsc/images/bg1.png"));
@@ -176,8 +120,8 @@ public class ChoixPays extends JPanel implements ActionListener {
 		}
 
 		//JButton
-		valider=new Bouton("Valider",pan,cl,"robots");
-		retour=new Bouton("Retour",pan,cl,"jvj");
+		valider=new Bouton("Valider",pan,cl,"robots2");
+		retour=new Bouton("Retour",pan,cl,"jvi");
 
 		// JLabel
 		f=new Font(Font.DIALOG, Font.BOLD, 14);
@@ -191,19 +135,12 @@ public class ChoixPays extends JPanel implements ActionListener {
 		e1.setFont(f);
 		e1.setForeground(Color.WHITE);
 
-		e2=new JLabel("Joueur 2 :");
-		e2.setOpaque(false);
-		e2.setFont(f);
-		e2.setForeground(Color.WHITE);
 
 
 		//Position
 		p6.add(d1);
-		p6.add(d2);
 		p3.add(e1);
-		p3.add(e2);
 		p5.add(radioPanel);
-		p5.add(radioPanel2);
 		p2.add(pays);
 		p.add(p2);
 		p.add(p3);
@@ -238,4 +175,5 @@ public class ChoixPays extends JPanel implements ActionListener {
 			d1.setIcon(new ImageIcon("rsc/images/flags/Allemagne.png"));
 		}
 	}
+
 }

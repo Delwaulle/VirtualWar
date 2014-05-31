@@ -40,6 +40,7 @@ public class Fenetre extends JFrame {
 		ChoixRobot2 card1_1_1_1_1 = new ChoixRobot2(cl, content);
 		BoardDisplayer cardGame = new BoardDisplayer(cl, content, gameWar.Game.p = new Plateau(0));
 		JoueurVsIa card1_2 = new JoueurVsIa(cl, content);
+		ChoixPaysIa card1_2_1 = new ChoixPaysIa(cl,content);
 		IaVsIa card1_3 = new IaVsIa(cl, content);
 		Sauvegardes card2 = new Sauvegardes(cl, content);
 		Parametres card3 = new Parametres(cl, content);
@@ -52,6 +53,7 @@ public class Fenetre extends JFrame {
 		content.add(card1_1_1_1_1, "robots2");
 		content.add(cardGame, "jeu");
 		content.add(card1_2, "jvi");
+		content.add(card1_2_1,"paysIa");
 		content.add(card1_3, "ivi");
 		content.add(card2, "sauvegardes");
 		content.add(card3, "parametres");

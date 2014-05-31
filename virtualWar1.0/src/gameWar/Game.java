@@ -23,8 +23,8 @@ public class Game {
 	public static void partieJcJ () {
 		Plateau p = new Plateau(0);
 		System.out.print(p.toString(1, 0));
-		Joueur.creerRobots(p, 1);
-		Joueur.creerRobots(p, 2);
+		Joueur.creerRobots(p);
+		//Joueur.creerRobots(p);
 		while (!p.fini) {
 			regeneBases(p);
 			Joueur.jouer(p, 1);
@@ -44,7 +44,7 @@ public class Game {
 	public static void partieJcIARandom() {
 		Plateau p = new Plateau(0);
 		System.out.print(p.toString(1, 0));
-		Joueur.creerRobots(p, 1);
+		Joueur.creerRobots(p);
 		IARandom.creerRobots(p, 2);
 		while (!p.fini) {
 			regeneBases(p);

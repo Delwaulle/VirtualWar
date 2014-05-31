@@ -53,9 +53,9 @@ public class BoardDisplayer extends JPanel {
 			for (int i = 0; i < (Plateau.hauteur); ++i) {
 				s = "rsc/images/tiles/floor.png";
 				if (board.estBase(i, j) == 1) {
-					s = "rsc/images/team1/Base.png";
+					s = "rsc/images/flags/"+ChoixPays.choix1+".png";
 				} else if (board.estBase(i, j) == 2) {
-					s = "rsc/images/team2/Base.png";
+					s = "rsc/images/flags/"+ChoixPays.choix2+".png";
 				} else if (board.getGrille()[i][j].estObstacle()) {
 					s = "rsc/images/tiles/wall.png";
 				} else if (board.getGrille()[i][j].estMine() == team) {

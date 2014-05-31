@@ -9,6 +9,9 @@ public class SpinnerListener implements ChangeListener {
 	static int cpt1;
 	static int cpt2;
 	static int cpt3;
+	static int cpt1_2;
+	static int cpt2_2;
+	static int cpt3_2;
 	ChoixRobot p;
 	ChoixRobot2 p2;
 	boolean b;
@@ -45,18 +48,18 @@ public class SpinnerListener implements ChangeListener {
 		else {
 			JSpinner source = (JSpinner)e.getSource();
 			if(source.equals(p2.spinner1)) {
-				cpt1=(int)source.getValue();
+				cpt1_2=(int)source.getValue();
 			}
 
 			else if(source.equals(p2.spinner2)) {
-				cpt2=(int)source.getValue();
+				cpt2_2=(int)source.getValue();
 			}
 
 			else if (source.equals(p2.spinner3)){
-				cpt3=(int)source.getValue();
+				cpt3_2=(int)source.getValue();
 			}
 
-			if(cpt1+cpt2+cpt3==5){
+			if(cpt1_2+cpt2_2+cpt3_2==5){
 				p2.valider.setEnabled(true);
 			}
 			else
