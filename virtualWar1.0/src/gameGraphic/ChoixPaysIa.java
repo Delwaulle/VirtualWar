@@ -120,7 +120,7 @@ public class ChoixPaysIa extends JPanel implements ActionListener {
 		}
 
 		//JButton
-		valider=new Bouton("Valider",pan,cl,"robots2");
+		valider=new Bouton("Valider",pan,cl,"");
 		retour=new Bouton("Retour",pan,cl,"jvi");
 
 		// JLabel

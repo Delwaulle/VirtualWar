@@ -107,9 +107,9 @@ public class ChoixPays extends JPanel implements ActionListener {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				choix2="France";
-				ChoixRobot.l1.setIcon(new ImageIcon("rsc/images/tanks/"+choix1+".png"));
-				ChoixRobot.l2.setIcon(new ImageIcon("rsc/images/piegeurs/"+choix1+".png"));
-				ChoixRobot.l3.setIcon(new ImageIcon("rsc/images/tanks/"+choix1+".png"));
+				ChoixRobot2.l1.setIcon(new ImageIcon("rsc/images/tanks/"+choix2+".png"));
+				ChoixRobot2.l2.setIcon(new ImageIcon("rsc/images/piegeurs/"+choix2+".png"));
+				ChoixRobot2.l3.setIcon(new ImageIcon("rsc/images/tireurs/"+choix2+".png"));
 				d2.setIcon(new ImageIcon("rsc/images/flags/France.png"));
 			}
 
@@ -119,9 +119,9 @@ public class ChoixPays extends JPanel implements ActionListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				choix2="Angleterre";
-				ChoixRobot.l1.setIcon(new ImageIcon("rsc/images/tanks/"+choix1+".png"));
-				ChoixRobot.l2.setIcon(new ImageIcon("rsc/images/piegeurs/"+choix1+".png"));
-				ChoixRobot.l3.setIcon(new ImageIcon("rsc/images/tanks/"+choix1+".png"));
+				ChoixRobot2.l1.setIcon(new ImageIcon("rsc/images/tanks/"+choix2+".png"));
+				ChoixRobot2.l2.setIcon(new ImageIcon("rsc/images/piegeurs/"+choix2+".png"));
+				ChoixRobot2.l3.setIcon(new ImageIcon("rsc/images/tireurs/"+choix2+".png"));
 				d2.setIcon(new ImageIcon("rsc/images/flags/Angleterre.png"));
 
 			}
@@ -132,9 +132,9 @@ public class ChoixPays extends JPanel implements ActionListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				choix2="Etats-Unis";
-				ChoixRobot.l1.setIcon(new ImageIcon("rsc/images/tanks/"+choix1+".png"));
-				ChoixRobot.l2.setIcon(new ImageIcon("rsc/images/piegeurs/"+choix1+".png"));
-				ChoixRobot.l3.setIcon(new ImageIcon("rsc/images/tanks/"+choix1+".png"));
+				ChoixRobot2.l1.setIcon(new ImageIcon("rsc/images/tanks/"+choix2+".png"));
+				ChoixRobot2.l2.setIcon(new ImageIcon("rsc/images/piegeurs/"+choix2+".png"));
+				ChoixRobot2.l3.setIcon(new ImageIcon("rsc/images/tireurs/"+choix2+".png"));
 				d2.setIcon(new ImageIcon("rsc/images/flags/Etats-Unis.png"));
 			}
 
@@ -144,9 +144,9 @@ public class ChoixPays extends JPanel implements ActionListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				choix2="Allemagne";
-				ChoixRobot.l1.setIcon(new ImageIcon("rsc/images/tanks/"+choix1+".png"));
-				ChoixRobot.l2.setIcon(new ImageIcon("rsc/images/piegeurs/"+choix1+".png"));
-				ChoixRobot.l3.setIcon(new ImageIcon("rsc/images/tanks/"+choix1+".png"));
+				ChoixRobot2.l1.setIcon(new ImageIcon("rsc/images/tanks/"+choix2+".png"));
+				ChoixRobot2.l2.setIcon(new ImageIcon("rsc/images/piegeurs/"+choix2+".png"));
+				ChoixRobot2.l3.setIcon(new ImageIcon("rsc/images/tireurs/"+choix2+".png"));
 				d2.setIcon(new ImageIcon("rsc/images/flags/Allemagne.png"));
 			}
 
@@ -237,28 +237,28 @@ public class ChoixPays extends JPanel implements ActionListener {
 			choix1="France";
 			ChoixRobot.l1.setIcon(new ImageIcon("rsc/images/tanks/"+choix1+".png"));
 			ChoixRobot.l2.setIcon(new ImageIcon("rsc/images/piegeurs/"+choix1+".png"));
-			ChoixRobot.l3.setIcon(new ImageIcon("rsc/images/tanks/"+choix1+".png"));
+			ChoixRobot.l3.setIcon(new ImageIcon("rsc/images/tireurs/"+choix1+".png"));
 			d1.setIcon(new ImageIcon("rsc/images/flags/France.png"));
 		}
 		else if(radioAngleterre.isSelected()){
 			choix1="Angleterre";
 			ChoixRobot.l1.setIcon(new ImageIcon("rsc/images/tanks/"+choix1+".png"));
 			ChoixRobot.l2.setIcon(new ImageIcon("rsc/images/piegeurs/"+choix1+".png"));
-			ChoixRobot.l3.setIcon(new ImageIcon("rsc/images/tanks/"+choix1+".png"));
+			ChoixRobot.l3.setIcon(new ImageIcon("rsc/images/tireurs/"+choix1+".png"));
 			d1.setIcon(new ImageIcon("rsc/images/flags/Angleterre.png"));
 		}
 		else if(radioEtatsUnis.isSelected()){
 			choix1="Etats-Unis";
 			ChoixRobot.l1.setIcon(new ImageIcon("rsc/images/tanks/"+choix1+".png"));
 			ChoixRobot.l2.setIcon(new ImageIcon("rsc/images/piegeurs/"+choix1+".png"));
-			ChoixRobot.l3.setIcon(new ImageIcon("rsc/images/tanks/"+choix1+".png"));
+			ChoixRobot.l3.setIcon(new ImageIcon("rsc/images/tireurs/"+choix1+".png"));
 			d1.setIcon(new ImageIcon("rsc/images/flags/Etats-Unis.png"));
 		}
 		else if(radioAllemagne.isSelected()){
 			choix1="Allemagne";
 			ChoixRobot.l1.setIcon(new ImageIcon("rsc/images/tanks/"+choix1+".png"));
 			ChoixRobot.l2.setIcon(new ImageIcon("rsc/images/piegeurs/"+choix1+".png"));
-			ChoixRobot.l3.setIcon(new ImageIcon("rsc/images/tanks/"+choix1+".png"));
+			ChoixRobot.l3.setIcon(new ImageIcon("rsc/images/tireurs/"+choix1+".png"));
 			d1.setIcon(new ImageIcon("rsc/images/flags/Allemagne.png"));
 		}
 	}

@@ -45,9 +45,9 @@ public class ChoixRobot2 extends JPanel {
 	JLabel label;
 	JPanel panel;
 	static int team=2;
-	ImageIcon i1;
-	ImageIcon i2;
-	ImageIcon i3;
+	static JLabel l1;
+	static JLabel l2;
+	static JLabel l3;
 
 	public ChoixRobot2(final CardLayout cl, final JPanel pan) {
 		this.cl = cl;
@@ -102,28 +102,40 @@ public class ChoixRobot2 extends JPanel {
 		label.setFont(f);
 		label.setForeground(Color.WHITE);
 		label.setOpaque(false);
+		l1 = new JLabel();
+		l2 = new JLabel();
+		l3 = new JLabel();
+		l1.setIcon(new ImageIcon("rsc/images/tanks/"+ChoixPays.choix2+".png"));
+		l2.setIcon(new ImageIcon("rsc/images/piegeurs/"+ChoixPays.choix2+".png"));
+		l3.setIcon(new ImageIcon("rsc/images/tireurs/"+ChoixPays.choix2+".png"));
+		l1.addMouseListener(new LabelListener());
+		l2.addMouseListener(new LabelListener());
+		l3.addMouseListener(new LabelListener());
 
-		//Images Robots
-		i1=new ImageIcon("rsc/images/tanks/"+ChoixPays.choix2+".png");
-		i2=new ImageIcon("rsc/images/piegeur/"+ChoixPays.choix2+".png");
-		i3=new ImageIcon("rsc/images/tanks/"+ChoixPays.choix2+".png");
 
 		//JPanel
 		JPanel p4 = new JPanel();
 		p4.setOpaque(false);
-		p4.setLayout(new FlowLayout(0,90,10));
+		p4.setLayout(new FlowLayout(0,70,10));
 		p4.add(retour);
 		p4.add(valider);
+		JPanel p5 = new JPanel();
+		p5.setLayout(new FlowLayout(0,80,-5));
+		p5.setOpaque(false);
+		p5.add(l1);
+		p5.add(l2);
+		p5.add(l3);
 		p = new JPanel();
-		p.setLayout(new GridLayout(3,1,5,5));
+		p.setLayout(new GridLayout(4,1,5,5));
 		p.setOpaque(false);
 		JPanel pp = new JPanel();
 		pp.setOpaque(false);
-		pp.setLayout(new FlowLayout(5,90,10) );
+		pp.setLayout(new FlowLayout(70,200,10) );
 		pp.add(spinner1);
 		pp.add(spinner2);
 		pp.add(spinner3);
 		p.add(label);
+		p.add(p5);
 		p.add(pp);
 		p.add(p4);
 		this.add(BorderLayout.CENTER,p);

@@ -15,6 +15,7 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -109,25 +110,31 @@ public class ChoixRobot extends JPanel {
 		l1 = new JLabel();
 		l2 = new JLabel();
 		l3 = new JLabel();
+		l1.setIcon(new ImageIcon("rsc/images/tanks/"+ChoixPays.choix1+".png"));
+		l2.setIcon(new ImageIcon("rsc/images/piegeurs/"+ChoixPays.choix1+".png"));
+		l3.setIcon(new ImageIcon("rsc/images/tireurs/"+ChoixPays.choix1+".png"));
+		l1.addMouseListener(new LabelListener());
+		l2.addMouseListener(new LabelListener());
+		l3.addMouseListener(new LabelListener());
 
 		//JPanel
 		JPanel p5 = new JPanel();
-		p5.setLayout(new FlowLayout(0,110,10));
+		p5.setLayout(new FlowLayout(0,80,-5));
 		p5.setOpaque(false);
 		p5.add(l1);
 		p5.add(l2);
 		p5.add(l3);
 		JPanel p4 = new JPanel();
 		p4.setOpaque(false);
-		p4.setLayout(new FlowLayout(0,90,10));
+		p4.setLayout(new FlowLayout(0,70,10));
 		p4.add(retour);
 		p4.add(valider);
 		p = new JPanel();
-		p.setLayout(new GridLayout(4,1,5,5));
+		p.setLayout(new GridLayout(4,1,0,0));
 		p.setOpaque(false);
 		JPanel pp = new JPanel();
 		pp.setOpaque(false);
-		pp.setLayout(new FlowLayout(50,170,10) );
+		pp.setLayout(new FlowLayout(70,200,10) );
 		pp.add(spinner1);
 		pp.add(spinner2);
 		pp.add(spinner3);
