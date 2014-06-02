@@ -90,7 +90,8 @@ public class ChoixRobot2 extends JPanel {
 				gameController.EntrerRobot.tireurs2=SpinnerListener.cpt1_2;
 				gameController.EntrerRobot.piegeurs2=SpinnerListener.cpt2_2;
 				gameController.EntrerRobot.chars2=SpinnerListener.cpt3_2;
-				cl.show(pan, "jeu");
+				cl.show(pan, "plateau");
+				BoardDisplayer.board=gameWar.Joueur.creerRobots(BoardDisplayer.board, false);
 			}
 
 		});

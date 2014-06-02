@@ -67,8 +67,9 @@ public class Base extends Cellule {
 	 */
 	@Override
 	public Robot getRobot(int equipe, int num) {
-		if (r.size()==0)
+		if (r.size()==0) {
 			return null;
+		}
 		else {
 			for (int i=0; i<r.size(); i++) {
 				if(this.r.get(i).getEquipe()==equipe && this.r.get(i).getNum()==num)

@@ -128,5 +128,5 @@ public abstract class Cellule {
 	 * @return Robot
 	 * 	Retourne le robot s'il y en a un dans la cellule, sinon retourne null
 	 */
-	abstract Robot getContenu();
+	public abstract Robot getContenu();
 }

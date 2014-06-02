@@ -1,5 +1,7 @@
 package gameGraphic;
 
+import gameController.EntrerRobot;
+
 import javax.swing.JSpinner;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -28,14 +30,17 @@ public class SpinnerListener implements ChangeListener {
 			JSpinner source = (JSpinner)e.getSource();
 			if(source.equals(p.spinner1)) {
 				cpt1=(int)source.getValue();
+				EntrerRobot.chars=(int)source.getValue();
 			}
 
 			else if(source.equals(p.spinner2)) {
 				cpt2=(int)source.getValue();
+				EntrerRobot.piegeurs=(int)source.getValue();
 			}
 
 			else if (source.equals(p.spinner3)){
 				cpt3=(int)source.getValue();
+				EntrerRobot.tireurs=(int)source.getValue();
 			}
 
 			if(cpt1+cpt2+cpt3==5){
@@ -49,14 +54,17 @@ public class SpinnerListener implements ChangeListener {
 			JSpinner source = (JSpinner)e.getSource();
 			if(source.equals(p2.spinner1)) {
 				cpt1_2=(int)source.getValue();
+				EntrerRobot.chars2=(int)source.getValue();
 			}
 
 			else if(source.equals(p2.spinner2)) {
 				cpt2_2=(int)source.getValue();
+				EntrerRobot.piegeurs2=(int)source.getValue();
 			}
 
 			else if (source.equals(p2.spinner3)){
 				cpt3_2=(int)source.getValue();
+				EntrerRobot.tireurs2=(int)source.getValue();
 			}
 
 			if(cpt1_2+cpt2_2+cpt3_2==5){

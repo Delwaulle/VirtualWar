@@ -1,6 +1,9 @@
 package gameGraphic;
 
+import gameWar.Char;
+import gameWar.Piegeur;
 import gameWar.Plateau;
+import gameWar.Tireur;
 
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -60,6 +63,27 @@ public class BoardDisplayer extends JPanel {
 					s = "rsc/images/tiles/wall.png";
 				} else if (board.getGrille()[i][j].estMine() == team) {
 					s = "rsc/images/tiles/Mine.png";
+				} else if (board.getGrille()[i][j].getContenu() instanceof Tireur){
+					if(board.getGrille()[i][j].getContenu().getEquipe()==1){
+						s="rsc/images/tireurs/"+ChoixPays.choix1+".png";
+					}
+					else if(board.getGrille()[i][j].getContenu().getEquipe()==2){
+						s="rsc/images/tireurs/"+ChoixPays.choix2+".png";
+					}
+				} else if (board.getGrille()[i][j].getContenu() instanceof Piegeur){
+					if(board.getGrille()[i][j].getContenu().getEquipe()==1){
+						s="rsc/images/piegeurs/"+ChoixPays.choix1+".png";
+					}
+					else if(board.getGrille()[i][j].getContenu().getEquipe()==2){
+						s="rsc/images/piegeurs/"+ChoixPays.choix2+".png";
+					}
+				} else if (board.getGrille()[i][j].getContenu() instanceof Char){
+					if(board.getGrille()[i][j].getContenu().getEquipe()==1){
+						s="rsc/images/tanks/"+ChoixPays.choix1+".png";
+					}
+					else if(board.getGrille()[i][j].getContenu().getEquipe()==2){
+						s="rsc/images/tanks/"+ChoixPays.choix2+".png";
+					}
 				} else if (board.getContenu(i, j) != null) {
 					if (board.getContenu(i, j).getEquipe() == 1) {
 						s = "rsc/images/team1/TankFrHaut.png";
