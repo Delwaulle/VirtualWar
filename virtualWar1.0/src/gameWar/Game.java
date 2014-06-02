@@ -26,9 +26,9 @@ public class Game {
 		//Joueur.creerRobots(p);
 		while (!p.fini) {
 			regeneBases(p);
-			Joueur.jouer(p, 1);
+			//Joueur.jouer(p, 1);
 			testFini(p);
-			Joueur.jouer(p, 2);
+			//Joueur.jouer(p, 2);
 			testFini(p);
 			try{
 				Thread.sleep(2000);
@@ -47,7 +47,7 @@ public class Game {
 		IARandom.creerRobots(p, 2);
 		while (!p.fini) {
 			regeneBases(p);
-			Joueur.jouer(p, 1);
+			//Joueur.jouer(p, 1);
 			testFini(p);
 			IARandom.jouer(p, 2);
 			testFini(p);
@@ -90,7 +90,7 @@ public class Game {
 	 * 
 	 * 	Test si la partie est terminée est determine le vainqueur
 	 */
-	private static void testFini(Plateau p) {
+	public static int testFini(Plateau p) {
 		int equipe1 = 0;
 		int equipe2 = 0;
 		for (int i=0; i<p.grille.length; i++) {
@@ -102,14 +102,15 @@ public class Game {
 			}
 		} if (equipe1 == 0 && equipe2 == 0) {
 			p.fini=true;
-			System.out.println("Egalité !!");
+			return 3;
 		} else if (equipe1 == 0) {
 			p.fini=true;
-			System.out.println("Joueur 2 a gagné !!");
+			return 2;
 		} else if (equipe2 == 0) {
 			p.fini=true;
-			System.out.println("Joueur 1 a gagné !!");
+			return 1;
 		}
+		return 0;
 	}
 
 	/**

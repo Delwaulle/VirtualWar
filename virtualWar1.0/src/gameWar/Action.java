@@ -47,7 +47,7 @@ public abstract class Action {
 	/**
 	 * 	Effectue l'action pour un Joueur
 	 */
-	abstract void agit();
+	public abstract void agit(Coordonnee direction);
 
 	/**
 	 * @param direction

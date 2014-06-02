@@ -29,8 +29,6 @@ public class BoardDisplayer extends JPanel {
 	 */
 	private static final long	serialVersionUID	= 1L;
 	public static Plateau		board;
-	private int					team				= -1;
-
 	/**
 	 * 
 	 * @param board
@@ -43,7 +41,6 @@ public class BoardDisplayer extends JPanel {
 	@SuppressWarnings("static-access")
 	public void displayGUI(Plateau board, int team) {
 		this.board = board;
-		this.team = team;
 		repaint();
 	}
 
@@ -61,7 +58,7 @@ public class BoardDisplayer extends JPanel {
 					s = "rsc/images/flags/"+ChoixPays.choix2+".png";
 				} else if (board.getGrille()[i][j].estObstacle()) {
 					s = "rsc/images/tiles/wall.png";
-				} else if (board.getGrille()[i][j].estMine() == team) {
+				} else if (board.getGrille()[i][j].estMine() == 1) {
 					s = "rsc/images/tiles/Mine.png";
 				} else if (board.getGrille()[i][j].getContenu() instanceof Tireur){
 					if(board.getGrille()[i][j].getContenu().getEquipe()==1){

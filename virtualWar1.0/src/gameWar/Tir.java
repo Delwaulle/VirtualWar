@@ -1,5 +1,7 @@
 package gameWar;
 
+import gameGraphic.ActionPanel;
+
 public class Tir extends Action{
 
 	public Tir(Robot r) {
@@ -7,8 +9,7 @@ public class Tir extends Action{
 	}
 
 	@Override
-	public void agit () {
-		Coordonnee direction = gameController.EntrerDirection.entrerDirection(false);
+	public void agit (Coordonnee direction) {
 		if (testTirOK(direction))
 			tirer(direction);
 	}
@@ -29,7 +30,7 @@ public class Tir extends Action{
 					return false;
 				} else {
 					System.out.println("Ajustez votre tir soldat, l’ennemi est en face ! ");
-					Joueur.jouer(this.getRobot().getVue().plateau, this.getRobot().getEquipe());
+					gameGraphic.WarPanel.p.add(new ActionPanel(this.getRobot().getEquipe()));
 					return false;
 				}
 			} else if (testObstacle(this.getRobot(), newc)) {
@@ -38,7 +39,7 @@ public class Tir extends Action{
 					return false;
 				} else {
 					System.out.println("Les obstacles arrêtent vos balles, choisissez une autre cible ou déplacez vous ! ");
-					Joueur.jouer(this.getRobot().getVue().plateau, this.getRobot().getEquipe());
+					gameGraphic.WarPanel.p.add(new ActionPanel(this.getRobot().getEquipe()));
 					return false;
 				}
 			} else if (testBase(this.getRobot(), newc)) {
@@ -47,7 +48,7 @@ public class Tir extends Action{
 					return false;
 				} else {
 					System.out.println("Vos armes ne sont pas assez puissantes pour toucher les bases ! ");
-					Joueur.jouer(this.getRobot().getVue().plateau, this.getRobot().getEquipe());
+					gameGraphic.WarPanel.p.add(new ActionPanel(this.getRobot().getEquipe()));
 					return false;
 				}
 			} else if (testCollision(this.getRobot(), newc)) {
@@ -57,7 +58,7 @@ public class Tir extends Action{
 						return false;
 					} else {
 						System.out.println("Attention soldat, ne trahissez pas votre pays, visez l’ennemi !");
-						Joueur.jouer(this.getRobot().getVue().plateau, this.getRobot().getEquipe());
+						gameGraphic.WarPanel.p.add(new ActionPanel(this.getRobot().getEquipe()));
 						return false;
 					}
 				}
@@ -69,7 +70,7 @@ public class Tir extends Action{
 			return false;
 		} else {
 			System.out.println("Attention soldat, vous ne visez personne ! Ne décevez pas votre pays, ciblez un ennemi ou choisissez une autre action !");
-			Joueur.jouer(this.getRobot().getVue().plateau, this.getRobot().getEquipe());
+			gameGraphic.WarPanel.p.add(new ActionPanel(this.getRobot().getEquipe()));
 			return false;
 		}
 	}

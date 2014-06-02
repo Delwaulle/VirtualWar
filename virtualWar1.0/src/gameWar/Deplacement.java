@@ -1,5 +1,7 @@
 package gameWar;
 
+import gameGraphic.ActionPanel;
+
 /**
  * @author Robin
  *
@@ -17,8 +19,7 @@ public class Deplacement extends Action{
 	 * @see gameWar.Action#agit()
 	 */
 	@Override
-	public void agit () {
-		Coordonnee direction = gameController.EntrerDirection.entrerDirection(this.getRobot().getDiagonal());
+	public void agit (Coordonnee direction) {
 		Coordonnee newc = this.getRobot().getCoordonnee();
 		for (int i=0; i<this.getRobot().getDeplacement(); i++)
 			newc = newc.ajouter(direction);
@@ -93,8 +94,9 @@ public class Deplacement extends Action{
 					IARandom.jouer(this.getRobot().getVue().plateau, this.getRobot().getEquipe());
 					return false;
 				} else {
-					System.out.println("Déplacement impossible, vous ne pouvez pas quitter le champ de bataille ! Choisissez une destination valide ou une autre action.");
-					Joueur.jouer(this.getRobot().getVue().plateau, this.getRobot().getEquipe());
+					gameGraphic.WarPanel.info=("Déplacement impossible, vous ne pouvez pas quitter le champ de bataille ! Choisissez une destination valide ou une autre action.");
+					gameGraphic.WarPanel.p.add(new ActionPanel(this.getRobot().getEquipe()));
+					gameGraphic.WarPanel.t.repaint();
 					return false;
 				}
 			} else if (testObstacle(this.getRobot(), newc)) {
@@ -102,8 +104,8 @@ public class Deplacement extends Action{
 					IARandom.jouer(this.getRobot().getVue().plateau, this.getRobot().getEquipe());
 					return false;
 				} else {
-					System.out.println("Déplacement impossible, Obstacle !!");
-					Joueur.jouer(this.getRobot().getVue().plateau, this.getRobot().getEquipe());
+					gameGraphic.WarPanel.info=("Déplacement impossible, Obstacle !!");
+					gameGraphic.WarPanel.p.add(new ActionPanel(this.getRobot().getEquipe()));
 					return false;
 				}
 			} else if (testCollision(this.getRobot(), newc)) {
@@ -111,17 +113,17 @@ public class Deplacement extends Action{
 					IARandom.jouer(this.getRobot().getVue().plateau, this.getRobot().getEquipe());
 					return false;
 				} else {
-					System.out.println("Déplacement impossible, le terrain est déjà occupé, le risque de collision est important, choisissez une autre destination ou une autre action.");
-					Joueur.jouer(this.getRobot().getVue().plateau, this.getRobot().getEquipe());
+					gameGraphic.WarPanel.info=("Déplacement impossible, le terrain est déjà occupé, le risque de collision est important, choisissez une autre destination ou une autre action.");
+					gameGraphic.WarPanel.p.add(new ActionPanel(this.getRobot().getEquipe()));
 					return false;
 				}
 			} else if (testBase(this.getRobot(), newc)) {
-				System.out.println("Alerte ! Vous essayez de pénétrer une base ennemie ! Vous avez l’ordre de battre en retraite, choisissez une destination différente.");
+				gameGraphic.WarPanel.info=("Alerte ! Vous essayez de pénétrer une base ennemie ! Vous avez l’ordre de battre en retraite, choisissez une destination différente.");
 				if (this.getRobot().getTypeJoueur().equals("IARandom")) {
 					IARandom.jouer(this.getRobot().getVue().plateau, this.getRobot().getEquipe());
 					return false;
 				} else {
-					Joueur.jouer(this.getRobot().getVue().plateau, this.getRobot().getEquipe());
+					gameGraphic.WarPanel.p.add(new ActionPanel(this.getRobot().getEquipe()));
 					return false;
 				}
 			}

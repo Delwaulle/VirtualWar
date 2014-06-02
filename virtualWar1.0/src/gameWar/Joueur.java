@@ -8,47 +8,6 @@ import gameGraphic.BoardDisplayer;
  */
 public class Joueur {
 
-	/**
-	 * @param plateau
-	 * @param equipe
-	 * 	Fait jouer le joueur en demandant quel robot jouer et quelle action effectuer
-	 */
-	public static void jouer (Plateau p, int equipe) {
-		boolean ok=false;
-		int num=0;
-		System.out.println(p.toString(equipe, 0));
-		while (!ok) {
-			System.out.println("Quel Robot voulez-vous jouer ??");
-			num = 0;
-			while (num <=0 || num > 5) {
-				if (num > 5) {
-					System.out.println("Vous ne possedez que 5 Robots !");
-				}
-				num=gameController.EntrerInt.entrerInt();
-			}
-			if (p.getRobot(equipe, num)==null)
-				System.out.println("Ce Robot est détruit, choisissez en un autre.");
-			else
-				ok=true;
-		}
-		System.out.print(p.toString(equipe, num));
-		System.out.println(p.getRobot(equipe, num).toString());
-		String rep=gameController.EntrerAction.entrerAction();
-		if (rep.equals("deplacer")) {
-			Action a = new Deplacement(p.getRobot(equipe, num));
-			a.agit();
-		}
-		else if (rep.equals("attaquer"))
-			if (!p.getRobot(equipe, num).getType().equals("Piegeur")) {
-				Action a = new Tir(p.getRobot(equipe, num));
-				a.agit();
-			} else {
-				Action a = new Mine(p.getRobot(equipe, num));
-				a.agit();
-			}
-		if (p.getRobot(equipe, num).getEnergie()<=0)
-			p.retirerRobot(p.getRobot(equipe, num).getCoordonnee().getX(), p.getRobot(equipe, num).getCoordonnee().getY(), p.getRobot(equipe, num));
-	}
 
 	/**
 	 * @param plateau
@@ -125,6 +84,12 @@ public class Joueur {
 			gameGraphic.ActionPanel.r4.setText("Piegeur 4");
 		else if (BoardDisplayer.board.getRobot(1, 4) instanceof Char )
 			gameGraphic.ActionPanel.r4.setText("Char 4");
+		if (BoardDisplayer.board.getRobot(1, 5) instanceof Tireur )
+			gameGraphic.ActionPanel.r5.setText("Tireur 5");
+		else if (BoardDisplayer.board.getRobot(1, 5) instanceof Piegeur )
+			gameGraphic.ActionPanel.r5.setText("Piegeur 5");
+		else if (BoardDisplayer.board.getRobot(1, 5) instanceof Char )
+			gameGraphic.ActionPanel.r5.setText("Char 5");
 		return p;
 	}
 }

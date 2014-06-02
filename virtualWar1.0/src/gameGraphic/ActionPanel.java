@@ -1,7 +1,13 @@
 package gameGraphic;
 
+import gameWar.Action;
 import gameWar.Char;
+import gameWar.Constante;
+import gameWar.Coordonnee;
+import gameWar.Deplacement;
+import gameWar.Mine;
 import gameWar.Piegeur;
+import gameWar.Tir;
 import gameWar.Tireur;
 
 import java.awt.FlowLayout;
@@ -9,9 +15,12 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JTextArea;
 
 public class ActionPanel extends JPanel implements ActionListener{
 
@@ -41,8 +50,13 @@ public class ActionPanel extends JPanel implements ActionListener{
 	JRadioButton hautGauche;
 	JRadioButton basDroite;
 	JRadioButton hautDroite;
-	public ActionPanel(){
-		this.setLayout(new FlowLayout());
+
+	private static int numEquipe=0;
+	private int numRobot=0;
+
+	public ActionPanel(int equipe){
+		this.numEquipe=equipe;
+		this.setLayout(new BoxLayout(this,BoxLayout.PAGE_AXIS));
 
 		//RadioButton
 		choixRobots = new ButtonGroup ();
@@ -52,12 +66,14 @@ public class ActionPanel extends JPanel implements ActionListener{
 		r3 = new JRadioButton("Robot 3");
 		r4 = new JRadioButton("Robot 4");
 		r5 = new JRadioButton("Robot 5");
-		JPanel radioPanel = new JPanel(new GridLayout(0, 1));
+		final JPanel radioPanel = new JPanel(new GridLayout(0, 1));
+
 		radioPanel.add(r1);
 		radioPanel.add(r2);
 		radioPanel.add(r3);
 		radioPanel.add(r4);
 		radioPanel.add(r5);
+
 		choixRobots.add(r1);
 		choixRobots.add(r2);
 		choixRobots.add(r3);
@@ -127,19 +143,117 @@ public class ActionPanel extends JPanel implements ActionListener{
 		basDroite.addActionListener(this);
 		hautDroite.addActionListener(this);
 
-		this.add(radioPanel);
-		this.add(radioPanel2);
-		this.add(radioPanel3);
+
+		//JButton
+		JButton b1 = new JButton("Passez son tour");
+		JButton b2 = new JButton("Valider");
+		b1.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				//passer son tour
+				ClicMenu son=new ClicMenu();
+				son.setDaemon(true);
+				son.start();
+
+			}
+
+		});
+
+		b2.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				//valider
+				ClicMenu son=new ClicMenu();
+				son.setDaemon(true);
+				son.start();
+
+				Coordonnee direction=null;
+				if (haut.isSelected())
+					direction=Constante.HAUT;
+				else if (bas.isSelected())
+					direction=Constante.BAS;
+				else if (droite.isSelected())
+					direction=Constante.DROITE;
+				else if (gauche.isSelected())
+					direction=Constante.GAUCHE;
+				else if (hautGauche.isSelected())
+					direction=Constante.HAUT.ajouter(Constante.GAUCHE);
+				else if (hautDroite.isSelected())
+					direction=Constante.HAUT.ajouter(Constante.DROITE);
+				else if (basDroite.isSelected())
+					direction=Constante.BAS.ajouter(Constante.DROITE);
+				else if (basGauche.isSelected())
+					direction=Constante.BAS.ajouter(Constante.GAUCHE);
+
+				if (deplacer.isSelected()) {
+					Action a = new Deplacement (BoardDisplayer.board.getRobot(numEquipe, numRobot));
+					a.agit(direction);
+				} else if (miner.isSelected()) {
+					Action a = new Mine (BoardDisplayer.board.getRobot(numEquipe, numRobot));
+					a.agit(direction);
+				} else if (tirer.isSelected()) {
+					Action a = new Tir (BoardDisplayer.board.getRobot(numEquipe, numRobot));
+					a.agit(direction);
+				}
+
+				numEquipe = (numEquipe+1%2)+1;
+
+
+				radioPanel.removeAll();
+				choixRobots.remove(r1);
+				choixRobots.remove(r2);
+				choixRobots.remove(r3);
+				choixRobots.remove(r4);
+				choixRobots.remove(r5);
+
+
+				r1 = new JRadioButton("Robot 1");
+				r2 = new JRadioButton("Robot 2");
+				r3 = new JRadioButton("Robot 3");
+				r4 = new JRadioButton("Robot 4");
+				r5 = new JRadioButton("Robot 5");
+
+				radioPanel.add(r1);
+				radioPanel.add(r2);
+				radioPanel.add(r3);
+				radioPanel.add(r4);
+				radioPanel.add(r5);
+				choixRobots.add(r1);
+				choixRobots.add(r2);
+				choixRobots.add(r3);
+				choixRobots.add(r4);
+				choixRobots.add(r5);
+				radioPanel.updateUI();
+
+				WarPanel.t=new JTextArea(WarPanel.info);
+				WarPanel.bd.repaint();
+
+
+			}
+
+		});
+		JPanel p = new JPanel();
+		JPanel p2 = new JPanel();
+		p2.setLayout(new FlowLayout(0,70,10));
+		p2.add(b1);
+		p2.add(b2);
+		p.setLayout(new FlowLayout(10,10,10));
+		p.add(radioPanel);
+		p.add(radioPanel2);
+		p.add(radioPanel3);
+		this.add(p);
+		this.add(p2);
+
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-
-		int numRobot=0;
 		if(r1.isSelected()){
 			System.out.print(miner.isSelected());
 			numRobot=1;
-			if (BoardDisplayer.board.getRobot(1, 1) instanceof Tireur ){
+			if (BoardDisplayer.board.getRobot(numEquipe, numRobot) instanceof Tireur ){
 				miner.setEnabled(false);
 				tirer.setEnabled(true);
 				basGauche.setEnabled(true);
@@ -147,7 +261,7 @@ public class ActionPanel extends JPanel implements ActionListener{
 				basDroite.setEnabled(true);
 				hautDroite.setEnabled(true);
 			}
-			else if (BoardDisplayer.board.getRobot(1, 1) instanceof Piegeur ){
+			else if (BoardDisplayer.board.getRobot(numEquipe, numRobot) instanceof Piegeur ){
 				tirer.setEnabled(false);
 				miner.setEnabled(true);
 				basGauche.setEnabled(true);
@@ -155,7 +269,7 @@ public class ActionPanel extends JPanel implements ActionListener{
 				basDroite.setEnabled(true);
 				hautDroite.setEnabled(true);
 			}
-			else if (BoardDisplayer.board.getRobot(1, 1) instanceof Char ) {
+			else if (BoardDisplayer.board.getRobot(numEquipe, numRobot) instanceof Char ) {
 				miner.setEnabled(false);
 				tirer.setEnabled(true);
 				basGauche.setEnabled(false);
@@ -168,7 +282,7 @@ public class ActionPanel extends JPanel implements ActionListener{
 
 		else if(r2.isSelected()){
 			numRobot=2;
-			if (BoardDisplayer.board.getRobot(1, 2) instanceof Tireur ){
+			if (BoardDisplayer.board.getRobot(numEquipe, numRobot) instanceof Tireur ){
 				miner.setEnabled(false);
 				tirer.setEnabled(true);
 				basGauche.setEnabled(true);
@@ -176,7 +290,7 @@ public class ActionPanel extends JPanel implements ActionListener{
 				basDroite.setEnabled(true);
 				hautDroite.setEnabled(true);
 			}
-			else if (BoardDisplayer.board.getRobot(1, 2) instanceof Piegeur ){
+			else if (BoardDisplayer.board.getRobot(numEquipe, numRobot) instanceof Piegeur ){
 				tirer.setEnabled(false);
 				miner.setEnabled(true);
 				basGauche.setEnabled(true);
@@ -184,7 +298,7 @@ public class ActionPanel extends JPanel implements ActionListener{
 				basDroite.setEnabled(true);
 				hautDroite.setEnabled(true);
 			}
-			else if (BoardDisplayer.board.getRobot(1, 2) instanceof Char ) {
+			else if (BoardDisplayer.board.getRobot(numEquipe, numRobot) instanceof Char ) {
 				miner.setEnabled(false);
 				basGauche.setEnabled(false);
 				hautGauche.setEnabled(false);
@@ -197,7 +311,7 @@ public class ActionPanel extends JPanel implements ActionListener{
 
 		else if(r3.isSelected()){
 			numRobot=3;
-			if (BoardDisplayer.board.getRobot(1, 3) instanceof Tireur ){
+			if (BoardDisplayer.board.getRobot(numEquipe, numRobot) instanceof Tireur ){
 				miner.setEnabled(false);
 				tirer.setEnabled(true);
 				basGauche.setEnabled(true);
@@ -205,7 +319,7 @@ public class ActionPanel extends JPanel implements ActionListener{
 				basDroite.setEnabled(true);
 				hautDroite.setEnabled(true);
 			}
-			else if (BoardDisplayer.board.getRobot(1, 3) instanceof Piegeur ){
+			else if (BoardDisplayer.board.getRobot(numEquipe, numRobot) instanceof Piegeur ){
 				tirer.setEnabled(false);
 				miner.setEnabled(true);
 				basGauche.setEnabled(true);
@@ -213,7 +327,7 @@ public class ActionPanel extends JPanel implements ActionListener{
 				basDroite.setEnabled(true);
 				hautDroite.setEnabled(true);
 			}
-			else if (BoardDisplayer.board.getRobot(1, 3) instanceof Char ) {
+			else if (BoardDisplayer.board.getRobot(numEquipe, numRobot) instanceof Char ) {
 				miner.setEnabled(false);
 				basGauche.setEnabled(false);
 				hautGauche.setEnabled(false);
@@ -226,7 +340,7 @@ public class ActionPanel extends JPanel implements ActionListener{
 
 		else if(r4.isSelected()){
 			numRobot=4;
-			if (BoardDisplayer.board.getRobot(1, 4) instanceof Tireur ){
+			if (BoardDisplayer.board.getRobot(numEquipe, numRobot) instanceof Tireur ){
 				miner.setEnabled(false);
 				tirer.setEnabled(true);
 				basGauche.setEnabled(true);
@@ -234,7 +348,7 @@ public class ActionPanel extends JPanel implements ActionListener{
 				basDroite.setEnabled(true);
 				hautDroite.setEnabled(true);
 			}
-			else if (BoardDisplayer.board.getRobot(1, 4) instanceof Piegeur ){
+			else if (BoardDisplayer.board.getRobot(numEquipe, numRobot) instanceof Piegeur ){
 				tirer.setEnabled(false);
 				miner.setEnabled(true);
 				basGauche.setEnabled(true);
@@ -242,7 +356,7 @@ public class ActionPanel extends JPanel implements ActionListener{
 				basDroite.setEnabled(true);
 				hautDroite.setEnabled(true);
 			}
-			else if (BoardDisplayer.board.getRobot(1, 4) instanceof Char ) {
+			else if (BoardDisplayer.board.getRobot(numEquipe, numRobot) instanceof Char ) {
 				miner.setEnabled(false);
 				basGauche.setEnabled(false);
 				hautGauche.setEnabled(false);
@@ -255,7 +369,7 @@ public class ActionPanel extends JPanel implements ActionListener{
 
 		else if(r5.isSelected()){
 			numRobot=5;
-			if (BoardDisplayer.board.getRobot(1, 5) instanceof Tireur ){
+			if (BoardDisplayer.board.getRobot(numEquipe, numRobot) instanceof Tireur ){
 				miner.setEnabled(false);
 				tirer.setEnabled(true);
 				basGauche.setEnabled(true);
@@ -263,7 +377,7 @@ public class ActionPanel extends JPanel implements ActionListener{
 				basDroite.setEnabled(true);
 				hautDroite.setEnabled(true);
 			}
-			else if (BoardDisplayer.board.getRobot(1, 5) instanceof Piegeur ){
+			else if (BoardDisplayer.board.getRobot(numEquipe, numRobot) instanceof Piegeur ){
 				tirer.setEnabled(false);
 				miner.setEnabled(true);
 				basGauche.setEnabled(true);
@@ -271,7 +385,7 @@ public class ActionPanel extends JPanel implements ActionListener{
 				basDroite.setEnabled(true);
 				hautDroite.setEnabled(true);
 			}
-			else if (BoardDisplayer.board.getRobot(1, 5) instanceof Char ) {
+			else if (BoardDisplayer.board.getRobot(numEquipe, numRobot) instanceof Char ) {
 				miner.setEnabled(false);
 				basGauche.setEnabled(false);
 				hautGauche.setEnabled(false);
@@ -287,7 +401,7 @@ public class ActionPanel extends JPanel implements ActionListener{
 			basDroite.setEnabled(false);
 			hautDroite.setEnabled(false);
 		}
-		else if (deplacer.isSelected() && ! (BoardDisplayer.board.getRobot(1, numRobot) instanceof Char)){
+		else if (deplacer.isSelected() && ! (BoardDisplayer.board.getRobot(numEquipe, numRobot) instanceof Char)){
 			basGauche.setEnabled(true);
 			hautGauche.setEnabled(true);
 			basDroite.setEnabled(true);
