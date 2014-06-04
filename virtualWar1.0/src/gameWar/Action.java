@@ -47,12 +47,12 @@ public abstract class Action {
 	/**
 	 * 	Effectue l'action pour un Joueur
 	 */
-	public abstract void agit(Coordonnee direction);
+	public abstract boolean agit(Coordonnee direction);
 
 	/**
 	 * @param direction
 	 * 
 	 * Effectue l'action pour une IA random
 	 */
-	abstract void iaAgit(Coordonnee direction);
+	public abstract boolean iaAgit(Coordonnee direction);
 }

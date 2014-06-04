@@ -132,9 +132,9 @@ public class ChoixRobot2 extends JPanel {
 		JPanel pp = new JPanel();
 		pp.setOpaque(false);
 		pp.setLayout(new FlowLayout(70,200,10) );
-		pp.add(spinner1);
-		pp.add(spinner2);
 		pp.add(spinner3);
+		pp.add(spinner2);
+		pp.add(spinner1);
 		p.add(label);
 		p.add(p5);
 		p.add(pp);

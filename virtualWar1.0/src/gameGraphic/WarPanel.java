@@ -16,7 +16,7 @@ public class WarPanel extends JPanel{
 	CardLayout cl;
 	JPanel pan;
 	public static JPanel p;
-	static BoardDisplayer bd;
+	public static BoardDisplayer bd;
 	public static JTextArea t;
 	public static String info="coucou";
 
@@ -31,14 +31,12 @@ public class WarPanel extends JPanel{
 		int tours=0;
 		bd = new BoardDisplayer(cl, pan, gameWar.Game.p = new Plateau(0));
 
-
-		p.add(new ActionPanel((tours%2)+1));
+		p.add(new ActionPanel(1));
 		t=new JTextArea(info);
-		tours++;
 
 
 		//t.setEditable(false);
-		t.setBounds(100,20,200,70);
+		t.setBounds(5,20,350,60);
 		p2.add(t);
 		p.add(p2);
 		tours++;

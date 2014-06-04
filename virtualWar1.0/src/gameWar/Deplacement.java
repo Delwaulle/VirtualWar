@@ -1,6 +1,5 @@
 package gameWar;
 
-import gameGraphic.ActionPanel;
 
 /**
  * @author Robin
@@ -19,24 +18,32 @@ public class Deplacement extends Action{
 	 * @see gameWar.Action#agit()
 	 */
 	@Override
-	public void agit (Coordonnee direction) {
+	public boolean agit (Coordonnee direction) {
 		Coordonnee newc = this.getRobot().getCoordonnee();
-		for (int i=0; i<this.getRobot().getDeplacement(); i++)
+		for (int i=0; i<this.getRobot().getDeplacement(); i++) {
 			newc = newc.ajouter(direction);
-		if (testDeplacementOK(direction))
-			deplacer(newc);
+			if (!testDeplacementOK(direction)) {
+				return false;
+			}
+		}
+		deplacer(newc);
+		return true;
 	}
 
 	/* (non-Javadoc)
 	 * @see gameWar.Action#iaAgit(gameWar.Coordonnee)
 	 */
 	@Override
-	public void iaAgit (Coordonnee direction) {
+	public boolean iaAgit (Coordonnee direction) {
 		Coordonnee newc = this.getRobot().getCoordonnee();
-		for (int i=0; i<this.getRobot().getDeplacement(); i++)
+		for (int i=0; i<this.getRobot().getDeplacement(); i++) {
 			newc = newc.ajouter(direction);
-		if (testDeplacementOK(direction))
-			deplacer(newc);
+			if (!testDeplacementOK(direction)) {
+				return false;
+			}
+		}
+		deplacer(newc);
+		return true;
 	}
 
 	/**
@@ -56,7 +63,7 @@ public class Deplacement extends Action{
 	 * 	retourne true si la case NouvelleCoordonne est deja occuper par un autre robot
 	 */
 	private boolean testCollision(Robot r, Coordonnee newc) {
-		return (!r.getVue().estLibre(newc) && r.getVue().estBase(newc));
+		return (!r.getVue().estLibre(newc) && !r.getVue().estBase(newc));
 	}
 
 	/**
@@ -94,9 +101,7 @@ public class Deplacement extends Action{
 					IARandom.jouer(this.getRobot().getVue().plateau, this.getRobot().getEquipe());
 					return false;
 				} else {
-					gameGraphic.WarPanel.info=("Déplacement impossible, vous ne pouvez pas quitter le champ de bataille ! Choisissez une destination valide ou une autre action.");
-					gameGraphic.WarPanel.p.add(new ActionPanel(this.getRobot().getEquipe()));
-					gameGraphic.WarPanel.t.repaint();
+					gameGraphic.WarPanel.t.setText("Déplacement impossible, vous ne pouvez pas quitter le\nchamp de bataille ! Choisissez une destination valide ou \nune autre action.");
 					return false;
 				}
 			} else if (testObstacle(this.getRobot(), newc)) {
@@ -104,8 +109,7 @@ public class Deplacement extends Action{
 					IARandom.jouer(this.getRobot().getVue().plateau, this.getRobot().getEquipe());
 					return false;
 				} else {
-					gameGraphic.WarPanel.info=("Déplacement impossible, Obstacle !!");
-					gameGraphic.WarPanel.p.add(new ActionPanel(this.getRobot().getEquipe()));
+					gameGraphic.WarPanel.t.setText("Déplacement impossible, Obstacle !!");
 					return false;
 				}
 			} else if (testCollision(this.getRobot(), newc)) {
@@ -113,17 +117,15 @@ public class Deplacement extends Action{
 					IARandom.jouer(this.getRobot().getVue().plateau, this.getRobot().getEquipe());
 					return false;
 				} else {
-					gameGraphic.WarPanel.info=("Déplacement impossible, le terrain est déjà occupé, le risque de collision est important, choisissez une autre destination ou une autre action.");
-					gameGraphic.WarPanel.p.add(new ActionPanel(this.getRobot().getEquipe()));
+					gameGraphic.WarPanel.t.setText("Déplacement impossible, le terrain est déjà occupé, le\nrisque de collision est important, choisissez une autre\ndestination ou une autre action.");
 					return false;
 				}
 			} else if (testBase(this.getRobot(), newc)) {
-				gameGraphic.WarPanel.info=("Alerte ! Vous essayez de pénétrer une base ennemie ! Vous avez l’ordre de battre en retraite, choisissez une destination différente.");
 				if (this.getRobot().getTypeJoueur().equals("IARandom")) {
 					IARandom.jouer(this.getRobot().getVue().plateau, this.getRobot().getEquipe());
 					return false;
 				} else {
-					gameGraphic.WarPanel.p.add(new ActionPanel(this.getRobot().getEquipe()));
+					gameGraphic.WarPanel.t.setText("Alerte ! Vous essayez de pénétrer une base ennemie ! Vous avez l’ordre de battre en retraite, choisissez une destination différente.");
 					return false;
 				}
 			}
@@ -142,11 +144,12 @@ public class Deplacement extends Action{
 			this.getRobot().setCoordonnee(newc);
 			this.getRobot().setEnergie(this.getRobot().getEnergie()-this.getRobot().getCoutDep());
 			if (p.estMine(newc.getX(), newc.getY())!=0) {
-				System.out.println("Le "+this.getRobot().getType()+" numéro "+this.getRobot().getNum()+" de l'équipe "+this.getRobot().getEquipe()+" à marcher sur une mine.");
+				gameGraphic.WarPanel.t.setText("Le "+this.getRobot().getType()+" numéro "+this.getRobot().getNum()+" de l'équipe "+this.getRobot().getEquipe()+" a marché sur une mine.");
 				this.getRobot().subitDegats(2);
 				p.retirerMine(newc.getX(), newc.getY());
 			}
-			p.placerRobot(this.getRobot());
+			if (this.getRobot().getEnergie() > 0)
+				p.placerRobot(this.getRobot());
 		}
 	}
 }

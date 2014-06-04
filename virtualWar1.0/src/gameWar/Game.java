@@ -9,33 +9,13 @@ public class Game {
 		new gameGraphic.Window();
 		gameGraphic.AfficherLogo.afficherLogo();
 		String partie = gameController.EntrerIA.entrerIA();
-		if (partie.equals("jcj"))
-			partieJcJ();
-		else if (partie.equals("jcia"))
+		if (partie.equals("jcia"))
 			partieJcIARandom();
 		else if (partie.equals("iacia"));
 		partieIAcIA();
 	}
 
-	/**
-	 *	Execute une partie Joueur contre Joueur
-	 */
-	public static void partieJcJ () {
-		System.out.print(p.toString(1, 0));
-		p=Joueur.creerRobots(p,false);
-		//Joueur.creerRobots(p);
-		while (!p.fini) {
-			regeneBases(p);
-			//Joueur.jouer(p, 1);
-			testFini(p);
-			//Joueur.jouer(p, 2);
-			testFini(p);
-			try{
-				Thread.sleep(2000);
-			}
-			catch(Exception e){System.out.println(e.getMessage());}
-		}
-	}
+
 
 	/**
 	 * 	Execute une partie Joueur contre IA
@@ -62,26 +42,29 @@ public class Game {
 	 * 	Execute une partie IA coutre IA
 	 */
 	public static void partieIAcIA() {
-		Plateau p = new Plateau(0);
-		System.out.print(p.toString(1, 0));
-		IARandom.creerRobots(p, 1);
-		IARandom.creerRobots(p, 2);
-		while (!p.fini) {
-			regeneBases(p);
-			IARandom.jouer(p, 1);
-			testFini(p);
-			System.out.print(p.toString(0, 0));
+		IARandom.creerRobots(gameGraphic.BoardDisplayer.board, 1);
+		IARandom.creerRobots(gameGraphic.BoardDisplayer.board, 2);
+		System.out.println((gameGraphic.BoardDisplayer.board.toString()));
+		while (!gameGraphic.BoardDisplayer.board.fini) {
+			regeneBases(gameGraphic.BoardDisplayer.board);
+			IARandom.jouer(gameGraphic.BoardDisplayer.board, 1);
+			testFini(gameGraphic.BoardDisplayer.board);
 			try{
 				Thread.sleep(500);
 			}
 			catch(Exception e){System.out.println(e.getMessage());}
-			IARandom.jouer(p, 2);
-			testFini(p);
-			System.out.print(p.toString(0, 0));
+			gameGraphic.WarPanel.bd.repaint();
+			System.out.println((gameGraphic.BoardDisplayer.board.toString(0,0)));
+
+			IARandom.jouer(gameGraphic.BoardDisplayer.board, 2);
+			testFini(gameGraphic.BoardDisplayer.board);
 			try{
 				Thread.sleep(500);
 			}
 			catch(Exception e){System.out.println(e.getMessage());}
+			gameGraphic.WarPanel.bd.repaint();
+			System.out.println((gameGraphic.BoardDisplayer.board.toString(0,0)));
+
 		}
 	}
 
@@ -101,13 +84,10 @@ public class Game {
 					equipe2++;
 			}
 		} if (equipe1 == 0 && equipe2 == 0) {
-			p.fini=true;
 			return 3;
 		} else if (equipe1 == 0) {
-			p.fini=true;
 			return 2;
 		} else if (equipe2 == 0) {
-			p.fini=true;
 			return 1;
 		}
 		return 0;

@@ -1,5 +1,7 @@
 package gameGraphic;
 
+import gameWar.Plateau;
+
 import java.awt.CardLayout;
 
 import javax.swing.ImageIcon;
@@ -37,7 +39,7 @@ public class Fenetre extends JFrame {
 		ChoixRobot card1_1_1_1 = new ChoixRobot(cl, content);
 		ChoixRobot2 card1_1_1_1_1 = new ChoixRobot2(cl, content);
 		WarPanel cardPanel = new WarPanel(cl,content);
-		//BoardDisplayer cardGame = new BoardDisplayer(cl, content, gameWar.Game.p = new Plateau(0));
+		BoardDisplayer cardGame = new BoardDisplayer(cl, content, gameWar.Game.p = new Plateau(0));
 		JoueurVsIa card1_2 = new JoueurVsIa(cl, content);
 		ChoixPaysIa card1_2_1 = new ChoixPaysIa(cl,content);
 		IaVsIa card1_3 = new IaVsIa(cl, content);
@@ -51,7 +53,7 @@ public class Fenetre extends JFrame {
 		content.add(card1_1_1_1, "robots");
 		content.add(card1_1_1_1_1, "robots2");
 		content.add(cardPanel,"plateau");
-		//content.add(cardGame, "jeu");
+		content.add(cardGame, "plateauIa");
 		content.add(card1_2, "jvi");
 		content.add(card1_2_1,"paysIa");
 		content.add(card1_3, "ivi");
