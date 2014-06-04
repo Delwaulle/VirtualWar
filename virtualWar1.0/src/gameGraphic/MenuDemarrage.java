@@ -72,7 +72,7 @@ public class MenuDemarrage extends JPanel {
 		son.setDaemon(true);
 		son.start();
 		bouton1 =  new Bouton("Lancez une partie",pan,cl,"jouer");
-		bouton2 =  new Bouton("Sauvegardes",pan,cl,"sauvegardes");
+		bouton2 =  new Bouton("Règlement",pan,cl,"reglement");
 		bouton3 = new Bouton("Paramètres",pan,cl,"parametres");
 		p=new JPanel();
 		p2=new JPanel();

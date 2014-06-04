@@ -57,7 +57,7 @@ public class Fenetre extends JFrame {
 		content.add(card1_2, "jvi");
 		content.add(card1_2_1,"paysIa");
 		content.add(card1_3, "ivi");
-		content.add(card2, "sauvegardes");
+		content.add(card2, "reglement");
 		content.add(card3, "parametres");
 	}
 }

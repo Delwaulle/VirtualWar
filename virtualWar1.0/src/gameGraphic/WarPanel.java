@@ -35,7 +35,6 @@ public class WarPanel extends JPanel{
 		t=new JTextArea(info);
 
 
-		//t.setEditable(false);
 		t.setBounds(5,20,350,60);
 		p2.add(t);
 		p.add(p2);
