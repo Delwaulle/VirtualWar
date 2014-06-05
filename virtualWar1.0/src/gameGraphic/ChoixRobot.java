@@ -76,7 +76,7 @@ public class ChoixRobot extends JPanel {
 
 		//JButton
 		//valider = new Bouton("Valider", pan, cl, "jeu");
-		valider=new JButton("valider");
+		valider=new JButton("Valider");
 		valider.setEnabled(false);
 		f2= new Font(Font.DIALOG, Font.BOLD, 20);
 		valider.setFont(f2);
