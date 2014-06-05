@@ -2,6 +2,7 @@ package gameWar;
 
 
 
+
 public class Game {
 
 	public static Plateau p;
@@ -44,27 +45,28 @@ public class Game {
 	public static void partieIAcIA() {
 		IARandom.creerRobots(gameGraphic.BoardDisplayer.board, 1);
 		IARandom.creerRobots(gameGraphic.BoardDisplayer.board, 2);
-		System.out.println((gameGraphic.BoardDisplayer.board.toString()));
+		System.out.println(gameGraphic.BoardDisplayer.board.toString(0,0));
+		gameGraphic.WarPanel.bd.repaint();
+
 		while (!gameGraphic.BoardDisplayer.board.fini) {
 			regeneBases(gameGraphic.BoardDisplayer.board);
 			IARandom.jouer(gameGraphic.BoardDisplayer.board, 1);
 			testFini(gameGraphic.BoardDisplayer.board);
+			gameGraphic.WarPanel.bd.repaint();
+
 			try{
 				Thread.sleep(500);
 			}
 			catch(Exception e){System.out.println(e.getMessage());}
-			gameGraphic.WarPanel.bd.repaint();
-			System.out.println((gameGraphic.BoardDisplayer.board.toString(0,0)));
 
 			IARandom.jouer(gameGraphic.BoardDisplayer.board, 2);
 			testFini(gameGraphic.BoardDisplayer.board);
+			gameGraphic.WarPanel.bd.repaint();
+
 			try{
 				Thread.sleep(500);
 			}
 			catch(Exception e){System.out.println(e.getMessage());}
-			gameGraphic.WarPanel.bd.repaint();
-			System.out.println((gameGraphic.BoardDisplayer.board.toString(0,0)));
-
 		}
 	}
 

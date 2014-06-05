@@ -9,7 +9,6 @@ import gameWar.Mine;
 import gameWar.Piegeur;
 import gameWar.Tir;
 import gameWar.Tireur;
-import gameWar.Robot;
 
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -55,7 +54,6 @@ public class ActionPanel extends JPanel implements ActionListener{
 
 	private static int numEquipe=0;
 
-	public static String nomselection;
 	public static String energieselection;
 	private int numRobot=0;
 
@@ -246,7 +244,45 @@ public class ActionPanel extends JPanel implements ActionListener{
 				choixRobots.add(r5);
 
 				radioPanel.repaint();
+				r1.setEnabled(true);
+				r2.setEnabled(true);
+				r3.setEnabled(true);
+				r4.setEnabled(true);
+				r5.setEnabled(true);
+				if (BoardDisplayer.board.getRobot(numEquipe, 1) == null ) {
+					r1.setEnabled(false);
+				}
+				if (BoardDisplayer.board.getRobot(numEquipe, 2) == null ) {
+					r2.setEnabled(false);
+				}
+				if (BoardDisplayer.board.getRobot(numEquipe, 3) == null ) {
+					r3.setEnabled(false);
+				}
+				if (BoardDisplayer.board.getRobot(numEquipe, 4) == null ) {
+					r4.setEnabled(false);
+				}
+				if (BoardDisplayer.board.getRobot(numEquipe, 5) == null ) {
+					r5.setEnabled(false);
+				}
+				if (BoardDisplayer.board.getRobot(numEquipe, 1) != null) {
+					numRobot=1;
+					r1.setSelected(true);
+				} else if (BoardDisplayer.board.getRobot(numEquipe, 2) != null) {
+					numRobot=2;
+					r2.setSelected(true);
+				} else if (BoardDisplayer.board.getRobot(numEquipe, 3) != null) {
+					numRobot=3;
+					r3.setSelected(true);
+				} else if (BoardDisplayer.board.getRobot(numEquipe, 4) != null) {
+					numRobot=4;
+					r4.setSelected(true);
+				} else if (BoardDisplayer.board.getRobot(numEquipe, 5) != null) {
+					numRobot=5;
+					r5.setSelected(true);
+				}
 
+				WarPanel.t2.setText("Robot sélectionné : " +r1.getText()+ "\n" + "Energie du robot : " + BoardDisplayer.board.getRobot(numEquipe, numRobot).getEnergie() + "\n" + "Coût de déplacement : " + BoardDisplayer.board.getRobot(numEquipe, numRobot).getCoutDep() + "\n" + "Coût d'action : " + BoardDisplayer.board.getRobot(numEquipe, numRobot).getCoutAction());
+				WarPanel.t2.repaint();
 			}
 
 		});
@@ -354,7 +390,11 @@ public class ActionPanel extends JPanel implements ActionListener{
 				else
 					r5.setText("Robot 5");
 
-
+				r1.setEnabled(true);
+				r2.setEnabled(true);
+				r3.setEnabled(true);
+				r4.setEnabled(true);
+				r5.setEnabled(true);
 				if (BoardDisplayer.board.getRobot(numEquipe, 1) == null ) {
 					r1.setEnabled(false);
 				}
@@ -370,6 +410,22 @@ public class ActionPanel extends JPanel implements ActionListener{
 				if (BoardDisplayer.board.getRobot(numEquipe, 5) == null ) {
 					r5.setEnabled(false);
 				}
+				if (BoardDisplayer.board.getRobot(numEquipe, 1) != null) {
+					numRobot=1;
+					r1.setSelected(true);
+				} else if (BoardDisplayer.board.getRobot(numEquipe, 2) != null) {
+					numRobot=2;
+					r2.setSelected(true);
+				} else if (BoardDisplayer.board.getRobot(numEquipe, 3) != null) {
+					numRobot=3;
+					r3.setSelected(true);
+				} else if (BoardDisplayer.board.getRobot(numEquipe, 4) != null) {
+					numRobot=4;
+					r4.setSelected(true);
+				} else if (BoardDisplayer.board.getRobot(numEquipe, 5) != null) {
+					numRobot=5;
+					r5.setSelected(true);
+				}
 
 				radioPanel.add(r1);
 				choixRobots.add(r1);
@@ -383,12 +439,19 @@ public class ActionPanel extends JPanel implements ActionListener{
 				choixRobots.add(r5);
 
 				if (gameWar.Game.testFini(BoardDisplayer.board) == 3) {
+					Victoire c=new Victoire(3);
+					c.setVisible(true);
 
 				} else if (gameWar.Game.testFini(BoardDisplayer.board) == 2){
+					Victoire c=new Victoire(2);
+					c.setVisible(true);
 
 				} else if (gameWar.Game.testFini(BoardDisplayer.board) == 1) {
-
+					Victoire c =new Victoire(1);
+					c.setVisible(true);
 				}
+				r1.setSelected(true);
+				WarPanel.t2.setText("Robot sélectionné : " +r1.getText()+ "\n" + "Energie du robot : " + BoardDisplayer.board.getRobot(numEquipe, numRobot).getEnergie() + "\n" + "Coût de déplacement : " + BoardDisplayer.board.getRobot(numEquipe, numRobot).getCoutDep() + "\n" + "Coût d'action : " + BoardDisplayer.board.getRobot(numEquipe, numRobot).getCoutAction());
 				WarPanel.t.repaint();
 				radioPanel.repaint();
 				WarPanel.bd.repaint();
@@ -419,8 +482,9 @@ public class ActionPanel extends JPanel implements ActionListener{
 		if(r1.isSelected()){
 			numRobot=1;
 			System.out.println(numRobot);
-			nomselection = r1.getText();
-		//	energieselection = String.valueOf(gameWar.Robot.getEnergie());
+			WarPanel.t2.setText("Robot sélectionné : " +r1.getText()+ "\n" + "Energie du robot : " + BoardDisplayer.board.getRobot(numEquipe, numRobot).getEnergie() + "\n" + "Coût de déplacement : " + BoardDisplayer.board.getRobot(numEquipe, numRobot).getCoutDep() + "\n" + "Coût d'action : " + BoardDisplayer.board.getRobot(numEquipe, numRobot).getCoutAction());
+			WarPanel.t2.repaint();
+
 			if (BoardDisplayer.board.getRobot(numEquipe, numRobot) instanceof Tireur ){
 				miner.setEnabled(false);
 				tirer.setEnabled(true);
@@ -450,14 +514,15 @@ public class ActionPanel extends JPanel implements ActionListener{
 		else if(r2.isSelected()){
 			numRobot=2;
 			System.out.println(numRobot);
-			nomselection = r2.getText();
+			WarPanel.t2.setText("Robot sélectionné : " +r2.getText()+ "\n" + "Energie du robot : " + BoardDisplayer.board.getRobot(numEquipe, numRobot).getEnergie() + "\n" + "Coût de déplacement : " + BoardDisplayer.board.getRobot(numEquipe, numRobot).getCoutDep() + "\n" + "Coût d'action : " + BoardDisplayer.board.getRobot(numEquipe, numRobot).getCoutAction());
+			WarPanel.t2.repaint();
 			if (BoardDisplayer.board.getRobot(numEquipe, numRobot) instanceof Tireur ){
 				miner.setEnabled(false);
 				tirer.setEnabled(true);
 				basGauche.setEnabled(true);
 				hautGauche.setEnabled(true);
 				basDroite.setEnabled(true);
-				hautDroite.setEnabled(true);			
+				hautDroite.setEnabled(true);
 			}
 			else if (BoardDisplayer.board.getRobot(numEquipe, numRobot) instanceof Piegeur ){
 				tirer.setEnabled(false);
@@ -480,7 +545,8 @@ public class ActionPanel extends JPanel implements ActionListener{
 		else if(r3.isSelected()){
 			numRobot=3;
 			System.out.println(numRobot);
-			nomselection = r3.getText();
+			WarPanel.t2.setText("Robot sélectionné : " +r3.getText()+ "\n" + "Energie du robot : " + BoardDisplayer.board.getRobot(numEquipe, numRobot).getEnergie() + "\n" + "Coût de déplacement : " + BoardDisplayer.board.getRobot(numEquipe, numRobot).getCoutDep() + "\n" + "Coût d'action : " + BoardDisplayer.board.getRobot(numEquipe, numRobot).getCoutAction());
+			WarPanel.t2.repaint();
 			if (BoardDisplayer.board.getRobot(numEquipe, numRobot) instanceof Tireur ){
 				miner.setEnabled(false);
 				tirer.setEnabled(true);
@@ -511,7 +577,8 @@ public class ActionPanel extends JPanel implements ActionListener{
 		else if(r4.isSelected()){
 			numRobot=4;
 			System.out.println(numRobot);
-			nomselection = r4.getText();
+			WarPanel.t2.setText("Robot sélectionné : " +r4.getText()+ "\n" + "Energie du robot : " + BoardDisplayer.board.getRobot(numEquipe, numRobot).getEnergie() + "\n" + "Coût de déplacement : " + BoardDisplayer.board.getRobot(numEquipe, numRobot).getCoutDep() + "\n" + "Coût d'action : " + BoardDisplayer.board.getRobot(numEquipe, numRobot).getCoutAction());
+			WarPanel.t2.repaint();
 			if (BoardDisplayer.board.getRobot(numEquipe, numRobot) instanceof Tireur ){
 				miner.setEnabled(false);
 				tirer.setEnabled(true);
@@ -542,7 +609,8 @@ public class ActionPanel extends JPanel implements ActionListener{
 		else if(r5.isSelected()){
 			numRobot=5;
 			System.out.println(numRobot);
-			nomselection = r5.getText();
+			WarPanel.t2.setText("Robot sélectionné : " +r5.getText()+ "\n" + "Energie du robot : " + BoardDisplayer.board.getRobot(numEquipe, numRobot).getEnergie() + "\n" + "Coût de déplacement : " + BoardDisplayer.board.getRobot(numEquipe, numRobot).getCoutDep() + "\n" + "Coût d'action : " + BoardDisplayer.board.getRobot(numEquipe, numRobot).getCoutAction());
+			WarPanel.t2.repaint();
 			if (BoardDisplayer.board.getRobot(numEquipe, numRobot) instanceof Tireur ){
 				miner.setEnabled(false);
 				tirer.setEnabled(true);

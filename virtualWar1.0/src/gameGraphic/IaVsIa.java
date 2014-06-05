@@ -64,6 +64,7 @@ public class IaVsIa extends JPanel{
 				son.setDaemon(true);
 				son.start();
 				cl.show(pan, "plateauIa");
+
 				gameWar.Game.partieIAcIA();
 			}
 
