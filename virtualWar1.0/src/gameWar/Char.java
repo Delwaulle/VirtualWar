@@ -24,7 +24,7 @@ public class Char extends Robot{
 	 */
 	public Char (Vue vue, int equipe, int num, String typeJoueur) {
 		super(vue, equipe, num, typeJoueur);
-		this.setEnergie(10);
+		this.setEnergie(60);
 	}
 
 	/* (non-Javadoc)

@@ -112,7 +112,7 @@ public class Deplacement extends Action{
 					gameGraphic.WarPanel.t.setText("Déplacement impossible, Obstacle !!");
 					return false;
 				}
-			} else if (testCollision(this.getRobot(), newc)) {
+			} else if (testCollision(this.getRobot(), newc) && this.getRobot().getEquipe()!=this.getRobot().getVue().plateau.estBase(newc.getX(), newc.getY())) {
 				if (this.getRobot().getTypeJoueur().equals("IARandom")) {
 					IARandom.jouer(this.getRobot().getVue().plateau, this.getRobot().getEquipe());
 					return false;
@@ -139,18 +139,17 @@ public class Deplacement extends Action{
 	 */
 	private void deplacer(Coordonnee newc) {
 		Plateau p = this.getRobot().getVue().plateau;
-		if(this.getRobot().getVue().estOK(newc) && this.getRobot().getVue().estLibre(newc)) {
-			p.retirerRobot(this.getRobot().getCoordonnee().getX(), this.getRobot().getCoordonnee().getY(), this.getRobot());
-			this.getRobot().setCoordonnee(newc);
-			this.getRobot().setEnergie(this.getRobot().getEnergie()-this.getRobot().getCoutDep());
-			if (p.estMine(newc.getX(), newc.getY())!=0) {
-				gameGraphic.WarPanel.t.setText("Le "+this.getRobot().getType()+" numéro "+this.getRobot().getNum()+" de l'équipe "+this.getRobot().getEquipe()+" a marché sur une mine.");
-				this.getRobot().subitDegats(2);
-				p.retirerMine(newc.getX(), newc.getY());
-			}
-			if (this.getRobot().getEnergie() > 0)
-				p.placerRobot(this.getRobot());
+		p.retirerRobot(this.getRobot().getCoordonnee().getX(), this.getRobot().getCoordonnee().getY(), this.getRobot());
+		this.getRobot().setCoordonnee(newc);
+		this.getRobot().setEnergie(this.getRobot().getEnergie()-this.getRobot().getCoutDep());
+		if (p.estMine(newc.getX(), newc.getY())!=0) {
+			gameGraphic.WarPanel.t.setText("Le "+this.getRobot().getType()+" numéro "+this.getRobot().getNum()+" de l'équipe "+this.getRobot().getEquipe()+" a marché sur une mine.");
+			this.getRobot().subitDegats(2);
+			p.retirerMine(newc.getX(), newc.getY());
 		}
+		if (this.getRobot().getEnergie() > 0)
+			p.placerRobot(this.getRobot());
 	}
 }
+
 

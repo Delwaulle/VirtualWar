@@ -52,7 +52,7 @@ public class ActionPanel extends JPanel implements ActionListener{
 	JRadioButton hautDroite;
 	JLabel joueur;
 
-	private static int numEquipe=0;
+	public static int numEquipe=0;
 
 	public static String energieselection;
 	private int numRobot=0;
@@ -158,6 +158,8 @@ public class ActionPanel extends JPanel implements ActionListener{
 				ClicMenu son=new ClicMenu();
 				son.setDaemon(true);
 				son.start();
+				gameWar.Game.regeneBases();
+
 
 				if (numEquipe+1 == 3)
 					numEquipe=1;
@@ -298,6 +300,7 @@ public class ActionPanel extends JPanel implements ActionListener{
 				WarPanel.t.setText("");
 				WarPanel.t.repaint();
 				WarPanel.t2.repaint();
+				gameWar.Game.regeneBases();
 				boolean suivant = false;
 
 				Coordonnee direction=null;
@@ -481,7 +484,6 @@ public class ActionPanel extends JPanel implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if(r1.isSelected()){
 			numRobot=1;
-			System.out.println(numRobot);
 			WarPanel.t2.setText("Robot sélectionné : " +r1.getText()+ "\n" + "Energie du robot : " + BoardDisplayer.board.getRobot(numEquipe, numRobot).getEnergie() + "\n" + "Coût de déplacement : " + BoardDisplayer.board.getRobot(numEquipe, numRobot).getCoutDep() + "\n" + "Coût d'action : " + BoardDisplayer.board.getRobot(numEquipe, numRobot).getCoutAction());
 			WarPanel.t2.repaint();
 
@@ -513,7 +515,6 @@ public class ActionPanel extends JPanel implements ActionListener{
 		}
 		else if(r2.isSelected()){
 			numRobot=2;
-			System.out.println(numRobot);
 			WarPanel.t2.setText("Robot sélectionné : " +r2.getText()+ "\n" + "Energie du robot : " + BoardDisplayer.board.getRobot(numEquipe, numRobot).getEnergie() + "\n" + "Coût de déplacement : " + BoardDisplayer.board.getRobot(numEquipe, numRobot).getCoutDep() + "\n" + "Coût d'action : " + BoardDisplayer.board.getRobot(numEquipe, numRobot).getCoutAction());
 			WarPanel.t2.repaint();
 			if (BoardDisplayer.board.getRobot(numEquipe, numRobot) instanceof Tireur ){
@@ -544,7 +545,6 @@ public class ActionPanel extends JPanel implements ActionListener{
 		}
 		else if(r3.isSelected()){
 			numRobot=3;
-			System.out.println(numRobot);
 			WarPanel.t2.setText("Robot sélectionné : " +r3.getText()+ "\n" + "Energie du robot : " + BoardDisplayer.board.getRobot(numEquipe, numRobot).getEnergie() + "\n" + "Coût de déplacement : " + BoardDisplayer.board.getRobot(numEquipe, numRobot).getCoutDep() + "\n" + "Coût d'action : " + BoardDisplayer.board.getRobot(numEquipe, numRobot).getCoutAction());
 			WarPanel.t2.repaint();
 			if (BoardDisplayer.board.getRobot(numEquipe, numRobot) instanceof Tireur ){
@@ -576,7 +576,6 @@ public class ActionPanel extends JPanel implements ActionListener{
 
 		else if(r4.isSelected()){
 			numRobot=4;
-			System.out.println(numRobot);
 			WarPanel.t2.setText("Robot sélectionné : " +r4.getText()+ "\n" + "Energie du robot : " + BoardDisplayer.board.getRobot(numEquipe, numRobot).getEnergie() + "\n" + "Coût de déplacement : " + BoardDisplayer.board.getRobot(numEquipe, numRobot).getCoutDep() + "\n" + "Coût d'action : " + BoardDisplayer.board.getRobot(numEquipe, numRobot).getCoutAction());
 			WarPanel.t2.repaint();
 			if (BoardDisplayer.board.getRobot(numEquipe, numRobot) instanceof Tireur ){
@@ -608,7 +607,6 @@ public class ActionPanel extends JPanel implements ActionListener{
 
 		else if(r5.isSelected()){
 			numRobot=5;
-			System.out.println(numRobot);
 			WarPanel.t2.setText("Robot sélectionné : " +r5.getText()+ "\n" + "Energie du robot : " + BoardDisplayer.board.getRobot(numEquipe, numRobot).getEnergie() + "\n" + "Coût de déplacement : " + BoardDisplayer.board.getRobot(numEquipe, numRobot).getCoutDep() + "\n" + "Coût d'action : " + BoardDisplayer.board.getRobot(numEquipe, numRobot).getCoutAction());
 			WarPanel.t2.repaint();
 			if (BoardDisplayer.board.getRobot(numEquipe, numRobot) instanceof Tireur ){

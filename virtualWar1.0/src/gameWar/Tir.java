@@ -36,7 +36,6 @@ public class Tir extends Action{
 					return false;
 				} else {
 					gameGraphic.WarPanel.t.setText("Ajustez votre tir soldat, l’ennemi est en face ! ");
-					gameGraphic.WarPanel.p.add(new ActionPanel(this.getRobot().getEquipe()));
 					return false;
 				}
 			} else if (testObstacle(this.getRobot(), newc)) {
@@ -44,8 +43,7 @@ public class Tir extends Action{
 					IARandom.jouer(this.getRobot().getVue().plateau, this.getRobot().getEquipe());
 					return false;
 				} else {
-					gameGraphic.WarPanel.t.setText("Les obstacles arrêtent vos balles, choisissez une autre cible ou déplacez vous ! ");
-					gameGraphic.WarPanel.p.add(new ActionPanel(this.getRobot().getEquipe()));
+					gameGraphic.WarPanel.t.setText("Les obstacles arrêtent vos balles, choisissez une autre cible ou \ndéplacez vous ! ");
 					return false;
 				}
 			} else if (testBase(this.getRobot(), newc)) {
@@ -54,7 +52,6 @@ public class Tir extends Action{
 					return false;
 				} else {
 					gameGraphic.WarPanel.t.setText("Vos armes ne sont pas assez puissantes pour toucher les bases ! ");
-					gameGraphic.WarPanel.p.add(new ActionPanel(this.getRobot().getEquipe()));
 					return false;
 				}
 			} else if (testCollision(this.getRobot(), newc)) {
@@ -64,7 +61,6 @@ public class Tir extends Action{
 						return false;
 					} else {
 						gameGraphic.WarPanel.t.setText("Attention soldat, ne trahissez pas votre pays, visez l’ennemi !");
-						gameGraphic.WarPanel.p.add(new ActionPanel(this.getRobot().getEquipe()));
 						return false;
 					}
 				}
@@ -75,8 +71,7 @@ public class Tir extends Action{
 			IARandom.jouer(this.getRobot().getVue().plateau, this.getRobot().getEquipe());
 			return false;
 		} else {
-			gameGraphic.WarPanel.t.setText("Attention soldat, vous ne visez personne ! Ne décevez pas votre pays, ciblez un ennemi ou choisissez une autre action !");
-			gameGraphic.WarPanel.p.add(new ActionPanel(this.getRobot().getEquipe()));
+			gameGraphic.WarPanel.t.setText("Attention soldat, vous ne visez personne ! Ne décevez pas votre \npays, ciblez un ennemi ou choisissez une autre action !");
 			return false;
 		}
 	}
@@ -93,7 +88,7 @@ public class Tir extends Action{
 				p.getContenu(newc.getX(), newc.getY()).subitDegats(this.getRobot().getDegatTir());
 				this.getRobot().setEnergie(this.getRobot().getEnergie()-this.getRobot().getCoutAction());
 				if (p.getContenu(newc.getX(), newc.getY()).getEnergie()<=0) {
-					System.out.println("Le robot est mort !!");
+					gameGraphic.WarPanel.t.setText("Le robot est mort !!");
 					p.retirerRobot(newc.getX(), newc.getY(), p.getContenu(newc.getX(),  newc.getY()));
 				}
 			}

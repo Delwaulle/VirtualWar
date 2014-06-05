@@ -58,7 +58,7 @@ public class BoardDisplayer extends JPanel {
 					s = "rsc/images/flags/"+ChoixPays.choix2+".png";
 				} else if (board.getGrille()[i][j].estObstacle()) {
 					s = "rsc/images/tiles/wall.png";
-				} else if (board.getGrille()[i][j].estMine() == 1) {
+				} else if (board.getGrille()[i][j].estMine() != 0) {
 					s = "rsc/images/tiles/Mine.png";
 				} else if (board.getGrille()[i][j].getContenu() instanceof Tireur){
 					if(board.getGrille()[i][j].getContenu().getEquipe()==1){

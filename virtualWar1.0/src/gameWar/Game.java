@@ -8,7 +8,6 @@ public class Game {
 	public static Plateau p;
 	public static void main(String[] args) {
 		new gameGraphic.Window();
-		gameGraphic.AfficherLogo.afficherLogo();
 		String partie = gameController.EntrerIA.entrerIA();
 		if (partie.equals("jcia"))
 			partieJcIARandom();
@@ -27,7 +26,7 @@ public class Game {
 		Joueur.creerRobots(p,true);
 		IARandom.creerRobots(p, 2);
 		while (!p.fini) {
-			regeneBases(p);
+			regeneBases();
 			//Joueur.jouer(p, 1);
 			testFini(p);
 			IARandom.jouer(p, 2);
@@ -40,7 +39,7 @@ public class Game {
 	}
 
 	/**
-	 * 	Execute une partie IA coutre IA
+	 * 	Execute une partie IA contre IA
 	 */
 	public static void partieIAcIA() {
 		IARandom.creerRobots(gameGraphic.BoardDisplayer.board, 1);
@@ -49,7 +48,7 @@ public class Game {
 		gameGraphic.WarPanel.bd.repaint();
 
 		while (!gameGraphic.BoardDisplayer.board.fini) {
-			regeneBases(gameGraphic.BoardDisplayer.board);
+			regeneBases();
 			IARandom.jouer(gameGraphic.BoardDisplayer.board, 1);
 			testFini(gameGraphic.BoardDisplayer.board);
 			gameGraphic.WarPanel.bd.repaint();
@@ -101,13 +100,15 @@ public class Game {
 	 * 	Rend 2 point d'energie aux robots qui sont dans leur base
 	 */
 	@SuppressWarnings("static-access")
-	private static void regeneBases(Plateau p) {
-		for (int i=0; i<p.grille[0][0].r.size(); i++)
-			if (p.grille[0][0].r.get(i).getEnergie()+2<p.grille[0][0].r.get(i).getEnergieMax())
-				p.grille[0][0].r.get(i).setEnergie(p.grille[0][0].r.get(i).getEnergie()+2);
-		for (int i=0; i<p.grille[p.hauteur-1][p.largeur-1].r.size(); i++)
-			if (p.grille[p.hauteur-1][p.largeur-1].r.get(i).getEnergie()+2<p.grille[p.hauteur-1][p.largeur-1].r.get(i).getEnergieMax())
-				p.grille[p.hauteur-1][p.largeur-1].r.get(i).setEnergie(p.grille[p.hauteur-1][p.largeur-1].r.get(i).getEnergie()+2);
+	public static void regeneBases() {
+		
+		for (int i=0; i<gameGraphic.BoardDisplayer.board.grille[0][0].r.size(); i++)
+			if (gameGraphic.BoardDisplayer.board.grille[0][0].r.get(i).getEnergie()+2<gameGraphic.BoardDisplayer.board.grille[0][0].r.get(i).getEnergieMax()) {
+				gameGraphic.BoardDisplayer.board.grille[0][0].r.get(i).setEnergie(gameGraphic.BoardDisplayer.board.grille[0][0].r.get(i).getEnergie()+2);
+			}
+		for (int i=0; i<gameGraphic.BoardDisplayer.board.grille[gameGraphic.BoardDisplayer.board.hauteur-1][gameGraphic.BoardDisplayer.board.largeur-1].r.size(); i++)
+			if (gameGraphic.BoardDisplayer.board.grille[gameGraphic.BoardDisplayer.board.hauteur-1][gameGraphic.BoardDisplayer.board.largeur-1].r.get(i).getEnergie()+2<gameGraphic.BoardDisplayer.board.grille[gameGraphic.BoardDisplayer.board.hauteur-1][gameGraphic.BoardDisplayer.board.largeur-1].r.get(i).getEnergieMax())
+				gameGraphic.BoardDisplayer.board.grille[gameGraphic.BoardDisplayer.board.hauteur-1][gameGraphic.BoardDisplayer.board.largeur-1].r.get(i).setEnergie(gameGraphic.BoardDisplayer.board.grille[gameGraphic.BoardDisplayer.board.hauteur-1][gameGraphic.BoardDisplayer.board.largeur-1].r.get(i).getEnergie()+2);
 	}
 }
 

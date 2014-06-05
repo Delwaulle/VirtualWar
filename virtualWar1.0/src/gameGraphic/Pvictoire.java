@@ -1,5 +1,6 @@
 package gameGraphic;
 
+import java.awt.BorderLayout;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -23,6 +24,9 @@ public class Pvictoire extends JPanel {
 	JFrame fr;
 	public Pvictoire(int fin,JFrame f){
 		this.fr=f;
+		JPanel p = new JPanel();
+		p.setOpaque(false);
+		this.setLayout(new BorderLayout());
 		ok=new JButton("Retour au menu");
 		ok.addActionListener(new ActionListener(){
 
@@ -36,7 +40,7 @@ public class Pvictoire extends JPanel {
 		});
 		if (fin==1) {
 			try {
-				img=ImageIO.read(new File("rsc/images/tireurs/Caracteristiques.png"));
+				img=ImageIO.read(new File("rsc/images/team1/v1.png"));
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -45,7 +49,7 @@ public class Pvictoire extends JPanel {
 
 		else if (fin==2){
 			try {
-				img=ImageIO.read(new File("rsc/images/tireurs/Caracteristiques.png"));
+				img=ImageIO.read(new File("rsc/images/team1/v2.png"));
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -54,13 +58,14 @@ public class Pvictoire extends JPanel {
 
 		else {
 			try {
-				img=ImageIO.read(new File("rsc/images/tireurs/Caracteristiques.png"));
+				img=ImageIO.read(new File("rsc/images/team1/ega.png"));
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		this.add(ok);
+		p.add(ok);
+		this.add(BorderLayout.SOUTH,p);
 	}
 
 	@Override

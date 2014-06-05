@@ -11,7 +11,7 @@ public class Victoire extends JFrame{
 	int fin;
 	public Victoire(int i) {
 		this.fin=i;
-		this.setBounds(300,150,200,150);
+		this.setBounds(300,150,500,306);
 		this.setUndecorated(true);
 		this.getContentPane().add(new Pvictoire(fin,this));
 	}
